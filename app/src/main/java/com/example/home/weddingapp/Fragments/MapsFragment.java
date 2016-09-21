@@ -1,12 +1,15 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.home.weddingapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,6 +37,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Google Maps");
+        alertDialog.setMessage("Para abrir o mapa no aplicativo do Google Maps ou traçar uma rota até o endereço, basta selecionar o " +
+                "indicador vermelho do local e acessar o menu no canto inferior direito");
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Ok, entendi.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.show();
 
         return view;
     }
