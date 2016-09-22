@@ -99,8 +99,10 @@ public class Tab4Fragment extends Fragment {
         botao3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MainActivity mainactivity = (MainActivity) getActivity();
                 mainactivity.loadFornecedores();
+
             }
         });
 

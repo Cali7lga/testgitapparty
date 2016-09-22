@@ -91,7 +91,7 @@ public class Tab1Fragment extends Fragment {
         java.util.Date d1 = null;
         Calendar calendar = Calendar.getInstance();
         try {
-            d = dfDate.parse("20/02/2017 10:00:00");
+            d = dfDate.parse("06/05/2017 10:00:00");
             d1 = dfDate.parse(dfDate.format(calendar.getTime()));
         } catch (java.text.ParseException e){
             e.printStackTrace();

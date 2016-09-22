@@ -1,13 +1,156 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.FornecedoresFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fragmento dos fornecedores" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:text="Buffet e Decoração"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:layout_marginTop="150dp" />
+
+        <TextView
+            android:text="Alex Sandes Cerimonial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView12"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="10dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton3"
+                android:layout_weight="0"
+                android:layout_marginLeft="115dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton4"
+                android:layout_weight="0"
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Filme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:text="3Imagens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView14"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="10dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton5"
+                android:layout_weight="0"
+                android:layout_marginLeft="115dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton6"
+                android:layout_weight="0"
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Convites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:text="Denise Lins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView16"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="10dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton7"
+                android:layout_weight="0"
+                android:layout_marginLeft="115dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton8"
+                android:layout_weight="0"
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
