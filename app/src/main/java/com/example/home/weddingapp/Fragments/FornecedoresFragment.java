@@ -7,23 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
-import com.google.android.gms.vision.text.Text;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Tab4Fragment.Tab4FragmentInteractionListener} interface
+ * {@link FornecedoresFragment.FornecedoresFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Tab4Fragment#newInstance} factory method to
+ * Use the {@link FornecedoresFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tab4Fragment extends Fragment {
+public class FornecedoresFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,9 +28,9 @@ public class Tab4Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Tab4FragmentInteractionListener mListener;
+    private FornecedoresFragmentInteractionListener mListener;
 
-    public Tab4Fragment() {
+    public FornecedoresFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +40,11 @@ public class Tab4Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Tab4Fragment.
+     * @return A new instance of fragment FornecedoresFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Tab4Fragment newInstance(String param1, String param2) {
-        Tab4Fragment fragment = new Tab4Fragment();
+    public static FornecedoresFragment newInstance(String param1, String param2) {
+        FornecedoresFragment fragment = new FornecedoresFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,55 +65,21 @@ public class Tab4Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_tab4, container, false);
-
-        ImageButton botao = (ImageButton) view.findViewById(R.id.imageButton);
-        botao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadMaps();
-
-            }
-        });
-
-        ImageButton botao2 = (ImageButton) view.findViewById(R.id.imageButton2);
-        botao2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadStview();
-
-            }
-        });
-
-        Button botao3 = (Button) view.findViewById(R.id.button2);
-        botao3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadFornecedores();
-            }
-        });
-
-        return view;
+        return inflater.inflate(R.layout.fragment_fornecedores, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTab4FragmentInteraction(uri);
+            mListener.onFornecedoresFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Tab4FragmentInteractionListener) {
-            mListener = (Tab4FragmentInteractionListener) context;
+        if (context instanceof FornecedoresFragmentInteractionListener) {
+            mListener = (FornecedoresFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -131,28 +92,18 @@ public class Tab4Fragment extends Fragment {
         mListener = null;
     }
 
-/*    @Override
-    public void onClick(View v) {
-
-        if (v == getId(R.id.imageButton)) {
-            MainActivity mainactivity = (MainActivity) getActivity();
-            mainactivity.loadMaps();
-        }
-    }
-*/
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface Tab4FragmentInteractionListener {
+    public interface FornecedoresFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTab4FragmentInteraction(Uri uri);
+        void onFornecedoresFragmentInteraction(Uri uri);
     }
 }

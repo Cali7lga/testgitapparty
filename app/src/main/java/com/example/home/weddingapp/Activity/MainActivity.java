@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.MainFragment;
 import com.example.home.weddingapp.Fragments.MapsFragment;
@@ -34,6 +35,7 @@ public class MainActivity extends FragmentActivity
         Tab4Fragment.Tab4FragmentInteractionListener,
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
+        FornecedoresFragment.FornecedoresFragmentInteractionListener,
         Tab5Fragment.Tab5FragmentInteractionListener {
 
     @Override
@@ -68,30 +70,18 @@ public class MainActivity extends FragmentActivity
 
     public void loadStview() {
 
-    //    getSupportFragmentManager().popBackStack(); //Volta direto para a Aba 4
         StreetviewFragment stvFragment = new StreetviewFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, stvFragment).addToBackStack(null).commit();
 
     }
 
-/**
-    @Override
-    public void onBackPressed(){
+    public void loadFornecedores() {
 
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.FragmentContainer);
-
-        if(fragment instanceof StreetviewFragment){
-
-            MapsFragment mapsFragment = new MapsFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, mapsFragment).addToBackStack(null).commit();
-        //    getSupportFragmentManager().popBackStack();
-        }
-        else {
-            super.onBackPressed();
-        }
+        FornecedoresFragment fFragment = new FornecedoresFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, fFragment).addToBackStack(null).commit();
 
     }
-**/
+
 
     @Override
     public void onMainFragmentInteraction(Uri uri) {
@@ -150,6 +140,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onStviewFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onFornecedoresFragmentInteraction(Uri uri) {
 
     }
 }

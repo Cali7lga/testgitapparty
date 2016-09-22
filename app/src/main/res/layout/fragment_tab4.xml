@@ -1,76 +1,82 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.Tab4Fragment">
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
         android:layout_width="wrap_content"
         android:layout_height="210dp"
         android:id="@+id/imageView10"
-        android:src="@drawable/local"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/local" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tv Albertino Cabral Henrique, 212, Pituacu"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/imageView10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tv Albertino Cabral Henrique, 212, Pituacu"
+            android:id="@+id/textView5"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:src="@drawable/maps"
-        android:background="@android:color/transparent"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="100dp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
-        android:src="@drawable/streetview"
-        android:background="@android:color/transparent"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="100dp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/maps"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Visualizar no Google Maps"
-        android:id="@+id/textView6"
-        android:textStyle="italic"
-        android:textSize="10dp"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="67dp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton2"
+                android:src="@drawable/streetview"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="80dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Street View"
-        android:id="@+id/textView11"
-        android:layout_alignTop="@+id/textView6"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="95dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Visualizar no Google Maps"
+                android:id="@+id/textView6"
+                android:textStyle="italic"
+                android:textSize="10dp"
+                android:layout_marginLeft="67dp"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Street View"
+                android:id="@+id/textView11"
+                android:layout_marginLeft="40dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerimonia e Recepção"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="40dp"
         android:textStyle="italic"
         android:textSize="15dp" />
@@ -81,10 +87,7 @@
         android:text="Casarao Parque Tropical - 19hrs"
         android:id="@+id/textView8"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,10 +96,7 @@
         android:id="@+id/textView9"
         android:layout_marginTop="38dp"
         android:textStyle="italic"
-        android:textSize="15dp"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -104,9 +104,17 @@
         android:text="Vagas para visitantes dentro do condominio. Havera manobrista no local."
         android:id="@+id/textView10"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_below="@+id/textView9"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="20dp" />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fornecedores"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>
