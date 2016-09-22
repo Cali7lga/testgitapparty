@@ -9,12 +9,12 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/imageView2"
-        android:background="@drawable/profile"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp" />
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/profile" />
 
     <ImageView
         android:layout_width="120dp"
@@ -55,8 +55,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:textSize="15dp"
-                android:textColor="@android:color/white" />
+                android:textSize="14sp"
+                android:textColor="@color/wallet_bright_foreground_holo_dark"
+                android:background="@drawable/textview_shape"
+                android:fontFamily="serif" />
         </RelativeLayout>
     </ScrollView>
 

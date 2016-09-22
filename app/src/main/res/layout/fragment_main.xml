@@ -10,17 +10,14 @@
         android:layout_height="match_parent"
         android:background="@drawable/flowers2">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="L &amp; T"
-            android:id="@+id/textView"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="77dp"
-            android:textSize="60sp"
-            android:textColor="#ffffff" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView"
+            android:background="@drawable/rings"
+            android:layout_marginBottom="24dp"
+            android:layout_above="@+id/textView2"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,42 +25,46 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Thais &amp; Lucas"
             android:id="@+id/textView2"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:textStyle="normal|italic"
+            android:fontFamily="cursive"
+            android:textSize="36sp"
+            android:layout_marginBottom="53dp"
+            android:layout_above="@+id/editText"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Entrar"
             android:id="@+id/button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="238dp"
             android:clickable="true"
             android:background="@android:color/transparent"
-            android:textColor="#ffffff" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/imageView"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/rings" />
+            android:textColor="#ffffff"
+            android:fontFamily="serif"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="normal|italic"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText"
-            android:layout_above="@+id/button"
-            android:layout_centerHorizontal="true"
             android:textColor="#797979"
-            android:background="#ffffff"
+            android:background="@drawable/round_corners"
             android:gravity="center"
             android:singleLine="true"
             android:hint="Senha"
-            android:text="teste" />
+            android:text="teste"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/white"
+            android:layout_above="@+id/button"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2" />
 
     </RelativeLayout>
 

@@ -40,9 +40,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
         alertDialog.setTitle("Google Maps");
-        alertDialog.setMessage("Para abrir o mapa no aplicativo do Google Maps ou traçar uma rota até o endereço, basta selecionar o " +
-                "indicador vermelho do local e acessar o menu no canto inferior direito");
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Ok, entendi.", new DialogInterface.OnClickListener() {
+        alertDialog.setMessage("Para traçar uma rota até o local, clique o " +
+                "indicador vermelho e acesse o menu no canto inferior direito");
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

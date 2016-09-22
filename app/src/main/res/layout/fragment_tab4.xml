@@ -82,18 +82,19 @@
         android:layout_height="wrap_content"
         android:text="Cerimonia e Recepção"
         android:layout_marginTop="40dp"
-        android:textStyle="italic"
-        android:textSize="15dp"
-            android:layout_marginLeft="12dp" />
+            android:layout_marginLeft="12dp"
+            android:fontFamily="serif"
+            android:textSize="13sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Casarao Parque Tropical - 19hrs"
+        android:text="Casarao Parque Tropical - 19h"
         android:id="@+id/textView8"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         android:textSize="20dp"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:fontFamily="serif" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,18 +102,19 @@
         android:text="Estacionamento"
         android:id="@+id/textView9"
         android:layout_marginTop="38dp"
-        android:textStyle="italic"
-        android:textSize="15dp"
-        android:layout_marginLeft="12dp" />
+        android:layout_marginLeft="12dp"
+        android:textSize="13sp"
+        android:fontFamily="serif" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vagas para visitantes dentro do condominio. Havera manobrista no local."
         android:id="@+id/textView10"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         android:textSize="20dp"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:fontFamily="serif" />
 
         <Button
             android:layout_width="wrap_content"
@@ -120,7 +122,13 @@
             android:text="Fornecedores"
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp" />
+            android:layout_marginTop="100dp"
+            android:fontFamily="cursive"
+            android:textSize="20sp"
+            android:textColor="@color/place_autocomplete_search_hint"
+            android:textAllCaps="false"
+            android:textStyle="normal|bold"
+            android:background="@drawable/round_button" />
 
 
     </LinearLayout>
