@@ -60,7 +60,7 @@
                 android:layout_weight="0"
                 android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/instagram" />
+                android:src="@drawable/insta" />
 
         </LinearLayout>
 
@@ -112,7 +112,7 @@
                 android:layout_weight="0"
                 android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/instagram"/>
+                android:src="@drawable/insta"/>
 
         </LinearLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_weight="0"
                 android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/instagram"/>
+                android:src="@drawable/insta"/>
 
         </LinearLayout>
 
