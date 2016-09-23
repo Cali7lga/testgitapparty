@@ -10,6 +10,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ import com.example.home.weddingapp.R;
  */
 public class Tab1Fragment extends Fragment {
 
-    TextView textView;
+    TextView textdias, texthoras, textminutos, textsegundos;
     VideoView videoView;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,7 +83,11 @@ public class Tab1Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
-        textView = (TextView) view.findViewById(R.id.textView4);
+        textdias = (TextView) view.findViewById(R.id.dias);
+        texthoras = (TextView) view.findViewById(R.id.horas);
+        textminutos = (TextView) view.findViewById(R.id.minutos);
+        textsegundos = (TextView) view.findViewById(R.id.segundos);
+
         videoView = (VideoView) view.findViewById(R.id.videoView);
 
 
@@ -91,14 +96,40 @@ public class Tab1Fragment extends Fragment {
         java.util.Date d1 = null;
         Calendar calendar = Calendar.getInstance();
         try {
-            d = dfDate.parse("06/05/2017 10:00:00");
+            d = dfDate.parse("06/05/2017 19:00:00");
             d1 = dfDate.parse(dfDate.format(calendar.getTime()));
         } catch (java.text.ParseException e){
             e.printStackTrace();
         }
-        int data = (int) ((d.getTime() - d1.getTime()) / (1000*60*60*24));
-        textView.setText("Faltam "+data+" dias!");
-        textView.setTextSize(40);
+
+        long milisegundos = (d.getTime() - d1.getTime());
+
+        new CountDownTimer(milisegundos,1000){
+
+            double correcao = 1000*60*60*24;
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int dias = (int) (millisUntilFinished / correcao);
+                textdias.setText(String.valueOf(dias));
+
+                int horas = (int) (((millisUntilFinished / correcao) - dias) * 24);
+                texthoras.setText(String.valueOf(horas));
+
+                int minutos = (int) (((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60);
+                textminutos.setText(String.valueOf(minutos));
+
+                int segundos = (int) (((((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60) - minutos) *60);
+                textsegundos.setText(String.valueOf(segundos));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
+
 
 
         String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.wildlife;
