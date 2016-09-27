@@ -34,7 +34,10 @@
                 android:id="@+id/dias"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="40dp"/>
+                android:textSize="35dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +46,9 @@
                 android:id="@+id/horas"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="40dp"/>
+                android:textSize="35dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +57,9 @@
                 android:id="@+id/minutos"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="40dp"/>
+                android:textSize="35dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,7 +68,9 @@
                 android:id="@+id/segundos"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="40dp"/>
+                android:textSize="35dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
         </LinearLayout>
 
@@ -78,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView18"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#FFF"/>
 
             <TextView
                 android:text="Horas"
@@ -86,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView17"
                 android:layout_weight="1"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="#FFF"/>
 
             <TextView
                 android:text="Minutos"
@@ -94,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4"
                 android:layout_weight="1"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="#FFF"/>
 
             <TextView
                 android:text="Segundos"
@@ -102,7 +114,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
                 android:layout_weight="1"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="#FFF"/>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -150,8 +164,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/button3"
-        android:src="@drawable/speaker"
-        android:background="@android:color/transparent" />
+        android:src="@drawable/multimediatwo"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -161,7 +177,9 @@
         android:layout_alignStart="@+id/button3"
         android:id="@+id/button4"
         android:background="@android:color/transparent"
-        android:src="@drawable/mute"
-        android:visibility="invisible" />
+        android:src="@drawable/multimedia"
+        android:visibility="invisible"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp" />
 
 </RelativeLayout>
