@@ -1,4 +1,4 @@
-package com.example.home.weddingapp.Adapter;
+package com.example.home.weddingapp.Others;
 
 import android.content.Context;
 import android.graphics.Canvas;

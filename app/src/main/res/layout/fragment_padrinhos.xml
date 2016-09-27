@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-    <com.example.home.weddingapp.Adapter.MyLinearLayout
+    <com.example.home.weddingapp.Others.MyLinearLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,5 +27,5 @@
             android:text="text"/>
 
 
-    </com.example.home.weddingapp.Adapter.MyLinearLayout>
+    </com.example.home.weddingapp.Others.MyLinearLayout>
 </LinearLayout>

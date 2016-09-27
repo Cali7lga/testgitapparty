@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
-import com.example.home.weddingapp.Adapter.MyLinearLayout;
+import com.example.home.weddingapp.Others.MyLinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.

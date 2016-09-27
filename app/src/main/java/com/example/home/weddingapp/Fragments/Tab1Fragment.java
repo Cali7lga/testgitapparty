@@ -1,10 +1,7 @@
 package com.example.home.weddingapp.Fragments;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -15,9 +12,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 
@@ -33,6 +32,7 @@ public class Tab1Fragment extends Fragment {
 
     TextView textdias, texthoras, textminutos, textsegundos;
     VideoView videoView;
+    public static ImageButton speaker, mute;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,6 +90,9 @@ public class Tab1Fragment extends Fragment {
 
         videoView = (VideoView) view.findViewById(R.id.videoView);
 
+        speaker = (ImageButton) view.findViewById(R.id.button3);
+        mute = (ImageButton) view.findViewById(R.id.button4);
+
 
         SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         java.util.Date d = null;
@@ -129,15 +132,17 @@ public class Tab1Fragment extends Fragment {
             }
         }.start();
 
-
-
-
         String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.wildlife;
         Uri src = Uri.parse(uripath);
         videoView.setVideoURI(src);
         videoView.requestFocus();
         videoView.start();
-
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setVolume(0,0);
+            }
+        });
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -145,7 +150,35 @@ public class Tab1Fragment extends Fragment {
             }
         });
 
-        return view;
+        if(MainActivity.mediaPlayer.isPlaying()) {
+            speaker.setVisibility(View.VISIBLE);
+            mute.setVisibility(View.INVISIBLE);
+        }
+        else{
+            speaker.setVisibility(View.INVISIBLE);
+            mute.setVisibility(View.VISIBLE);
+        }
+
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.pausemusic();
+                speaker.setVisibility(View.INVISIBLE);
+                mute.setVisibility(View.VISIBLE);
+            }
+        });
+        mute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.startmusic();
+                mute.setVisibility(View.INVISIBLE);
+                speaker.setVisibility(View.VISIBLE);
+            }
+        });
+
+            return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -186,4 +219,5 @@ public class Tab1Fragment extends Fragment {
         // TODO: Update argument type and name
         void onTab1FragmentInteraction(Uri uri);
     }
+
 }

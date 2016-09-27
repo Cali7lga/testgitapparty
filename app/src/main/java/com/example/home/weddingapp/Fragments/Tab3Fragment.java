@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.home.weddingapp.Activity.MainActivity;
-import com.example.home.weddingapp.Adapter.PagerAdapter;
+import com.example.home.weddingapp.Others.PagerAdapter;
 import com.example.home.weddingapp.R;
 
 /**

@@ -79,6 +79,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         botao.setOnClickListener(this);
 
+        MainActivity mainactivity = (MainActivity) getActivity();
+        mainactivity.stopmusic();
+
         // Inflate the layout for this fragment
         return view;
     }
@@ -122,6 +125,22 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         }
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        MainActivity mainactivity = (MainActivity) getActivity();
+        if(Tab1Fragment.speaker == null)
+        {
+            mainactivity.startmusic();
+        }
+        else {
+            if (Tab1Fragment.speaker.getVisibility() == View.VISIBLE) {
+
+                mainactivity.startmusic();
+            }
+        }
     }
 
     /**

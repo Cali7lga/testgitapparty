@@ -1,6 +1,7 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,9 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class TabBarFragment extends Fragment {
+
+    MediaPlayer mediaplayer = new MediaPlayer();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

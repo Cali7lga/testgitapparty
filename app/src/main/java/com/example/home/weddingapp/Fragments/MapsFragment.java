@@ -40,7 +40,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
         alertDialog.setTitle("Google Maps");
-        alertDialog.setMessage("Para traçar uma rota até o local, clique o " +
+        alertDialog.setMessage("Para traçar uma rota até o local, clique no " +
                 "indicador vermelho e acesse o menu no canto inferior direito");
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Ok", new DialogInterface.OnClickListener() {
             @Override

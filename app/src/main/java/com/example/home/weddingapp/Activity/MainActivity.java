@@ -1,12 +1,12 @@
 package com.example.home.weddingapp.Activity;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
@@ -38,6 +38,9 @@ public class MainActivity extends FragmentActivity
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
         Tab5Fragment.Tab5FragmentInteractionListener {
 
+    public static MediaPlayer mediaPlayer;
+    private int length = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,50 @@ public class MainActivity extends FragmentActivity
             fragment = new MainFragment();
             manager.beginTransaction().add(R.id.FragmentContainer, fragment).commit();
 
+        }
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.music);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(100,100);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pausemusic();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Fragment f = this.getSupportFragmentManager().findFragmentById(R.id.FragmentContainer);
+        if(f instanceof MainFragment) {
+
+        }
+        else{
+            if(Tab1Fragment.speaker.getVisibility() == View.VISIBLE) {
+                startmusic();
+            }
+        }
+    }
+
+    public void startmusic(){
+        if(!mediaPlayer.isPlaying()) {
+            mediaPlayer.seekTo(length);
+            mediaPlayer.start();
+        }
+    }
+    public void stopmusic(){
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+            length = 0;
+    }
+    public void pausemusic(){
+        if(mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            length = mediaPlayer.getCurrentPosition();
         }
     }
 
