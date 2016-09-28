@@ -1,13 +1,158 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.Tab5Fragment">
+    tools:context="com.example.home.weddingapp.Fragments.Tab5Fragment"
+    android:background="@drawable/umbrella">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Aqui vai a aba de presentes, doação e mensagens" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sugestões de Presentes"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Listas de Casamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:id="@+id/textView19"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp" />
+
+        <Button
+            android:text="Fast Shop"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:background="@drawable/round_button"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAllCaps="false" />
+
+        <Button
+            android:text="Camicado"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button6"
+            android:background="@drawable/round_button"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAllCaps="false" />
+
+        <Button
+            android:text="Xarmonix"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button7"
+            android:background="@drawable/round_button"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:text="Lua de Mel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:id="@+id/textView20"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/golfinhos"
+            android:id="@+id/imageButton9"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:text="Passeio com golfinhos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView21"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="italic" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aviao"
+            android:id="@+id/imageButton10"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:text="Cota de passagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView22"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="italic" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jantar"
+            android:id="@+id/imageButton11"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:text="Jantar especial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView23"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="italic" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/message"
+            android:id="@+id/imageButton12"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:text="Mensagem aos noivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView24"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textStyle="italic"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</ScrollView>

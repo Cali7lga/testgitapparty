@@ -88,33 +88,32 @@ public class PadrinhosFragment extends Fragment {
         switch(pos) {
             case 0:
                 tv.setText("Tati & Icaro, primos da noiva");
-                image.setImageResource(R.drawable.pteste1);
+                image.setImageResource(R.drawable.pfoto2);
                 break;
             case 1:
                 tv.setText("Betinha, irma da noiva");
-                image.setImageResource(R.drawable.pteste2);
+                image.setImageResource(R.drawable.pfoto1);
                 break;
             case 2:
                 tv.setText("Dudinha, daminha e irma cacula da noiva");
-                image.setImageResource(R.drawable.pteste3);
+                image.setImageResource(R.drawable.pfoto3);
                 break;
             case 3:
                 tv.setText("Elaine e Gefson, amigos da noiva");
-                image.setImageResource(R.drawable.pteste4);
+                image.setImageResource(R.drawable.pfoto4);
                 break;
             case 4:
                 tv.setText("Iunna, filha dos noivos");
-                image.setImageResource(R.drawable.pteste5);
+                image.setImageResource(R.drawable.pfoto5);
                 break;
             case 5:
                 tv.setText("Livia & CLebinho, irmaos do noivo");
-                image.setImageResource(R.drawable.pteste6);
+                image.setImageResource(R.drawable.pfoto6);
                 break;
             case 6:
                 tv.setText("Miguel, irmao da noiva");
-                image.setImageResource(R.drawable.pteste7);
+                image.setImageResource(R.drawable.pfoto7);
                 break;
-
         }
 
         MyLinearLayout root = (MyLinearLayout) l.findViewById(R.id.root);
