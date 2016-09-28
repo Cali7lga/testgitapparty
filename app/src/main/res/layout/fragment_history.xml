@@ -14,7 +14,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:src="@drawable/profile" />
+        android:src="@drawable/profile"
+        />
 
     <ImageView
         android:layout_width="120dp"
