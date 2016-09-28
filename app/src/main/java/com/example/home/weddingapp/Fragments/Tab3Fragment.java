@@ -25,7 +25,7 @@ import com.example.home.weddingapp.R;
  */
 public class Tab3Fragment extends Fragment {
 
-    public final static int PAGES = 6;
+    public final static int PAGES = 7;
     public final static int LOOPS = 1000;
     public final static int FIRST_PAGE = PAGES * LOOPS / 2;
 

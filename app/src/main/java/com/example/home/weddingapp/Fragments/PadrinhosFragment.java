@@ -87,28 +87,32 @@ public class PadrinhosFragment extends Fragment {
         ImageView image = (ImageView) l.findViewById(R.id.content);
         switch(pos) {
             case 0:
-                tv.setText("Madrinha 1");
-                image.setImageResource(R.drawable.madrinha1);
+                tv.setText("Legenda 0");
+                image.setImageResource(R.drawable.betinha);
                 break;
             case 1:
-                tv.setText("Padrinho 1");
-                image.setImageResource(R.drawable.padrinho1);
+                tv.setText("Legenda 1");
+                image.setImageResource(R.drawable.miguel);
                 break;
             case 2:
-                tv.setText("Madrinha 2");
-                image.setImageResource(R.drawable.madrinha2);
+                tv.setText("Legenda 2");
+                image.setImageResource(R.drawable.duda);
                 break;
             case 3:
-                tv.setText("Padrinho 2");
-                image.setImageResource(R.drawable.padrinho2);
+                tv.setText("Legenda 3");
+                image.setImageResource(R.drawable.tati);
                 break;
             case 4:
-                tv.setText("Madrinha 3");
-                image.setImageResource(R.drawable.madrinha3);
+                tv.setText("Legenda 4");
+                image.setImageResource(R.drawable.livia);
                 break;
             case 5:
-                tv.setText("Padrinho 3");
-                image.setImageResource(R.drawable.padrinho3);
+                tv.setText("Legenda 5");
+                image.setImageResource(R.drawable.elaine);
+                break;
+            case 6:
+                tv.setText("Legenda 6");
+                image.setImageResource(R.drawable.iunna);
                 break;
 
         }

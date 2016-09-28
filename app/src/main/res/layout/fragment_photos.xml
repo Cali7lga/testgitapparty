@@ -13,31 +13,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView5"
-            android:src="@drawable/imagem1"/>
+            android:src="@drawable/foto1"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView6"
-            android:src="@drawable/imagem2"/>
+            android:src="@drawable/foto2"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView7"
-            android:src="@drawable/imagem3"/>
+            android:src="@drawable/foto6"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView8"
-            android:src="@drawable/imagem4"/>
+            android:src="@drawable/foto4"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView9"
-            android:src="@drawable/imagem5"/>
+            android:src="@drawable/foto5"/>
 
     </ViewFlipper>
 </RelativeLayout>
