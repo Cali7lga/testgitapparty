@@ -18,7 +18,8 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:fontFamily="cursive"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="normal|bold|italic" />
 
         <TextView
             android:text="Listas de Casamento"
@@ -27,7 +28,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:id="@+id/textView19"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:textStyle="bold"
             android:layout_marginTop="50dp" />
 
@@ -41,7 +42,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="serif"
             android:textAllCaps="false" />
 
         <Button
@@ -54,7 +55,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="serif"
             android:textAllCaps="false" />
 
         <Button
@@ -67,7 +68,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="serif"
             android:textAllCaps="false" />
 
         <TextView
@@ -77,7 +78,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:id="@+id/textView20"
-            android:fontFamily="casual"
+            android:fontFamily="serif"
             android:textStyle="bold"
             android:layout_marginTop="40dp" />
 
@@ -96,8 +97,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView21"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="italic" />
+            android:textColor="@android:color/white" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -114,8 +114,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView22"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="italic" />
+            android:textColor="@android:color/white" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -133,12 +132,12 @@
             android:id="@+id/textView23"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
-            android:textStyle="italic" />
+            android:textStyle="normal" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/message"
+            android:src="@drawable/envelope"
             android:id="@+id/imageButton12"
             android:background="@android:color/transparent"
             android:layout_gravity="center_horizontal"
@@ -151,7 +150,7 @@
             android:id="@+id/textView24"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
-            android:textStyle="italic"
+            android:textStyle="normal"
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
