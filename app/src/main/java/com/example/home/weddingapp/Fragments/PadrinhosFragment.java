@@ -88,31 +88,31 @@ public class PadrinhosFragment extends Fragment {
         switch(pos) {
             case 0:
                 tv.setText("Legenda 0");
-                image.setImageResource(R.drawable.betinha);
+                image.setImageResource(R.drawable.pteste1);
                 break;
             case 1:
                 tv.setText("Legenda 1");
-                image.setImageResource(R.drawable.miguel);
+                image.setImageResource(R.drawable.pteste2);
                 break;
             case 2:
                 tv.setText("Legenda 2");
-                image.setImageResource(R.drawable.duda);
+                image.setImageResource(R.drawable.pteste3);
                 break;
             case 3:
                 tv.setText("Legenda 3");
-                image.setImageResource(R.drawable.tati);
+                image.setImageResource(R.drawable.pteste4);
                 break;
             case 4:
                 tv.setText("Legenda 4");
-                image.setImageResource(R.drawable.livia);
+                image.setImageResource(R.drawable.pteste5);
                 break;
             case 5:
                 tv.setText("Legenda 5");
-                image.setImageResource(R.drawable.elaine);
+                image.setImageResource(R.drawable.pteste6);
                 break;
             case 6:
                 tv.setText("Legenda 6");
-                image.setImageResource(R.drawable.iunna);
+                image.setImageResource(R.drawable.pteste7);
                 break;
 
         }

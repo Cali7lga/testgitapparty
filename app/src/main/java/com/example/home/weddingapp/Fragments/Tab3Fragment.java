@@ -91,8 +91,8 @@ public class Tab3Fragment extends Fragment {
 
         DisplayMetrics dM = getResources().getDisplayMetrics();
         int widthOfScreen = dM.widthPixels;
-        int widthOfView = 150; //in DP
-        int spaceBetweenViews = 50; // in DP
+        int widthOfView = 250; //in DP
+        int spaceBetweenViews = 5; // in DP
         float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
 
         pager.setPageMargin((int) (-widthOfScreen+offset));
