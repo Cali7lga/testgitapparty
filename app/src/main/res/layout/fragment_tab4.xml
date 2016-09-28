@@ -130,13 +130,14 @@
             android:text="Fornecedores"
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="cursive"
-            android:textSize="20sp"
-            android:textColor="@color/place_autocomplete_search_hint"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
             android:textAllCaps="false"
             android:textStyle="normal|bold"
-            android:background="@drawable/round_button" />
+            android:background="@drawable/round_button"
+            android:layout_marginBottom="12dp" />
 
 
     </LinearLayout>
