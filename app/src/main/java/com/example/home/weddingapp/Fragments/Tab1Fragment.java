@@ -215,6 +215,7 @@ public class Tab1Fragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface Tab1FragmentInteractionListener {
         // TODO: Update argument type and name
         void onTab1FragmentInteraction(Uri uri);

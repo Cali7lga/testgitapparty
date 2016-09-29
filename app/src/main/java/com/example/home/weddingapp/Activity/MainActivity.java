@@ -58,13 +58,13 @@ public class MainActivity extends FragmentActivity
 
         mediaPlayer = MediaPlayer.create(this,R.raw.music);
         mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(100,100);
+        mediaPlayer.setVolume(1.0f,1.0f);
 
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         pausemusic();
     }
 

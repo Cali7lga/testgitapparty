@@ -1,7 +1,6 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 /**
@@ -21,8 +21,6 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class TabBarFragment extends Fragment {
-
-    MediaPlayer mediaplayer = new MediaPlayer();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +80,8 @@ public class TabBarFragment extends Fragment {
 
         tabHost.setCurrentTab(0);
 
+        MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
+
         return view;
     }
 
@@ -120,6 +120,7 @@ public class TabBarFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface TabBarFragmentInteractionListener {
         // TODO: Update argument type and name
         void onTabBarFragmentInteraction(Uri uri);

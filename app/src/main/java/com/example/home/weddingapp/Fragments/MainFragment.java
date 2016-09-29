@@ -128,18 +128,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
         MainActivity mainactivity = (MainActivity) getActivity();
-        if(Tab1Fragment.speaker == null)
+        if(Tab1Fragment.speaker == null || Tab1Fragment.speaker.getVisibility() == View.VISIBLE)
         {
             mainactivity.startmusic();
-        }
-        else {
-            if (Tab1Fragment.speaker.getVisibility() == View.VISIBLE) {
-
-                mainactivity.startmusic();
-            }
+            MainActivity.mediaPlayer.setVolume(0,0);
         }
     }
 
