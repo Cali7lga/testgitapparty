@@ -1,12 +1,14 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.home.weddingapp.R;
 
@@ -19,6 +21,7 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class Tab5Fragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,7 +68,32 @@ public class Tab5Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab5, container, false);
+        View view = inflater.inflate(R.layout.fragment_tab5, container, false);
+
+        Button btn_fs = (Button) view.findViewById(R.id.button5);
+        Button btn_c = (Button) view.findViewById(R.id.button6);
+        Button btn_x = (Button) view.findViewById(R.id.button7);
+
+        btn_fs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openurl("http://listadecasamento.fastshop.com.br/");
+            }
+        });
+        btn_c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openurl("http://www.camicado.com.br/WeddingList?idWeddingListType=1");
+            }
+        });
+        btn_x.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openurl("https://www.xarmonix.com.br/listas-de-casamento/");
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +118,14 @@ public class Tab5Fragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void openurl (String site){
+
+        Uri uri = Uri.parse(site);
+        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(intent);
+
     }
 
     /**
