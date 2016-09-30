@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
             android:fontFamily="cursive"
-            android:textSize="24sp"
+            android:textSize="25sp"
             android:textStyle="normal|bold|italic" />
 
         <TextView
@@ -34,8 +34,6 @@
 
         <Button
             android:text="Fast Shop"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
             android:id="@+id/button5"
             android:background="@drawable/round_button"
             android:layout_marginTop="25dp"
@@ -43,12 +41,14 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:fontFamily="serif"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:layout_height="60dp"
+            android:layout_width="150dp" />
 
         <Button
             android:text="Camicado"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/button6"
             android:background="@drawable/round_button"
             android:layout_marginTop="20dp"
@@ -61,7 +61,7 @@
         <Button
             android:text="Xarmonix"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/button7"
             android:background="@drawable/round_button"
             android:layout_marginTop="20dp"
@@ -97,7 +97,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView21"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:fontFamily="serif" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -114,6 +115,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView22"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="serif"
             android:textColor="@android:color/white" />
 
         <ImageButton
@@ -131,6 +133,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView23"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="serif"
             android:textColor="@android:color/white"
             android:textStyle="normal" />
 
@@ -150,6 +153,7 @@
             android:id="@+id/textView24"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white"
+            android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_marginBottom="10dp"/>
 

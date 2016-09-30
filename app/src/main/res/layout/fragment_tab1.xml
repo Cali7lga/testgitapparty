@@ -88,7 +88,8 @@
                 android:id="@+id/textView18"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textColor="#FFF"/>
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:text="Horas"
@@ -97,7 +98,8 @@
                 android:id="@+id/textView17"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textColor="#FFF"/>
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:text="Minutos"
@@ -106,7 +108,8 @@
                 android:id="@+id/textView4"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textColor="#FFF"/>
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
             <TextView
                 android:text="Segundos"
@@ -115,7 +118,8 @@
                 android:id="@+id/textView"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textColor="#FFF"/>
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
 
         </LinearLayout>
 
