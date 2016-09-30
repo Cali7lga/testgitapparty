@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "37027911230",
+    "firebase_url": "https://thais-lucas.firebaseio.com",
+    "project_id": "thais-lucas",
+    "storage_bucket": "thais-lucas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37027911230:android:4e478fb0247c5e23",
+        "android_client_info": {
+          "package_name": "com.example.home.weddingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37027911230-0l026efto2iedbj1j9f010sd2ggmikqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl9HEa0Og1PZVZ9ZcAUWG2CpExXiOqlag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
