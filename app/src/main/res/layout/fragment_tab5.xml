@@ -30,7 +30,8 @@
             android:id="@+id/textView19"
             android:fontFamily="serif"
             android:textStyle="bold"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="50dp"
+            android:textSize="16sp" />
 
         <Button
             android:text="Fast Shop"
@@ -43,7 +44,8 @@
             android:fontFamily="serif"
             android:textAllCaps="false"
             android:layout_height="60dp"
-            android:layout_width="150dp" />
+            android:layout_width="150dp"
+            android:textSize="15sp" />
 
         <Button
             android:text="Camicado"
@@ -56,7 +58,8 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:fontFamily="serif"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="15sp" />
 
         <Button
             android:text="Xarmonix"
@@ -69,7 +72,8 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:fontFamily="serif"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="15sp" />
 
         <TextView
             android:text="Lua de Mel"
@@ -80,7 +84,8 @@
             android:id="@+id/textView20"
             android:fontFamily="serif"
             android:textStyle="bold"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            android:textSize="16sp" />
 
         <ImageButton
             android:layout_width="wrap_content"
