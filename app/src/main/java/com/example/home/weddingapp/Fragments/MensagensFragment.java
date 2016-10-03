@@ -1,28 +1,42 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.TextView;
 
-import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.FileInfo;
 import com.example.home.weddingapp.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Tab5Fragment.Tab5FragmentInteractionListener} interface
+ * {@link MensagensFragment.MensagensFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Tab5Fragment#newInstance} factory method to
+ * Use the {@link MensagensFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tab5Fragment extends Fragment {
+public class MensagensFragment extends Fragment {
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mRef = database.getReference("messages");
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +47,9 @@ public class Tab5Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Tab5FragmentInteractionListener mListener;
+    private MensagensFragmentInteractionListener mListener;
 
-    public Tab5Fragment() {
+    public MensagensFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +59,11 @@ public class Tab5Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Tab5Fragment.
+     * @return A new instance of fragment MensagensFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Tab5Fragment newInstance(String param1, String param2) {
-        Tab5Fragment fragment = new Tab5Fragment();
+    public static MensagensFragment newInstance(String param1, String param2) {
+        MensagensFragment fragment = new MensagensFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,39 +84,34 @@ public class Tab5Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tab5, container, false);
+        View view = inflater.inflate(R.layout.fragment_mensagens, container, false);
 
-        Button btn_fs = (Button) view.findViewById(R.id.button5);
-        Button btn_c = (Button) view.findViewById(R.id.button6);
-        Button btn_x = (Button) view.findViewById(R.id.button7);
-        ImageButton msgs = (ImageButton) view.findViewById(R.id.imageButton12);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_rv);
+        mRecyclerView.setHasFixedSize(true);
 
-        btn_fs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openurl("http://listadecasamento.fastshop.com.br/");
-            }
-        });
-        btn_c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openurl("http://www.camicado.com.br/WeddingList?idWeddingListType=1");
-            }
-        });
-        btn_x.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openurl("https://www.xarmonix.com.br/listas-de-casamento/");
-            }
-        });
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        msgs.setOnClickListener(new View.OnClickListener() {
+        FirebaseRecyclerAdapter<FileInfo,MessageViewHolder> mAdapter = new FirebaseRecyclerAdapter<FileInfo, MessageViewHolder>(
+                FileInfo.class,
+                R.layout.fragment_item,
+                MessageViewHolder.class,
+                mRef
+        ) {
             @Override
-            public void onClick(View v) {
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.loadMensagens();
+            protected void populateViewHolder(MessageViewHolder viewHolder, FileInfo model, int position) {
+
+                String msg = model.getMensagem();
+                String nm = model.getName();
+
+                Log.i("sepa", "populateViewHolder: "+model);
+
+                viewHolder.messageText.setText(msg);
+                viewHolder.nameText.setText(nm);
             }
-        });
+        };
+
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
@@ -110,15 +119,15 @@ public class Tab5Fragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTab5FragmentInteraction(uri);
+            mListener.onMensagensFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Tab5FragmentInteractionListener) {
-            mListener = (Tab5FragmentInteractionListener) context;
+        if (context instanceof MensagensFragmentInteractionListener) {
+            mListener = (MensagensFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -131,12 +140,17 @@ public class Tab5Fragment extends Fragment {
         mListener = null;
     }
 
-    public void openurl (String site){
+    private static class MessageViewHolder extends RecyclerView.ViewHolder {
+        TextView messageText;
+        TextView nameText;
 
-        Uri uri = Uri.parse(site);
-        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-        startActivity(intent);
+        public MessageViewHolder(View itemView) {
+            super(itemView);
 
+            messageText = (TextView) itemView.findViewById(R.id.textView26);
+            nameText = (TextView)itemView.findViewById(R.id.textView27);
+
+        }
     }
 
     /**
@@ -144,13 +158,13 @@ public class Tab5Fragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface Tab5FragmentInteractionListener {
+    public interface MensagensFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTab5FragmentInteraction(Uri uri);
+        void onMensagensFragmentInteraction(Uri uri);
     }
 }

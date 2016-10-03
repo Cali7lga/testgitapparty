@@ -12,6 +12,7 @@ import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.MainFragment;
 import com.example.home.weddingapp.Fragments.MapsFragment;
+import com.example.home.weddingapp.Fragments.MensagensFragment;
 import com.example.home.weddingapp.Fragments.PadrinhosFragment;
 import com.example.home.weddingapp.Fragments.PhotosFragment;
 import com.example.home.weddingapp.Fragments.StreetviewFragment;
@@ -36,7 +37,8 @@ public class MainActivity extends FragmentActivity
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
-        Tab5Fragment.Tab5FragmentInteractionListener {
+        Tab5Fragment.Tab5FragmentInteractionListener,
+        MensagensFragment.MensagensFragmentInteractionListener{
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -129,6 +131,13 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadMensagens(){
+
+        MensagensFragment msgsFragment = new MensagensFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, msgsFragment).addToBackStack(null).commit();
+
+    }
+
 
     @Override
     public void onMainFragmentInteraction(Uri uri) {
@@ -192,6 +201,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onFornecedoresFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onMensagensFragmentInteraction(Uri uri) {
 
     }
 }
