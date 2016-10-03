@@ -89,18 +89,18 @@
             android:layout_marginLeft="12dp"
             android:fontFamily="serif"
             android:textSize="13sp"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:textStyle="normal|italic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Casarao Parque Tropical - 19h"
             android:id="@+id/textView8"
-            android:textStyle="bold|italic"
-            android:textSize="20dp"
             android:layout_marginLeft="15dp"
             android:fontFamily="serif"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,18 +111,18 @@
             android:layout_marginLeft="12dp"
             android:textSize="13sp"
             android:fontFamily="serif"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:textStyle="normal|italic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vagas para visitantes dentro do condominio. Havera manobrista no local."
             android:id="@+id/textView10"
-            android:textStyle="bold|italic"
-            android:textSize="20dp"
             android:layout_marginLeft="15dp"
             android:fontFamily="serif"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <Button
             android:layout_width="wrap_content"

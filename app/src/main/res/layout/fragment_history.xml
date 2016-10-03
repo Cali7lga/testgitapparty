@@ -55,8 +55,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:textSize="14sp"
-                android:textColor="@color/wallet_bright_foreground_holo_dark"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
                 android:background="@drawable/textview_shape"
                 android:fontFamily="serif" />
         </RelativeLayout>
