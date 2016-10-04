@@ -11,8 +11,10 @@
         android:id="@+id/my_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="vertical"
-        android:layout_weight="100" />
+        android:layout_weight="100"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -21,18 +23,20 @@
         android:background="@android:color/darker_gray"
         android:layout_weight="1">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/write"
-            android:id="@+id/imageButton13"
-            android:background="@android:color/transparent" />
-
         <TextView
             android:text="Deixe a sua mensagem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView25"
             android:textAlignment="center" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/write"
+            android:id="@+id/imageButton13"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 </LinearLayout>

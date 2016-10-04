@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,6 @@ import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +31,7 @@ public class MensagensFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = database.getReference("messages");
+    DatabaseReference mRef = database.getReference();
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,15 +92,13 @@ public class MensagensFragment extends Fragment {
                 FileInfo.class,
                 R.layout.fragment_item,
                 MessageViewHolder.class,
-                mRef
+                mRef.child("messages")
         ) {
             @Override
             protected void populateViewHolder(MessageViewHolder viewHolder, FileInfo model, int position) {
 
                 String msg = model.getMensagem();
-                String nm = model.getName();
-
-                Log.i("sepa", "populateViewHolder: "+model);
+                String nm = model.getNome();
 
                 viewHolder.messageText.setText(msg);
                 viewHolder.nameText.setText(nm);

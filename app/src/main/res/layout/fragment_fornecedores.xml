@@ -37,17 +37,15 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton3"
-                android:layout_weight="0"
-                android:layout_marginLeft="150dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/fb" />
 
@@ -57,6 +55,7 @@
                 android:id="@+id/imageButton4"
                 android:layout_weight="0"
                 android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/insta" />
 
@@ -88,17 +87,15 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton5"
-                android:layout_weight="0"
-                android:layout_marginLeft="150dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/fb"/>
 
@@ -106,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton6"
-                android:layout_weight="0"
                 android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/insta"/>
 
@@ -139,17 +136,15 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton7"
-                android:layout_weight="0"
-                android:layout_marginLeft="150dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/fb"/>
 
@@ -157,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton8"
-                android:layout_weight="0"
+                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/insta"/>

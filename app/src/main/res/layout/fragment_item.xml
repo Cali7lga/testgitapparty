@@ -5,16 +5,23 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:text="Mensagem para o casal"
+        android:text="Mensagem para o casal asgsdg s gdsg sfd gsdfgsdfg gsga dfsgdfg sfgdf gdfs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView26"
-        android:background="@drawable/textview_shape"/>
+        android:background="@drawable/textview_messages"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:text="Autor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView27"
-        android:background="@drawable/textview_shape"/>
+        android:background="@drawable/textview_messages"
+        android:layout_gravity="right"
+        android:textColor="@android:color/white" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 </LinearLayout>

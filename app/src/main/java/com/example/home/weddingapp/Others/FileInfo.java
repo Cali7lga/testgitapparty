@@ -6,31 +6,30 @@ package com.example.home.weddingapp.Others;
 
 public class FileInfo {
 
-    private String Name;
-    private String Mensagem;
+    private String nome;
+    private String mensagem;
 
     public FileInfo() {
     }
 
-    public FileInfo(String Mensagem, String Nome) {
+/**    public FileInfo(String Mensagem, String Nome) {
         this.Name = Name;
         this.Mensagem = Mensagem;
     }
-
-    public String getName() {
-        return Name;
+**/
+    public String getNome() {
+        return nome;
+    }
+    public String getMensagem() {
+        return mensagem;
     }
 
+/**
     public void setName(String Name) {
         this.Name = Name;
     }
-
-    public String getMensagem() {
-        return Mensagem;
-    }
-
     public void setMensagem(String Mensagem) {
         this.Mensagem = Mensagem;
     }
-
+**/
 }
