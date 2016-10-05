@@ -24,12 +24,11 @@ public class FileInfo {
         return mensagem;
     }
 
-/**
     public void setName(String Name) {
-        this.Name = Name;
+        this.nome = Name;
     }
     public void setMensagem(String Mensagem) {
-        this.Mensagem = Mensagem;
+        this.mensagem = Mensagem;
     }
-**/
+
 }

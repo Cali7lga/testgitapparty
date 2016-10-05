@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/mensagens"
+    tools:context="com.example.home.weddingapp.Fragments.EscreverFragment">
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/editText2"
+        android:hint="Deixe sua mensagem aqui..."
+        android:background="@drawable/textview_digitar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="top" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText3"
+        android:hint="Ass.:"
+        android:background="@drawable/textview_digitar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:text="Enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button8"
+        android:background="@drawable/round_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

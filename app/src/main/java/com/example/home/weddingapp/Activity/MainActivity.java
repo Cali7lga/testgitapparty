@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.MainFragment;
@@ -38,7 +39,8 @@ public class MainActivity extends FragmentActivity
         StreetviewFragment.StviewFragmentInteractionListener,
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
         Tab5Fragment.Tab5FragmentInteractionListener,
-        MensagensFragment.MensagensFragmentInteractionListener{
+        MensagensFragment.MensagensFragmentInteractionListener,
+        EscreverFragment.EscreverFragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -138,6 +140,17 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadEscrever(){
+
+        EscreverFragment escreverFragment = new EscreverFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, escreverFragment).addToBackStack(null).commit();
+
+    }
+
+    public void backfragment(){
+        getSupportFragmentManager().popBackStack();
+    }
+
 
     @Override
     public void onMainFragmentInteraction(Uri uri) {
@@ -206,6 +219,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onMensagensFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onEscreverFragmentInteraction(Uri uri) {
 
     }
 }
