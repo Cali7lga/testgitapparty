@@ -1,22 +1,15 @@
 package com.example.home.weddingapp.Fragments;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.VideoView;
 
-import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.SwipeAdapter;
 import com.example.home.weddingapp.R;
 
 
@@ -30,9 +23,8 @@ import com.example.home.weddingapp.R;
  */
 public class Tab1Fragment extends Fragment {
 
-    TextView textdias, texthoras, textminutos, textsegundos;
-    VideoView videoView;
-    public static ImageButton speaker, mute;
+    ViewPager viewPager;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,109 +68,17 @@ public class Tab1Fragment extends Fragment {
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
-        textdias = (TextView) view.findViewById(R.id.dias);
-        texthoras = (TextView) view.findViewById(R.id.horas);
-        textminutos = (TextView) view.findViewById(R.id.minutos);
-        textsegundos = (TextView) view.findViewById(R.id.segundos);
+        viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        SwipeAdapter swipeAdapter = new SwipeAdapter(getChildFragmentManager());
+        viewPager.setAdapter(swipeAdapter);
 
-        videoView = (VideoView) view.findViewById(R.id.videoView);
-
-        speaker = (ImageButton) view.findViewById(R.id.button3);
-        mute = (ImageButton) view.findViewById(R.id.button4);
-
-
-        SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        java.util.Date d = null;
-        java.util.Date d1 = null;
-        Calendar calendar = Calendar.getInstance();
-        try {
-            d = dfDate.parse("06/05/2017 19:00:00");
-            d1 = dfDate.parse(dfDate.format(calendar.getTime()));
-        } catch (java.text.ParseException e){
-            e.printStackTrace();
-        }
-
-        long milisegundos = (d.getTime() - d1.getTime());
-
-        new CountDownTimer(milisegundos,1000){
-
-            double correcao = 1000*60*60*24;
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int dias = (int) (millisUntilFinished / correcao);
-                textdias.setText(String.valueOf(dias));
-
-                int horas = (int) (((millisUntilFinished / correcao) - dias) * 24);
-                texthoras.setText(String.valueOf(horas));
-
-                int minutos = (int) (((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60);
-                textminutos.setText(String.valueOf(minutos));
-
-                int segundos = (int) (((((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60) - minutos) *60);
-                textsegundos.setText(String.valueOf(segundos));
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
-
-        String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.wildlife;
-        Uri src = Uri.parse(uripath);
-        videoView.setVideoURI(src);
-        videoView.requestFocus();
-        videoView.start();
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setVolume(0,0);
-            }
-        });
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                videoView.start();
-            }
-        });
-
-        if(MainActivity.mediaPlayer.isPlaying()) {
-            speaker.setVisibility(View.VISIBLE);
-            mute.setVisibility(View.INVISIBLE);
-        }
-        else{
-            speaker.setVisibility(View.INVISIBLE);
-            mute.setVisibility(View.VISIBLE);
-        }
-
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.pausemusic();
-                speaker.setVisibility(View.INVISIBLE);
-                mute.setVisibility(View.VISIBLE);
-            }
-        });
-        mute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.startmusic();
-                mute.setVisibility(View.INVISIBLE);
-                speaker.setVisibility(View.VISIBLE);
-            }
-        });
-
-            return view;
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -210,15 +110,13 @@ public class Tab1Fragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-
     public interface Tab1FragmentInteractionListener {
         // TODO: Update argument type and name
         void onTab1FragmentInteraction(Uri uri);
     }
-
 }

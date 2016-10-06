@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Fragments.PadrinhosFragment;
-import com.example.home.weddingapp.Fragments.Tab3Fragment;
+import com.example.home.weddingapp.Fragments.Tab2Fragment;
 import com.example.home.weddingapp.R;
 
 /**
@@ -33,12 +33,12 @@ public class PagerAdapter extends FragmentPagerAdapter implements ViewPager.Page
     @Override
     public Fragment getItem(int position) {
 
-        if(position == Tab3Fragment.FIRST_PAGE)
+        if(position == Tab2Fragment.FIRST_PAGE)
             scale = BIG_SCALE;
         else
             scale = SMALL_SCALE;
 
-        position = position % Tab3Fragment.PAGES;
+        position = position % Tab2Fragment.PAGES;
 
         return PadrinhosFragment.newInstance(context, position, scale);
     }
@@ -60,7 +60,7 @@ public class PagerAdapter extends FragmentPagerAdapter implements ViewPager.Page
 
     @Override
     public int getCount() {
-        return Tab3Fragment.PAGES * Tab3Fragment.LOOPS;
+        return Tab2Fragment.PAGES * Tab2Fragment.LOOPS;
     }
 }
 

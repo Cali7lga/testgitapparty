@@ -1,9 +1,11 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,11 +98,19 @@ public class EscreverFragment extends Fragment {
 
                 mRef.child("messages").push().setValue(fileinfo);
 
-                Toast.makeText(getActivity(), "Mensagem enviada com sucesso",Toast.LENGTH_SHORT).show();
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                alertDialog.setTitle("Mensagem Enviada");
+                alertDialog.setMessage("Muito obrigado por nos deixar uma mensagem!");
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.backfragment();
+                        MainActivity mainActivity = (MainActivity) getActivity();
+                        mainActivity.backfragment();
 
+                    }
+                });
+                alertDialog.show();
             }
         });
 

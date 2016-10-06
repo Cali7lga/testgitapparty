@@ -1,17 +1,89 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.Tab3Fragment"
-    android:background="@drawable/thank">
+    android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager2"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:overScrollMode="never">
+        android:layout_weight="1"
+        android:background="@drawable/img">
 
-    </android.support.v4.view.ViewPager>
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="android.support.v4.widget.Space"
+            android:id="@+id/view3"
+            android:layout_weight="100"/>
 
-</RelativeLayout>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pic"
+            android:id="@+id/imageButton14"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/enviar_btn"/>
+
+        <TextView
+            android:text="Registre seu momento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView28"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:fontFamily="serif"
+            android:textStyle="normal"
+            android:layout_weight="10" />
+
+    </LinearLayout>
+
+    <view
+        android:layout_width="match_parent"
+        class="android.support.v4.widget.Space"
+        android:id="@+id/view"
+        android:background="#ffffff"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/writing">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="android.support.v4.widget.Space"
+            android:id="@+id/view2"
+            android:layout_weight="100" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/envelope"
+            android:id="@+id/imageButton12"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/enviar_btn" />
+
+        <TextView
+            android:text="Mensagem aos noivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView24"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:fontFamily="serif"
+            android:textStyle="normal"
+            android:layout_weight="10" />
+
+    </LinearLayout>
+
+</LinearLayout>

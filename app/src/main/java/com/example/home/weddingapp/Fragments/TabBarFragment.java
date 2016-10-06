@@ -72,9 +72,9 @@ public class TabBarFragment extends Fragment {
         FragmentTabHost tabHost = (FragmentTabHost) view.findViewById(android.R.id.tabhost);
         tabHost.setup(getActivity(),getChildFragmentManager(),R.id.realtabcontent);
 
-        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", getResources().getDrawable(R.drawable.buque)),Tab1Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", getResources().getDrawable(R.drawable.wedding)),Tab2Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", getResources().getDrawable(R.drawable.hearts)),Tab3Fragment.class,null);
+        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", getResources().getDrawable(R.drawable.wedding)),Tab1Fragment.class,null);
+        tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", getResources().getDrawable(R.drawable.hearts)),Tab2Fragment.class,null);
+        tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", getResources().getDrawable(R.drawable.buque)),Tab3Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", getResources().getDrawable(R.drawable.date)),Tab4Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab5").setIndicator("", getResources().getDrawable(R.drawable.ribbon)),Tab5Fragment.class,null);
 

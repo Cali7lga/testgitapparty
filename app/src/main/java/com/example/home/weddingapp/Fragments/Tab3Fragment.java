@@ -4,15 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.home.weddingapp.Activity.MainActivity;
-import com.example.home.weddingapp.Others.PagerAdapter;
 import com.example.home.weddingapp.R;
 
 /**
@@ -24,14 +21,6 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class Tab3Fragment extends Fragment {
-
-    public final static int PAGES = 7;
-    public final static int LOOPS = 1000;
-    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
-
-    public PagerAdapter adapter;
-    public ViewPager pager;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,22 +69,15 @@ public class Tab3Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab3, container, false);
 
-        pager = (ViewPager) view.findViewById(R.id.view_pager2);
+        ImageButton msgs = (ImageButton) view.findViewById(R.id.imageButton12);
 
-        adapter = new PagerAdapter((MainActivity) getActivity(), getChildFragmentManager());
-        pager.setAdapter(adapter);
-        pager.setPageTransformer(false,adapter);
-
-        pager.setCurrentItem(FIRST_PAGE);
-        pager.setOffscreenPageLimit(3);
-
-        DisplayMetrics dM = getResources().getDisplayMetrics();
-        int widthOfScreen = dM.widthPixels;
-        int widthOfView = 250; //in DP
-        int spaceBetweenViews = 5; // in DP
-        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
-
-        pager.setPageMargin((int) (-widthOfScreen+offset));
+        msgs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadMensagens();
+            }
+        });
 
         return view;
     }

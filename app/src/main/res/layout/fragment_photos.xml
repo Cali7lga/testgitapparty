@@ -1,8 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.PhotosFragment">
+    tools:context="com.example.home.weddingapp.Fragments.PhotosFragment"
+    android:layout_alignParentBottom="false">
 
     <ViewFlipper
         android:id="@+id/viewFlipper"
@@ -45,4 +47,31 @@
             android:scaleType="centerCrop"/>
 
     </ViewFlipper>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/ll3">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowsleft"
+            android:id="@+id/imageView18" />
+
+        <TextView
+            android:text="Voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView30"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

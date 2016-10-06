@@ -75,7 +75,6 @@ public class Tab5Fragment extends Fragment {
         Button btn_fs = (Button) view.findViewById(R.id.button5);
         Button btn_c = (Button) view.findViewById(R.id.button6);
         Button btn_x = (Button) view.findViewById(R.id.button7);
-        ImageButton msgs = (ImageButton) view.findViewById(R.id.imageButton12);
 
         btn_fs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,14 +92,6 @@ public class Tab5Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openurl("https://www.xarmonix.com.br/listas-de-casamento/");
-            }
-        });
-
-        msgs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.loadMensagens();
             }
         });
 

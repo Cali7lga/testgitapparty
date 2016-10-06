@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 import com.example.home.weddingapp.R;
@@ -85,6 +86,11 @@ public class PhotosFragment extends Fragment {
         viewFlipper.setAutoStart(true);
         viewFlipper.setFlipInterval(4000);
         viewFlipper.startFlipping();
+
+        LinearLayout layout = (LinearLayout) view.findViewById(R.id.ll3);
+
+        Animation blink = AnimationUtils.loadAnimation(getActivity(),R.anim.blink);
+        layout.startAnimation(blink);
 
         return view;
     }

@@ -17,30 +17,32 @@ import com.example.home.weddingapp.Fragments.MensagensFragment;
 import com.example.home.weddingapp.Fragments.PadrinhosFragment;
 import com.example.home.weddingapp.Fragments.PhotosFragment;
 import com.example.home.weddingapp.Fragments.StreetviewFragment;
+import com.example.home.weddingapp.Fragments.Tab2Fragment;
 import com.example.home.weddingapp.Fragments.Tab3Fragment;
 import com.example.home.weddingapp.Fragments.Tab4Fragment;
 import com.example.home.weddingapp.Fragments.Tab5Fragment;
+import com.example.home.weddingapp.Fragments.VideoFragment;
 import com.example.home.weddingapp.R;
 import com.example.home.weddingapp.Fragments.Tab1Fragment;
-import com.example.home.weddingapp.Fragments.Tab2Fragment;
 import com.example.home.weddingapp.Fragments.TabBarFragment;
 
 public class MainActivity extends FragmentActivity
         implements MainFragment.MainFragmentInteractionListener,
         TabBarFragment.TabBarFragmentInteractionListener,
         Tab1Fragment.Tab1FragmentInteractionListener,
-        Tab2Fragment.Tab2FragmentInteractionListener,
+        VideoFragment.VideoFragmentInteractionListener,
         HistoryFragment.HistoryFragmentInteractionListener,
         PhotosFragment.PhotosFragmentInteractionListener,
-        Tab3Fragment.Tab3FragmentInteractionListener,
+        Tab2Fragment.Tab2FragmentInteractionListener,
         PadrinhosFragment.PadrinhosFragmentInteractionListener,
+        Tab3Fragment.Tab3FragmentInteractionListener,
+        MensagensFragment.MensagensFragmentInteractionListener,
+        EscreverFragment.EscreverFragmentInteractionListener,
         Tab4Fragment.Tab4FragmentInteractionListener,
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
-        Tab5Fragment.Tab5FragmentInteractionListener,
-        MensagensFragment.MensagensFragmentInteractionListener,
-        EscreverFragment.EscreverFragmentInteractionListener {
+        Tab5Fragment.Tab5FragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -80,7 +82,7 @@ public class MainActivity extends FragmentActivity
 
         }
         else{
-            if(Tab1Fragment.speaker.getVisibility() == View.VISIBLE) {
+            if(VideoFragment.speaker.getVisibility() == View.VISIBLE) {
                 startmusic();
             }
         }
@@ -168,7 +170,7 @@ public class MainActivity extends FragmentActivity
     }
 
     @Override
-    public void onTab2FragmentInteraction(Uri uri) {
+    public void onVideoFragmentInteraction(Uri uri) {
 
     }
 
@@ -179,6 +181,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onPhotosFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onTab2FragmentInteraction(Uri uri) {
 
     }
 
@@ -226,4 +233,5 @@ public class MainActivity extends FragmentActivity
     public void onEscreverFragmentInteraction(Uri uri) {
 
     }
+
 }

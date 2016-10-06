@@ -5,13 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.home.weddingapp.Others.SwipeAdapter;
+import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.PagerAdapter;
 import com.example.home.weddingapp.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +25,12 @@ import com.example.home.weddingapp.R;
  */
 public class Tab2Fragment extends Fragment {
 
-    ViewPager viewPager;
+    public final static int PAGES = 7;
+    public final static int LOOPS = 1000;
+    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
 
+    public PagerAdapter adapter;
+    public ViewPager pager;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,9 +80,22 @@ public class Tab2Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab2, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getChildFragmentManager());
-        viewPager.setAdapter(swipeAdapter);
+        pager = (ViewPager) view.findViewById(R.id.view_pager2);
+
+        adapter = new PagerAdapter((MainActivity) getActivity(), getChildFragmentManager());
+        pager.setAdapter(adapter);
+        pager.setPageTransformer(false,adapter);
+
+        pager.setCurrentItem(FIRST_PAGE);
+        pager.setOffscreenPageLimit(3);
+
+        DisplayMetrics dM = getResources().getDisplayMetrics();
+        int widthOfScreen = dM.widthPixels;
+        int widthOfView = 250; //in DP
+        int spaceBetweenViews = 5; // in DP
+        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
+
+        pager.setPageMargin((int) (-widthOfScreen+offset));
 
         return view;
     }
@@ -110,7 +129,7 @@ public class Tab2Fragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
