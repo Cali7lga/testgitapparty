@@ -70,7 +70,8 @@
             android:id="@+id/textView30"
             android:textColor="@android:color/white"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:fontFamily="serif" />
 
     </LinearLayout>
 

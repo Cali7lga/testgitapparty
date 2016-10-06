@@ -206,7 +206,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView29"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:fontFamily="serif" />
 
         <ImageView
             android:layout_width="wrap_content"

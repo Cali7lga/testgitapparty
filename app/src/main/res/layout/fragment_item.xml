@@ -21,7 +21,8 @@
         android:background="@drawable/textview_messages"
         android:layout_gravity="left"
         android:textColor="@android:color/white"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:fontFamily="serif" />
 
     <Space
         android:layout_width="match_parent"
