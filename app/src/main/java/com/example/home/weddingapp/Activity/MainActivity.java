@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
@@ -45,6 +46,7 @@ public class MainActivity extends FragmentActivity
         Tab5Fragment.Tab5FragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
+    public static ImageButton speaker, mute;
     private int length = 0;
 
     @Override
@@ -62,10 +64,38 @@ public class MainActivity extends FragmentActivity
 
         }
 
+        speaker = (ImageButton) findViewById(R.id.button3);
+        mute = (ImageButton) findViewById(R.id.button4);
+
         mediaPlayer = MediaPlayer.create(this,R.raw.music);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1.0f,1.0f);
 
+        if(mediaPlayer.isPlaying()) {
+            speaker.setVisibility(View.VISIBLE);
+            mute.setVisibility(View.INVISIBLE);
+        }
+        else{
+            speaker.setVisibility(View.INVISIBLE);
+            mute.setVisibility(View.VISIBLE);
+        }
+
+        speaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pausemusic();
+                speaker.setVisibility(View.INVISIBLE);
+                mute.setVisibility(View.VISIBLE);
+            }
+        });
+        mute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startmusic();
+                mute.setVisibility(View.INVISIBLE);
+                speaker.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -82,7 +112,7 @@ public class MainActivity extends FragmentActivity
 
         }
         else{
-            if(VideoFragment.speaker.getVisibility() == View.VISIBLE) {
+            if(speaker.getVisibility() == View.VISIBLE) {
                 startmusic();
             }
         }

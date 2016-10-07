@@ -14,12 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 
@@ -35,7 +33,6 @@ public class VideoFragment extends Fragment {
 
     TextView textdias, texthoras, textminutos, textsegundos;
     VideoView videoView;
-    public static ImageButton speaker, mute;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,10 +90,6 @@ public class VideoFragment extends Fragment {
 
         videoView = (VideoView) view.findViewById(R.id.videoView);
 
-        speaker = (ImageButton) view.findViewById(R.id.button3);
-        mute = (ImageButton) view.findViewById(R.id.button4);
-
-
         SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         java.util.Date d = null;
         java.util.Date d1 = null;
@@ -150,34 +143,6 @@ public class VideoFragment extends Fragment {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 videoView.start();
-            }
-        });
-
-        if(MainActivity.mediaPlayer.isPlaying()) {
-            speaker.setVisibility(View.VISIBLE);
-            mute.setVisibility(View.INVISIBLE);
-        }
-        else{
-            speaker.setVisibility(View.INVISIBLE);
-            mute.setVisibility(View.VISIBLE);
-        }
-
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.pausemusic();
-                speaker.setVisibility(View.INVISIBLE);
-                mute.setVisibility(View.VISIBLE);
-            }
-        });
-        mute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.startmusic();
-                mute.setVisibility(View.INVISIBLE);
-                speaker.setVisibility(View.VISIBLE);
             }
         });
 

@@ -131,7 +131,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
         MainActivity mainactivity = (MainActivity) getActivity();
-        if(VideoFragment.speaker == null || VideoFragment.speaker.getVisibility() == View.VISIBLE)
+        if(MainActivity.speaker == null || MainActivity.speaker.getVisibility() == View.VISIBLE)
         {
             mainactivity.startmusic();
             MainActivity.mediaPlayer.setVolume(0,0);

@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,6 +13,55 @@
         android:background="#333333">
 
         <TextView
+            android:text="Tecnologia e Desenvolvimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView31"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <TextView
+            android:text="Hera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView32"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22sp"
+            android:fontFamily="serif"
+            android:textColor="#CCCCCC"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fb"
+                android:id="@+id/imageButton16"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton15"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/insta" />
+
+        </LinearLayout>
+
+        <TextView
             android:text="Buffet e Decoração"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +70,7 @@
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
             android:textSize="20sp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="cursive"
             android:textColor="#B3B3B3" />
 
@@ -156,6 +206,56 @@
                 android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/insta"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Fotografia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView33"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <TextView
+            android:text="Sidney Haack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView34"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22sp"
+            android:fontFamily="serif"
+            android:textColor="#CCCCCC"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fb"
+                android:id="@+id/imageButton17"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton18"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/insta"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 
