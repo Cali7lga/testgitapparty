@@ -92,28 +92,42 @@ public class EscreverFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FileInfo fileinfo = new FileInfo();
-                fileinfo.setMensagem(editText1.getText().toString());
-                fileinfo.setName(editText2.getText().toString());
+                if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("")) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Erro");
+                    alertDialog.setMessage("Por favor, preencha os campos de mensagem e autor corretamente.");
+                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                mRef.child("messages").push().setValue(fileinfo);
+                        }
+                    });
+                    alertDialog.show();
 
-                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                alertDialog.setTitle("Mensagem Enviada");
-                alertDialog.setMessage("Muito obrigado por nos deixar uma mensagem!");
-                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                } else {
 
-                        MainActivity mainActivity = (MainActivity) getActivity();
-                        mainActivity.backfragment();
+                    FileInfo fileinfo = new FileInfo();
+                    fileinfo.setMensagem(editText1.getText().toString());
+                    fileinfo.setName(editText2.getText().toString());
 
-                    }
-                });
-                alertDialog.show();
+                    mRef.child("messages").push().setValue(fileinfo);
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Mensagem Enviada");
+                    alertDialog.setMessage("Muito obrigado por nos deixar uma mensagem!");
+                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            MainActivity mainActivity = (MainActivity) getActivity();
+                            mainActivity.backfragment();
+
+                        }
+                    });
+                    alertDialog.show();
+                }
             }
         });
-
 
         return view;
     }

@@ -18,6 +18,7 @@ import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,7 +94,7 @@ public class MensagensFragment extends Fragment {
 
         FirebaseRecyclerAdapter<FileInfo,MessageViewHolder> mAdapter = new FirebaseRecyclerAdapter<FileInfo, MessageViewHolder>(
                 FileInfo.class,
-                R.layout.fragment_item,
+                R.layout.fragment_msgitem,
                 MessageViewHolder.class,
                 mRef.child("messages")
         ) {

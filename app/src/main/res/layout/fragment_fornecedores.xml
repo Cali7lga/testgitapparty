@@ -218,7 +218,7 @@
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
             android:textSize="20sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="cursive"
             android:textColor="#B3B3B3"/>
 

@@ -70,12 +70,21 @@ public class Tab3Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab3, container, false);
 
         ImageButton msgs = (ImageButton) view.findViewById(R.id.imageButton12);
+        ImageButton fotos = (ImageButton) view.findViewById(R.id.imageButton14);
 
         msgs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.loadMensagens();
+            }
+        });
+
+        fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadFotos();
             }
         });
 

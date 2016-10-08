@@ -1,16 +1,19 @@
 package com.example.home.weddingapp.Activity;
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
+import com.example.home.weddingapp.Fragments.FotosFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.MainFragment;
 import com.example.home.weddingapp.Fragments.MapsFragment;
@@ -39,6 +42,7 @@ public class MainActivity extends FragmentActivity
         Tab3Fragment.Tab3FragmentInteractionListener,
         MensagensFragment.MensagensFragmentInteractionListener,
         EscreverFragment.EscreverFragmentInteractionListener,
+        FotosFragment.FotosFragmentInteractionListener,
         Tab4Fragment.Tab4FragmentInteractionListener,
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
@@ -46,7 +50,6 @@ public class MainActivity extends FragmentActivity
         Tab5Fragment.Tab5FragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
-    public static ImageButton speaker, mute;
     private int length = 0;
 
     @Override
@@ -60,42 +63,43 @@ public class MainActivity extends FragmentActivity
         if (fragment == null) {
 
             fragment = new MainFragment();
-            manager.beginTransaction().add(R.id.FragmentContainer, fragment).commit();
+            manager.beginTransaction().add(R.id.FragmentContainer, fragment,"login").commit();
 
         }
-
-        speaker = (ImageButton) findViewById(R.id.button3);
-        mute = (ImageButton) findViewById(R.id.button4);
 
         mediaPlayer = MediaPlayer.create(this,R.raw.music);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(1.0f,1.0f);
 
-        if(mediaPlayer.isPlaying()) {
-            speaker.setVisibility(View.VISIBLE);
-            mute.setVisibility(View.INVISIBLE);
-        }
-        else{
-            speaker.setVisibility(View.INVISIBLE);
-            mute.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Sair");
+            alertDialog.setMessage("Você deseja sair do aplicativo?");
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    MainActivity.super.onBackPressed();
+                }
+            });
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alertDialog.show();
+
+        } else {
+            getSupportFragmentManager().popBackStack();
         }
 
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pausemusic();
-                speaker.setVisibility(View.INVISIBLE);
-                mute.setVisibility(View.VISIBLE);
-            }
-        });
-        mute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startmusic();
-                mute.setVisibility(View.INVISIBLE);
-                speaker.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     @Override
@@ -112,7 +116,7 @@ public class MainActivity extends FragmentActivity
 
         }
         else{
-            if(speaker.getVisibility() == View.VISIBLE) {
+            if(TabBarFragment.speaker.getVisibility() == View.VISIBLE) {
                 startmusic();
             }
         }
@@ -141,7 +145,8 @@ public class MainActivity extends FragmentActivity
     public void loadTabBar() {
 
         TabBarFragment tabbar = new TabBarFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, tabbar).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, tabbar).commit();
+
     }
 
     public void loadMaps() {
@@ -176,6 +181,13 @@ public class MainActivity extends FragmentActivity
 
         EscreverFragment escreverFragment = new EscreverFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, escreverFragment).addToBackStack(null).commit();
+
+    }
+
+    public void loadFotos(){
+
+        FotosFragment fotosFragment = new FotosFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, fotosFragment).addToBackStack(null).commit();
 
     }
 
@@ -264,4 +276,8 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    @Override
+    public void onFotosFragmentInteraction(Uri uri) {
+
+    }
 }
