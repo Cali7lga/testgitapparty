@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.home.weddingapp.Fragments.CaptureFragment;
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.FotosFragment;
@@ -43,6 +44,7 @@ public class MainActivity extends FragmentActivity
         MensagensFragment.MensagensFragmentInteractionListener,
         EscreverFragment.EscreverFragmentInteractionListener,
         FotosFragment.FotosFragmentInteractionListener,
+        CaptureFragment.CaptureFragmentInteractionListener,
         Tab4Fragment.Tab4FragmentInteractionListener,
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
@@ -191,6 +193,13 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadCapture(){
+
+        CaptureFragment captureFragment = new CaptureFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, captureFragment).addToBackStack(null).commit();
+
+    }
+
     public void backfragment(){
         getSupportFragmentManager().popBackStack();
     }
@@ -278,6 +287,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onFotosFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onCaptureFragmentInteraction(Uri uri) {
 
     }
 }

@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.home.weddingapp.Fragments.CaptureFragment"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:weightSum="1">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView20"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        android:background="@android:color/darker_gray"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1">
+
+        <Button
+            android:text="NEW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button9"
+            android:background="@drawable/enviar_btn"
+            android:textColor="@android:color/white"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="COMPARTILHAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button10"
+            android:background="@drawable/enviar_btn"
+            android:textColor="@android:color/white"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

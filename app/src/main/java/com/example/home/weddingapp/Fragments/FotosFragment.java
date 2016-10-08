@@ -4,11 +4,20 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +28,15 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class FotosFragment extends Fragment {
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference dbRef = database.getReference();
+
+    ImageButton imageButton;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,7 +83,41 @@ public class FotosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fotos, container, false);
+        View view = inflater.inflate(R.layout.fragment_fotos, container, false);
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_rv2);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        FirebaseRecyclerAdapter<String,PhotoViewHolder> adapter = new FirebaseRecyclerAdapter<String, PhotoViewHolder>(
+                String.class,
+                R.layout.fragment_photoitem,
+                PhotoViewHolder.class,
+                dbRef.child("FotosURL")
+        ) {
+            @Override
+            protected void populateViewHolder(PhotoViewHolder viewHolder, String model, int position) {
+
+                Uri uri = Uri.parse(model);
+                Picasso.with(getActivity()).load(uri).fit().into(viewHolder.imageView);
+
+            }
+        };
+
+        mRecyclerView.setAdapter(adapter);
+
+        imageButton = (ImageButton) view.findViewById(R.id.imageButton19);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadCapture();
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +142,19 @@ public class FotosFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private static class PhotoViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView imageView;
+
+        public PhotoViewHolder(View itemView) {
+            super(itemView);
+
+            imageView = (ImageView) itemView.findViewById(R.id.imageView19);
+
+
+        }
     }
 
     /**
