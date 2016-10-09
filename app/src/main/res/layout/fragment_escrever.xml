@@ -8,32 +8,32 @@
 
     <EditText
         android:layout_width="300dp"
-        android:layout_height="300dp"
         android:id="@+id/editText2"
         android:hint="Deixe sua mensagem aqui"
         android:background="@drawable/textview_digitar"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:gravity="top"
         android:fontFamily="serif"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_height="250dp" />
 
     <EditText
-        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
         android:hint="Ass.:"
         android:background="@drawable/textview_digitar"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:fontFamily="serif" />
+        android:fontFamily="serif"
+        android:layout_width="240dp" />
 
     <Button
         android:text="Enviar"
         android:id="@+id/button8"
         android:background="@drawable/enviar_btn"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:textColor="@android:color/white"
         android:fontFamily="serif"
         android:textSize="12sp"

@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText"
             android:textColor="#797979"
-            android:background="@drawable/round_corners"
+            android:background="@drawable/textview_digitar"
             android:gravity="center"
             android:singleLine="true"
             android:hint="Senha"

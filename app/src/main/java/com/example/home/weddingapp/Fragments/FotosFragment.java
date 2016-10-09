@@ -95,7 +95,7 @@ public class FotosFragment extends Fragment {
                 String.class,
                 R.layout.fragment_photoitem,
                 PhotoViewHolder.class,
-                dbRef.child("FotosURL")
+                dbRef.child("fotosUrl").child("imageUrl")
         ) {
             @Override
             protected void populateViewHolder(PhotoViewHolder viewHolder, String model, int position) {

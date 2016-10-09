@@ -17,9 +17,10 @@
         android:layout_marginTop="100dp"
         android:layout_weight="1"
         android:scaleType="fitXY"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/round_corners"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/graytransparent" />
 
     <LinearLayout
         android:orientation="horizontal"
