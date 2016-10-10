@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:src="@android:color/holo_green_light"
         android:id="@+id/imageView19"
-        android:layout_height="250dp" />
+        android:layout_height="230dp" />
 
     <view
         android:layout_width="match_parent"

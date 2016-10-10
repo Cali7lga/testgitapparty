@@ -24,7 +24,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:text="Compartilhe"
+            android:text="Compartilhe tambem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView35"
