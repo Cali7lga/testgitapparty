@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.JsonWriter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.FileInfoUrl;
 import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,16 +99,17 @@ public class FotosFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerAdapter<String,PhotoViewHolder> adapter = new FirebaseRecyclerAdapter<String, PhotoViewHolder>(
-                String.class,
+        FirebaseRecyclerAdapter<FileInfoUrl,PhotoViewHolder> adapter = new FirebaseRecyclerAdapter<FileInfoUrl, PhotoViewHolder>(
+                FileInfoUrl.class,
                 R.layout.fragment_photoitem,
                 PhotoViewHolder.class,
-                dbRef.child("fotosUrl").child("imageUrl")
+                dbRef.child("fotosUrl")
         ) {
             @Override
-            protected void populateViewHolder(PhotoViewHolder viewHolder, String model, int position) {
+            protected void populateViewHolder(PhotoViewHolder viewHolder, FileInfoUrl model, int position) {
 
-                Uri uri = Uri.parse(model);
+                String url = model.getImageUrl();
+                Uri uri = Uri.parse(url);
                 Picasso.with(getActivity()).load(uri).fit().into(viewHolder.imageView);
 
             }

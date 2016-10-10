@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
-import com.example.home.weddingapp.Others.FileInfo;
+import com.example.home.weddingapp.Others.FileInfoMsg;
 import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,14 +92,14 @@ public class MensagensFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerAdapter<FileInfo,MessageViewHolder> mAdapter = new FirebaseRecyclerAdapter<FileInfo, MessageViewHolder>(
-                FileInfo.class,
+        FirebaseRecyclerAdapter<FileInfoMsg,MessageViewHolder> mAdapter = new FirebaseRecyclerAdapter<FileInfoMsg, MessageViewHolder>(
+                FileInfoMsg.class,
                 R.layout.fragment_msgitem,
                 MessageViewHolder.class,
                 mRef.child("messages")
         ) {
             @Override
-            protected void populateViewHolder(MessageViewHolder viewHolder, FileInfo model, int position) {
+            protected void populateViewHolder(MessageViewHolder viewHolder, FileInfoMsg model, int position) {
 
                 String msg = model.getMensagem();
                 String nm = model.getNome();

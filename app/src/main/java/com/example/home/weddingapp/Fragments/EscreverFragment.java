@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.home.weddingapp.Activity.MainActivity;
-import com.example.home.weddingapp.Others.FileInfo;
+import com.example.home.weddingapp.Others.FileInfoMsg;
 import com.example.home.weddingapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -106,7 +105,7 @@ public class EscreverFragment extends Fragment {
 
                 } else {
 
-                    FileInfo fileinfo = new FileInfo();
+                    FileInfoMsg fileinfo = new FileInfoMsg();
                     fileinfo.setMensagem(editText1.getText().toString());
                     fileinfo.setName(editText2.getText().toString());
 
