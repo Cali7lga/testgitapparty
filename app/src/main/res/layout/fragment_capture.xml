@@ -16,28 +16,47 @@
         android:id="@+id/imageView20"
         android:layout_marginTop="100dp"
         android:layout_weight="1"
-        android:scaleType="fitXY"
         android:background="@drawable/round_corners"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="@color/graytransparent" />
+        android:backgroundTint="@color/graytransparent"
+        android:scaleType="centerCrop" />
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <TextView
+        android:text="Carregando imagem..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView36"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
+        android:id="@+id/progressBar1"
+        android:layout_weight="1"
+        android:max="100" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1">
 
         <Button
-            android:text="NEW"
+            android:text="NOVA FOTO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button9"
             android:background="@drawable/enviar_btn"
             android:textColor="@android:color/white"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal" />
 
         <Button
             android:text="COMPARTILHAR"
@@ -46,7 +65,11 @@
             android:id="@+id/button10"
             android:background="@drawable/enviar_btn"
             android:textColor="@android:color/white"
-            android:layout_weight="1" />
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

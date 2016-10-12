@@ -20,7 +20,7 @@ public class FileInfoUrl {
             return imageUrl;
         }
 
-        public void setUrl(String Url) {
+        public void setImageUrl(String Url) {
             this.imageUrl = Url;
         }
 
