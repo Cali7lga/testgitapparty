@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.FileInfoUrl;
 import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,7 +103,7 @@ public class FotosFragment extends Fragment {
 
                 String url = model.getImageUrl();
                 Uri uri = Uri.parse(url);
-                Picasso.with(getActivity()).load(uri).fit().into(viewHolder.imageView);
+                Glide.with(getActivity()).load(uri).fitCenter().centerCrop().into(viewHolder.imageView);
 
             }
         };
