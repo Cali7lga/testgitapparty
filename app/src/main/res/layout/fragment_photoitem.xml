@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:src="@android:color/holo_green_light"
         android:id="@+id/imageView19"
+        android:scaleType="fitXY"
         android:layout_height="230dp" />
 
     <view

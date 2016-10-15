@@ -103,7 +103,7 @@ public class FotosFragment extends Fragment {
 
                 String url = model.getImageUrl();
                 Uri uri = Uri.parse(url);
-                Glide.with(getActivity()).load(uri).fitCenter().centerCrop().into(viewHolder.imageView);
+                Glide.with(getActivity()).load(uri).into(viewHolder.imageView);
 
             }
         };
