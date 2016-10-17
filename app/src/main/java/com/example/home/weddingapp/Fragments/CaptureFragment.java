@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.mikelau.croperino.Croperino;
+import com.mikelau.croperino.CroperinoConfig;
+import com.mikelau.croperino.CroperinoFileUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,6 +71,7 @@ public class CaptureFragment extends Fragment {
 
     public static final int REQUEST_EXTERNAL_STORAGE = 0;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
+    public static final int PIC_CROP = 2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -247,6 +252,50 @@ public class CaptureFragment extends Fragment {
             imageView.setImageBitmap(bitmap);
             btn_share.setVisibility(View.VISIBLE);
 
+/**
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+            int height = displayMetrics.heightPixels;
+            int width = displayMetrics.widthPixels;
+            float widthDP = width / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+
+
+
+            //call the standard crop action intent (the user device may not support it)
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            //indicate image type and Uri
+            cropIntent.setDataAndType(selectedImage, "image/*");
+            //set crop properties
+            cropIntent.putExtra("crop", "true");
+            //indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", widthDP);
+            cropIntent.putExtra("aspectY", 230);
+            //indicate output X and Y
+            cropIntent.putExtra("outputX", widthDP);
+            cropIntent.putExtra("outputY", 230);
+            //retrieve data on return
+            cropIntent.putExtra("return-data", true);
+            //start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, PIC_CROP);
+
+
+            new CroperinoConfig("IMG_" + System.currentTimeMillis() + ".jpg", "/MikeLau/Pictures", "/sdcard/MikeLau/Pictures");
+            CroperinoFileUtil.verifyStoragePermissions(getActivity());
+            CroperinoFileUtil.setupDirectory(getActivity());
+
+            Croperino.runCropImage(file, getActivity(), true, 360, 230, 0, 0);
+
+        }
+        else if(requestCode == CroperinoConfig.REQUEST_CROP_PHOTO && resultCode == RESULT_OK){
+
+            Log.i("lalala", "onActivityResult: CRoPPEd IMAge ");
+
+            Uri i = Uri.fromFile(CroperinoFileUtil.getmFileTemp());
+            imageView.setImageURI(i);
+
+        }
+ **/
         }
     }
 
