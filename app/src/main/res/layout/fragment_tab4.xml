@@ -61,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:text="Mapa"
                 android:id="@+id/textView6"
-                android:textStyle="italic"
                 android:textSize="12dp"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="112dp"

@@ -80,6 +80,9 @@ public class PhotosFragment extends Fragment {
         fade_in = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_in);
         fade_out = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_out);
 
+        fade_in.setDuration(1500);
+        fade_out.setDuration(1500);
+
         viewFlipper.setInAnimation(fade_in);
         viewFlipper.setOutAnimation(fade_out);
 

@@ -48,27 +48,31 @@
         android:layout_weight="1">
 
         <Button
+            android:text="Compartilhar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/button10"
+            android:background="@drawable/round_button"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:visibility="invisible"
+            android:fontFamily="cursive"
+            android:textAllCaps="false"
+            android:textSize="23sp"
+            android:textStyle="normal|italic" />
+
+        <Button
+            android:layout_height="60dp"
             android:id="@+id/button9"
             android:background="@drawable/enviar_btn"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/graytransparent"
-            android:layout_width="52dp" />
-
-        <Button
-            android:text="COMPARTILHAR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button10"
-            android:background="@drawable/enviar_btn"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:visibility="invisible"
-            android:fontFamily="cursive" />
+            android:layout_width="60dp"
+            android:layout_marginBottom="20dp" />
 
     </LinearLayout>
 

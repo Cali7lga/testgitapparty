@@ -15,7 +15,7 @@
             android:layout_height="50dp"
             android:id="@+id/imageView"
             android:background="@drawable/rings"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:layout_above="@+id/textView2"
             android:layout_centerHorizontal="true" />
 
@@ -26,42 +26,41 @@
             android:text="Thais &amp; Lucas"
             android:id="@+id/textView2"
             android:textColor="#ffffff"
-            android:textStyle="normal|italic"
+            android:textStyle="normal|bold|italic"
             android:fontFamily="cursive"
             android:textSize="36sp"
-            android:layout_marginBottom="53dp"
+            android:layout_marginBottom="20dp"
             android:layout_above="@+id/editText"
             android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:textColor="#797979"
+            android:background="@drawable/textview_digitar"
+            android:gravity="center_vertical|center"
+            android:singleLine="true"
+            android:hint="Senha"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="@android:color/white"
+            android:layout_width="210dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="15sp"
+            android:layout_height="32dp" />
 
         <Button
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:id="@+id/button"
-            android:layout_marginBottom="238dp"
             android:clickable="true"
             android:background="@drawable/lock"
             android:textAllCaps="false"
             android:textStyle="normal|italic"
-            android:layout_alignParentBottom="true"
+            android:fontFamily="serif"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/editText"
             android:layout_centerHorizontal="true"
-            android:fontFamily="serif" />
-
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:textColor="#797979"
-            android:background="@drawable/textview_digitar"
-            android:gravity="center"
-            android:singleLine="true"
-            android:hint="Senha"
-            android:text="teste"
-            android:fontFamily="sans-serif"
-            android:backgroundTint="@android:color/white"
-            android:layout_above="@+id/button"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_marginBottom="23dp" />
+            android:layout_marginTop="20dp" />
 
     </RelativeLayout>
 
