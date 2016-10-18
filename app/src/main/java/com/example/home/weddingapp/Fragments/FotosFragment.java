@@ -179,6 +179,7 @@ public class FotosFragment extends Fragment {
     }
 
     private void zoomImageFromThumb(final View thumbView, String imageUrl) {
+
         // If there's an animation in progress, cancel it
         // immediately and proceed with this one.
         if (mCurrentAnimator != null) {
@@ -197,6 +198,9 @@ public class FotosFragment extends Fragment {
         final Rect startBounds = new Rect();
         final Rect finalBounds = new Rect();
         final Point globalOffset = new Point();
+
+        mShortAnimationDuration = getResources().getInteger(
+                android.R.integer.config_shortAnimTime);
 
         // The start bounds are the global visible rectangle of the thumbnail,
         // and the final bounds are the global visible rectangle of the container
