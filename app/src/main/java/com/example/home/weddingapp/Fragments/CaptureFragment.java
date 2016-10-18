@@ -8,28 +8,32 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.CustomImageView;
 import com.example.home.weddingapp.Others.FileInfoUrl;
 import com.example.home.weddingapp.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,14 +43,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.mikelau.croperino.Croperino;
-import com.mikelau.croperino.CroperinoConfig;
-import com.mikelau.croperino.CroperinoFileUtil;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
@@ -63,7 +62,7 @@ public class CaptureFragment extends Fragment {
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
-    ImageView imageView;
+    CustomImageView customimageView;
     Button btn_new, btn_share;
     ProgressBar progressBar;
     String filepath;
@@ -121,7 +120,7 @@ public class CaptureFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_capture, container, false);
 
-        imageView = (ImageView) view.findViewById(R.id.imageView20);
+        customimageView = (CustomImageView) view.findViewById(R.id.imageView20);
         textView = (TextView) view.findViewById(R.id.textView36);
         btn_new = (Button) view.findViewById(R.id.button9);
         btn_share = (Button) view.findViewById(R.id.button10);
@@ -249,53 +248,10 @@ public class CaptureFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            imageView.setImageBitmap(bitmap);
+            customimageView.setBackground(null);
+            customimageView.setImageBitmap(bitmap);
             btn_share.setVisibility(View.VISIBLE);
 
-/**
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
-            int height = displayMetrics.heightPixels;
-            int width = displayMetrics.widthPixels;
-            float widthDP = width / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-
-
-
-            //call the standard crop action intent (the user device may not support it)
-            Intent cropIntent = new Intent("com.android.camera.action.CROP");
-            //indicate image type and Uri
-            cropIntent.setDataAndType(selectedImage, "image/*");
-            //set crop properties
-            cropIntent.putExtra("crop", "true");
-            //indicate aspect of desired crop
-            cropIntent.putExtra("aspectX", widthDP);
-            cropIntent.putExtra("aspectY", 230);
-            //indicate output X and Y
-            cropIntent.putExtra("outputX", widthDP);
-            cropIntent.putExtra("outputY", 230);
-            //retrieve data on return
-            cropIntent.putExtra("return-data", true);
-            //start the activity - we handle returning in onActivityResult
-            startActivityForResult(cropIntent, PIC_CROP);
-
-
-            new CroperinoConfig("IMG_" + System.currentTimeMillis() + ".jpg", "/MikeLau/Pictures", "/sdcard/MikeLau/Pictures");
-            CroperinoFileUtil.verifyStoragePermissions(getActivity());
-            CroperinoFileUtil.setupDirectory(getActivity());
-
-            Croperino.runCropImage(file, getActivity(), true, 360, 230, 0, 0);
-
-        }
-        else if(requestCode == CroperinoConfig.REQUEST_CROP_PHOTO && resultCode == RESULT_OK){
-
-            Log.i("lalala", "onActivityResult: CRoPPEd IMAge ");
-
-            Uri i = Uri.fromFile(CroperinoFileUtil.getmFileTemp());
-            imageView.setImageURI(i);
-
-        }
- **/
         }
     }
 

@@ -22,6 +22,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.Activity.MainActivity;
+import com.example.home.weddingapp.Others.CustomImageView;
 import com.example.home.weddingapp.Others.FileInfoUrl;
 import com.example.home.weddingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -168,12 +169,12 @@ public class FotosFragment extends Fragment {
 
     private static class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
+        CustomImageView imageView;
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
 
-            imageView = (ImageView) itemView.findViewById(R.id.imageView19);
+            imageView = (CustomImageView) itemView.findViewById(R.id.imageView19);
 
         }
     }

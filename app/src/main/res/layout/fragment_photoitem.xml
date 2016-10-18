@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <com.example.home.weddingapp.Others.CustomImageView
         android:layout_width="match_parent"
         android:src="@android:color/holo_green_light"
         android:id="@+id/imageView19"

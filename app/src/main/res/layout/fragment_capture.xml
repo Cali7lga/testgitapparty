@@ -8,17 +8,16 @@
     android:background="@android:color/black"
     android:weightSum="1">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <ImageView
+    <com.example.home.weddingapp.Others.CustomImageView
         android:layout_width="match_parent"
         android:id="@+id/imageView20"
-        android:layout_marginTop="60dp"
-        android:background="@color/graytransparent"
+        android:layout_height="275dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:scaleType="centerCrop"
-        android:layout_height="275dp" />
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/graytransparent"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:text="Carregando imagem..."
@@ -72,7 +71,7 @@
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/graytransparent"
             android:layout_width="60dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="10dp" />
 
     </LinearLayout>
 
