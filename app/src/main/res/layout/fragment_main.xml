@@ -46,7 +46,8 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textSize="15sp"
-            android:layout_height="32dp" />
+            android:layout_height="32dp"
+            android:text="teste"/>
 
         <Button
             android:layout_width="24dp"

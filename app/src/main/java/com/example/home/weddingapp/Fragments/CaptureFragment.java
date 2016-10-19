@@ -44,6 +44,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -67,6 +68,7 @@ public class CaptureFragment extends Fragment {
     ProgressBar progressBar;
     String filepath;
     TextView textView;
+    Bitmap bitmap;
 
     public static final int REQUEST_EXTERNAL_STORAGE = 0;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -143,9 +145,18 @@ public class CaptureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try{
+
+/**                    customimageView.setDrawingCacheEnabled(true);
+                    customimageView.buildDrawingCache();
+                    Bitmap foto = customimageView.getDrawingCache();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    foto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data = baos.toByteArray();
+**/
                     Uri file = Uri.fromFile(new File(getFilepath()));
                     String uniqueID = UUID.randomUUID().toString();
                     UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putFile(file);
+//                    UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putBytes(data);
                     uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
@@ -226,7 +237,8 @@ public class CaptureFragment extends Fragment {
 
             cursor.close();
 
-            Bitmap bitmap = BitmapFactory.decodeFile(getFilepath());
+            setBitmap(BitmapFactory.decodeFile(getFilepath()));
+
             try{
                 ExifInterface exif = new ExifInterface(getFilepath());
                 int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,1);
@@ -242,14 +254,14 @@ public class CaptureFragment extends Fragment {
                     matrix.postRotate(270);
                 }
 
-                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+                setBitmap(Bitmap.createBitmap(getBitmap(),0,0,getBitmap().getWidth(),getBitmap().getHeight(),matrix,true));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             customimageView.setBackground(null);
-            customimageView.setImageBitmap(bitmap);
+            customimageView.setImageBitmap(getBitmap());
             btn_share.setVisibility(View.VISIBLE);
 
         }
@@ -269,12 +281,20 @@ public class CaptureFragment extends Fragment {
         }
     }
 
+    public Bitmap getBitmap(){
+        return bitmap;
+    }
+    public void setBitmap(Bitmap bitmap){
+        this.bitmap = bitmap;
+    }
+
     public String getFilepath(){
         return filepath;
     }
     public void setFilepath(String filepath){
         this.filepath = filepath;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
