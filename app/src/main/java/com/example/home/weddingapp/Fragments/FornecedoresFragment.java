@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 /**

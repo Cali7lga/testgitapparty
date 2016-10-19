@@ -8,27 +8,18 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -44,8 +35,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -68,7 +60,7 @@ public class CaptureFragment extends Fragment {
     ProgressBar progressBar;
     String filepath;
     TextView textView;
-    Bitmap bitmap;
+    Matrix matrix;
 
     public static final int REQUEST_EXTERNAL_STORAGE = 0;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -144,19 +136,12 @@ public class CaptureFragment extends Fragment {
         btn_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 try{
 
-/**                    customimageView.setDrawingCacheEnabled(true);
-                    customimageView.buildDrawingCache();
-                    Bitmap foto = customimageView.getDrawingCache();
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    foto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    byte[] data = baos.toByteArray();
-**/
-                    Uri file = Uri.fromFile(new File(getFilepath()));
+                    Uri file = Uri.fromFile(compressedFoto(new File(getFilepath())));
                     String uniqueID = UUID.randomUUID().toString();
                     UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putFile(file);
-//                    UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putBytes(data);
                     uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
@@ -237,31 +222,31 @@ public class CaptureFragment extends Fragment {
 
             cursor.close();
 
-            setBitmap(BitmapFactory.decodeFile(getFilepath()));
+            Bitmap bitmap = BitmapFactory.decodeFile(getFilepath());
 
             try{
                 ExifInterface exif = new ExifInterface(getFilepath());
                 int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,1);
 
-                Matrix matrix = new Matrix();
+                setMatrix(new Matrix());
                 if (orientation == 6) {
-                    matrix.postRotate(90);
+                    getMatrix().postRotate(90);
                 }
                 else if (orientation == 3) {
-                    matrix.postRotate(180);
+                    getMatrix().postRotate(180);
                 }
                 else if (orientation == 8) {
-                    matrix.postRotate(270);
+                    getMatrix().postRotate(270);
                 }
 
-                setBitmap(Bitmap.createBitmap(getBitmap(),0,0,getBitmap().getWidth(),getBitmap().getHeight(),matrix,true));
+                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),getMatrix(),true);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             customimageView.setBackground(null);
-            customimageView.setImageBitmap(getBitmap());
+            customimageView.setImageBitmap(bitmap);
             btn_share.setVisibility(View.VISIBLE);
 
         }
@@ -281,18 +266,65 @@ public class CaptureFragment extends Fragment {
         }
     }
 
-    public Bitmap getBitmap(){
-        return bitmap;
-    }
-    public void setBitmap(Bitmap bitmap){
-        this.bitmap = bitmap;
-    }
-
     public String getFilepath(){
         return filepath;
     }
     public void setFilepath(String filepath){
         this.filepath = filepath;
+    }
+
+    public Matrix getMatrix(){
+        return matrix;
+    }
+    public void setMatrix(Matrix matrix){
+        this.matrix = matrix;
+    }
+
+    public File compressedFoto (File file){
+
+        try {
+
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE=75;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            selectedBitmap = Bitmap.createBitmap(selectedBitmap,0,0,selectedBitmap.getWidth(),selectedBitmap.getHeight(),getMatrix(),true);
+
+            // here i override the original image file
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , outputStream);
+
+            return file;
+
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 
