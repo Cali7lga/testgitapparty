@@ -12,7 +12,7 @@ import android.widget.ImageView;
  */
 
 public class CustomImageView extends ImageView {
-    public static float radius = 36.0f;
+    public static float radius = 54.0f;
 
     public CustomImageView(Context context) {
         super(context);

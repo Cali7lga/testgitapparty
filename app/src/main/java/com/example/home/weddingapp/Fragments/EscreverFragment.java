@@ -93,8 +93,8 @@ public class EscreverFragment extends Fragment {
 
                 if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("")) {
                     AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Erro");
-                    alertDialog.setMessage("Por favor, preencha os campos de mensagem e autor corretamente.");
+                    alertDialog.setTitle("Ops!");
+                    alertDialog.setMessage("Por favor, verifique se preencheu ambos os campos");
                     alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

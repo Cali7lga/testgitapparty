@@ -32,9 +32,9 @@
             android:id="@+id/textView32"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
+            android:textSize="19sp"
             android:fontFamily="serif"
-            android:textColor="#CCCCCC"/>
+            android:textColor="#FFF"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -81,9 +81,9 @@
             android:id="@+id/textView12"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="serif"
-            android:textColor="#CCCCCC" />
+            android:textColor="#FFF" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -131,9 +131,9 @@
             android:id="@+id/textView14"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="serif"
-            android:textColor="#CCCCCC" />
+            android:textColor="#FFF" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -180,9 +180,9 @@
             android:id="@+id/textView16"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="serif"
-            android:textColor="#CCCCCC" />
+            android:textColor="#FFF" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -229,9 +229,9 @@
             android:id="@+id/textView34"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="serif"
-            android:textColor="#CCCCCC"/>
+            android:textColor="#FFF"/>
 
         <LinearLayout
             android:orientation="horizontal"

@@ -162,7 +162,7 @@ public class CaptureFragment extends Fragment {
                             databaseReference.child("fotosUrl").push().setValue(fileinfo);
                             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                             alertDialog.setTitle("Upload Completo");
-                            alertDialog.setMessage("Muito obrigado por compartilhar sua foto conosco!");
+                            alertDialog.setMessage("Muito obrigado por compartilhar seu momento conosco!");
                             alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
