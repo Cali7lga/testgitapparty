@@ -4,6 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +27,7 @@ import com.example.home.weddingapp.R;
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class MainFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +39,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private MainFragmentInteractionListener mListener;
 
-    private Button botao;
+    private Button botaoCerto, botaoErrado;
     private EditText texto;
 
     public MainFragment() {
@@ -74,10 +78,54 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        botao = (Button) view.findViewById(R.id.button);
+        botaoErrado = (Button) view.findViewById(R.id.button);
+        botaoCerto = (Button) view.findViewById(R.id.button11);
         texto = (EditText) view.findViewById(R.id.editText);
 
-        botao.setOnClickListener(this);
+        texto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(texto.getText().toString().equals("teste")){
+                    botaoErrado.setVisibility(View.INVISIBLE);
+                    botaoCerto.setVisibility(View.VISIBLE);
+                }
+                else{
+                    botaoErrado.setVisibility(View.VISIBLE);
+                    botaoCerto.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
+
+        botaoErrado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Toast.makeText(getActivity(), "Senha Incorreta", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        botaoCerto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadTabBar();
+
+            }
+        });
 
         MainActivity mainactivity = (MainActivity) getActivity();
         mainactivity.stopmusic();
@@ -108,23 +156,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        if(texto.getText().toString().equals("teste")) {
-
-            MainActivity mainactivity = (MainActivity) getActivity();
-            mainactivity.loadTabBar();
-
-        }
-        else{
-
-            Toast.makeText(getActivity(), "Senha Incorreta", Toast.LENGTH_SHORT).show();
-
-        }
-
     }
 
     @Override

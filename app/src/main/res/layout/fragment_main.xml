@@ -1,53 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.MainFragment">
 
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/flowers2">
+        android:src="@drawable/convite"
+        android:id="@+id/imageView"
+        android:scaleType="centerCrop" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/imageView"
-            android:background="@drawable/rings"
-            android:layout_marginBottom="12dp"
-            android:layout_above="@+id/textView2"
-            android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="#F0F0E1"
+        android:id="@+id/imageView21"
+        android:alpha="0.6"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Thais &amp; Lucas"
-            android:id="@+id/textView2"
-            android:textColor="#ffffff"
-            android:textStyle="normal|bold|italic"
-            android:fontFamily="cursive"
-            android:textSize="36sp"
-            android:layout_marginBottom="20dp"
-            android:layout_above="@+id/editText"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:textColor="#797979"
-            android:background="@drawable/textview_digitar"
-            android:gravity="center_vertical|center"
-            android:singleLine="true"
-            android:hint="Senha"
-            android:fontFamily="sans-serif"
-            android:backgroundTint="@android:color/white"
-            android:layout_width="210dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="15sp"
-            android:layout_height="32dp"
-            android:text="teste"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
             android:layout_width="wrap_content"
@@ -59,12 +34,53 @@
             android:text="Bem vindo"
             android:fontFamily="serif"
             android:background="@drawable/round_button"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"/>
+            android:layout_marginBottom="37dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button11"
+            android:clickable="true"
+            android:textAllCaps="false"
+            android:textStyle="normal|italic"
+            android:text="Bem vindo"
+            android:fontFamily="serif"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:textColor="#e8d587"
+            android:padding="10dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="37dp"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:textColor="#797979"
+            android:background="@drawable/textview_digitar"
+            android:gravity="center_vertical|center"
+            android:maxLines="1"
+            android:hint="Senha"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="@android:color/white"
+            android:layout_width="210dp"
+            android:textSize="15sp"
+            android:layout_height="32dp"
+            android:text="teste"
+            android:layout_marginBottom="144dp"
+            android:layout_above="@+id/button"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>
