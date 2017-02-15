@@ -1,6 +1,7 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,20 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
-import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Tab4Fragment.Tab4FragmentInteractionListener} interface
+ * {@link Tab4Fragment.Tab5FragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link Tab4Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Tab4Fragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +31,7 @@ public class Tab4Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Tab4FragmentInteractionListener mListener;
+    private Tab5FragmentInteractionListener mListener;
 
     public Tab4Fragment() {
         // Required empty public constructor
@@ -68,39 +68,28 @@ public class Tab4Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_tab4, container, false);
 
-        ImageButton botao = (ImageButton) view.findViewById(R.id.imageButton);
-        botao.setOnClickListener(new View.OnClickListener() {
+        Button btn_fs = (Button) view.findViewById(R.id.button5);
+        Button btn_c = (Button) view.findViewById(R.id.button6);
+        Button btn_x = (Button) view.findViewById(R.id.button7);
+
+        btn_fs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadMaps();
-
+                openurl("http://listadecasamento.fastshop.com.br/");
             }
         });
-
-        ImageButton botao2 = (ImageButton) view.findViewById(R.id.imageButton2);
-        botao2.setOnClickListener(new View.OnClickListener() {
+        btn_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadStview();
-
+                openurl("http://www.camicado.com.br/WeddingList?idWeddingListType=1");
             }
         });
-
-        Button botao3 = (Button) view.findViewById(R.id.button2);
-        botao3.setOnClickListener(new View.OnClickListener() {
+        btn_x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadFornecedores();
-
+                openurl("https://www.xarmonix.com.br/listas-de-casamento/");
             }
         });
 
@@ -110,15 +99,15 @@ public class Tab4Fragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTab4FragmentInteraction(uri);
+            mListener.onTab5FragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Tab4FragmentInteractionListener) {
-            mListener = (Tab4FragmentInteractionListener) context;
+        if (context instanceof Tab5FragmentInteractionListener) {
+            mListener = (Tab5FragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -131,15 +120,13 @@ public class Tab4Fragment extends Fragment {
         mListener = null;
     }
 
-/*    @Override
-    public void onClick(View v) {
+    public void openurl (String site){
 
-        if (v == getId(R.id.imageButton)) {
-            MainActivity mainactivity = (MainActivity) getActivity();
-            mainactivity.loadMaps();
-        }
+        Uri uri = Uri.parse(site);
+        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(intent);
+
     }
-*/
 
     /**
      * This interface must be implemented by activities that contain this
@@ -151,8 +138,8 @@ public class Tab4Fragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface Tab4FragmentInteractionListener {
+    public interface Tab5FragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTab4FragmentInteraction(Uri uri);
+        void onTab5FragmentInteraction(Uri uri);
     }
 }

@@ -78,8 +78,7 @@ public class TabBarFragment extends Fragment {
         tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", getResources().getDrawable(R.drawable.wedding)),Tab1Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", getResources().getDrawable(R.drawable.hearts)),Tab2Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", getResources().getDrawable(R.drawable.mag)),Tab3Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", getResources().getDrawable(R.drawable.date)),Tab4Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab5").setIndicator("", getResources().getDrawable(R.drawable.ribbon)),Tab5Fragment.class,null);
+        tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", getResources().getDrawable(R.drawable.ribbon)),Tab4Fragment.class,null);
 
         tabHost.setCurrentTab(0);
 

@@ -71,6 +71,7 @@ public class Tab3Fragment extends Fragment {
 
         ImageButton msgs = (ImageButton) view.findViewById(R.id.imageButton12);
         ImageButton fotos = (ImageButton) view.findViewById(R.id.imageButton14);
+        ImageButton evt = (ImageButton) view.findViewById(R.id.imageButton20);
 
         msgs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +86,14 @@ public class Tab3Fragment extends Fragment {
             public void onClick(View v) {
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.loadFotos();
+            }
+        });
+
+        evt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadCerimonia();
             }
         });
 

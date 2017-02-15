@@ -10,9 +10,9 @@ import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.example.home.weddingapp.Fragments.CaptureFragment;
+import com.example.home.weddingapp.Fragments.CerimoniaFragment;
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.FotosFragment;
@@ -27,7 +27,6 @@ import com.example.home.weddingapp.Fragments.StreetviewFragment;
 import com.example.home.weddingapp.Fragments.Tab2Fragment;
 import com.example.home.weddingapp.Fragments.Tab3Fragment;
 import com.example.home.weddingapp.Fragments.Tab4Fragment;
-import com.example.home.weddingapp.Fragments.Tab5Fragment;
 import com.example.home.weddingapp.Fragments.VideoFragment;
 import com.example.home.weddingapp.R;
 import com.example.home.weddingapp.Fragments.Tab1Fragment;
@@ -47,11 +46,11 @@ public class MainActivity extends FragmentActivity
         EscreverFragment.EscreverFragmentInteractionListener,
         FotosFragment.FotosFragmentInteractionListener,
         CaptureFragment.CaptureFragmentInteractionListener,
-        Tab4Fragment.Tab4FragmentInteractionListener,
+        CerimoniaFragment.Tab4FragmentInteractionListener,
         MapsFragment.MapsFragmentInteractionListener,
         StreetviewFragment.StviewFragmentInteractionListener,
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
-        Tab5Fragment.Tab5FragmentInteractionListener,
+        Tab4Fragment.Tab5FragmentInteractionListener,
         PayFragment.PayFragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
@@ -62,7 +61,7 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setBackgroundDrawable(new ColorDrawable(0xffffffff));
+        getWindow().setBackgroundDrawable(new ColorDrawable(0xfff5f5ee));
 
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.FragmentContainer);
@@ -195,6 +194,13 @@ public class MainActivity extends FragmentActivity
 
         FotosFragment fotosFragment = new FotosFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, fotosFragment).addToBackStack(null).commit();
+
+    }
+
+    public void loadCerimonia(){
+
+        CerimoniaFragment cerimoniaFragment = new CerimoniaFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, cerimoniaFragment).addToBackStack(null).commit();
 
     }
 
