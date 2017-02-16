@@ -11,13 +11,13 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f0f0e1"
+        android:background="#f4f4ec"
         android:layout_weight="1">
 
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/pic"
+            android:src="@drawable/camera"
             android:id="@+id/imageButton14"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -37,7 +37,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/envelope"
+            android:src="@drawable/black"
             android:id="@+id/imageButton12"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -57,7 +57,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@android:color/holo_orange_dark"
+            android:src="@drawable/calendar"
             android:id="@+id/imageButton20"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"

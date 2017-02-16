@@ -61,7 +61,7 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setBackgroundDrawable(new ColorDrawable(0xfff5f5ee));
+        getWindow().setBackgroundDrawable(new ColorDrawable(0xffffffff));
 
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.FragmentContainer);

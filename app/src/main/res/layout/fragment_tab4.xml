@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.Tab4Fragment"
-    android:background="#f0f0e1">
+    android:background="#F4F4EC">
 
     <LinearLayout
         android:layout_width="match_parent"
