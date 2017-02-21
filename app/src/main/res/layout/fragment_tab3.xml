@@ -15,64 +15,64 @@
         android:layout_weight="1">
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/camera"
             android:id="@+id/imageButton14"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/enviar_btn"/>
+            android:background="@android:color/transparent"/>
 
         <TextView
-            android:text="Registre seu momento"
+            android:text="Momentos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView28"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white"
+            android:textColor="#E6D59D"
             android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_weight="10" />
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/black"
             android:id="@+id/imageButton12"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/enviar_btn" />
+            android:background="@android:color/transparent" />
 
         <TextView
-            android:text="Mensagem aos noivos"
+            android:text="Mensagens"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView24"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white"
+            android:textColor="#E6D59D"
             android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_weight="10" />
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/calendar"
             android:id="@+id/imageButton20"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/enviar_btn"/>
+            android:background="@android:color/transparent"/>
 
         <TextView
-            android:text="Cerimonia"
+            android:text="Evento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white"
+            android:textColor="#E6D59D"
             android:fontFamily="serif"
             android:textStyle="normal"
-            android:layout_weight="10" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 

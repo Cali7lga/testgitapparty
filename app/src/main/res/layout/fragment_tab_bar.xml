@@ -42,7 +42,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/button3"
-        android:src="@drawable/multimediatwo"
+        android:src="@drawable/som"
         android:background="@android:color/transparent"
         android:layout_marginBottom="67dp"
         android:layout_marginRight="12dp"
@@ -56,7 +56,7 @@
         android:layout_alignStart="@+id/button3"
         android:id="@+id/button4"
         android:background="@android:color/transparent"
-        android:src="@drawable/multimedia"
+        android:src="@drawable/som"
         android:visibility="invisible" />
 
 </RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.HistoryFragment"
-    android:background="@drawable/walk"
+    android:background="#f4f4ec"
     android:orientation="vertical">
 
     <LinearLayout
@@ -36,29 +36,29 @@
         android:layout_marginTop="10dp"
         android:gravity="center">
 
-        <view
-            android:layout_width="135dp"
-            android:layout_height="1dp"
-            class="android.support.v4.widget.DrawerLayout"
-            android:id="@+id/view4"
-            android:background="@android:color/white"/>
-
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView4"
-            android:src="@drawable/heart"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:textColor="#e6d59d"
+            android:text="Lucas Gurgel"
+            android:fontFamily="serif"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
-        <view
-            android:layout_width="135dp"
-            android:layout_height="1dp"
-            class="android.support.v4.widget.DrawerLayout"
-            android:id="@+id/view5"
-            android:background="@android:color/white"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#e6d59d"
+            android:text="Thaís Marques"
+            android:fontFamily="serif"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 
@@ -68,15 +68,14 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/imageView4">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFF"
-            android:text="Nossa Historia"
-            android:fontFamily="serif"
-            android:textSize="20dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp" />
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            class="android.support.v4.widget.DrawerLayout"
+            android:id="@+id/view5"
+            android:background="#e6d59d"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
 
         <TextView
             android:layout_width="300dp"
@@ -87,8 +86,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:background="@drawable/textview_shape"
+            android:textColor="#e6d59d"
             android:fontFamily="serif"
             android:layout_weight="1"/>
 

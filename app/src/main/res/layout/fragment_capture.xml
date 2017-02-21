@@ -5,8 +5,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.CaptureFragment"
     android:orientation="vertical"
-    android:background="@android:color/black"
+    android:background="#f4f4ec"
     android:weightSum="1">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gallery"
+        android:id="@+id/imageButton21"
+        android:background="@android:color/transparent"
+        android:scaleType="fitEnd"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"/>
 
     <com.example.home.weddingapp.Others.CustomImageView
         android:layout_width="match_parent"
@@ -17,7 +28,8 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/round_corners"
         android:backgroundTint="@color/graytransparent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:layout_weight="1"/>
 
     <TextView
         android:text="Carregando imagem..."
@@ -26,7 +38,7 @@
         android:id="@+id/textView36"
         android:layout_weight="1"
         android:layout_marginTop="20dp"
-        android:textColor="@android:color/white"
+        android:textColor="#E6D59D"
         android:layout_gravity="center_horizontal"
         android:visibility="invisible" />
 
@@ -39,7 +51,7 @@
         android:max="100" />
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -52,8 +64,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button10"
             android:background="@drawable/round_button"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="30dp"
+            android:textColor="#E6D59D"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -69,7 +80,7 @@
             android:background="@drawable/enviar_btn"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/graytransparent"
+            android:backgroundTint="#E6D59D"
             android:layout_width="60dp"
             android:layout_marginBottom="10dp" />
 
