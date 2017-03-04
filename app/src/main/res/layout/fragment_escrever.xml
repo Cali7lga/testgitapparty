@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mensagens"
+    android:background="@color/bg_bege"
     tools:context="com.example.home.weddingapp.Fragments.EscreverFragment">
 
     <EditText

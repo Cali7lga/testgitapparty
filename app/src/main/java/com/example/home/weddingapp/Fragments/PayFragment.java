@@ -19,6 +19,7 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class PayFragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -110,4 +111,5 @@ public class PayFragment extends Fragment {
         // TODO: Update argument type and name
         void onPayFragmentInteraction(Uri uri);
     }
+
 }

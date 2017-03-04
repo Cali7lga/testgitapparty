@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 /**
@@ -71,25 +72,12 @@ public class Tab4Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab4, container, false);
 
         Button btn_fs = (Button) view.findViewById(R.id.button5);
-        Button btn_c = (Button) view.findViewById(R.id.button6);
-        Button btn_x = (Button) view.findViewById(R.id.button7);
 
         btn_fs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openurl("http://listadecasamento.fastshop.com.br/");
-            }
-        });
-        btn_c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openurl("http://www.camicado.com.br/WeddingList?idWeddingListType=1");
-            }
-        });
-        btn_x.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openurl("https://www.xarmonix.com.br/listas-de-casamento/");
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadPayment();
             }
         });
 
@@ -118,14 +106,6 @@ public class Tab4Fragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    public void openurl (String site){
-
-        Uri uri = Uri.parse(site);
-        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-        startActivity(intent);
-
     }
 
     /**

@@ -12,17 +12,22 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dd.morphingbutton.MorphingButton;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.CustomImageView;
 import com.example.home.weddingapp.Others.FileInfoUrl;
@@ -56,15 +61,16 @@ public class CaptureFragment extends Fragment {
     StorageReference storageReference;
     DatabaseReference databaseReference;
     CustomImageView customimageView;
-    Button btn_new, btn_share;
+    Button btn_new;
+    ImageButton btn_gallery;
     ProgressBar progressBar;
     String filepath;
-    TextView textView;
     Matrix matrix;
+    MorphingButton btnMorph;
 
     public static final int REQUEST_EXTERNAL_STORAGE = 0;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
-    public static final int PIC_CROP = 2;
+    private int morphCounter = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,12 +121,13 @@ public class CaptureFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_capture, container, false);
 
         customimageView = (CustomImageView) view.findViewById(R.id.imageView20);
-        textView = (TextView) view.findViewById(R.id.textView36);
-        btn_new = (Button) view.findViewById(R.id.button9);
-        btn_share = (Button) view.findViewById(R.id.button10);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
+        btn_new = (Button) view.findViewById(R.id.button12);
+        btn_gallery = (ImageButton) view.findViewById(R.id.imageButton21);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        btnMorph = (MorphingButton) view.findViewById(R.id.btnMorph);
+        morphToLocked(btnMorph,0);
 
         camerapermission();
         galeriapermission();
@@ -133,49 +140,68 @@ public class CaptureFragment extends Fragment {
             }
         });
 
-        btn_share.setOnClickListener(new View.OnClickListener() {
+        btn_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try{
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), REQUEST_IMAGE_CAPTURE);
 
-                    Uri file = Uri.fromFile(compressedFoto(new File(getFilepath())));
-                    String uniqueID = UUID.randomUUID().toString();
-                    UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putFile(file);
-                    uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+            }
+        });
 
-                            textView.setVisibility(View.VISIBLE);
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                            int inteiro = (int) progress;
-                            progressBar.setProgress(inteiro);
+        btnMorph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            textView.setVisibility(View.INVISIBLE);
-                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                            FileInfoUrl fileinfo = new FileInfoUrl();
-                            fileinfo.setImageUrl(downloadUrl.toString());
-                            databaseReference.child("fotosUrl").push().setValue(fileinfo);
-                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                            alertDialog.setTitle("Upload Completo");
-                            alertDialog.setMessage("Muito obrigado por compartilhar seu momento conosco!");
-                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    MainActivity mainActivity = (MainActivity) getActivity();
-                                    mainActivity.backfragment();
-                                }
-                            });
-                            alertDialog.show();
-                        }
-                    });
+                if(morphCounter==1){
+                    Toast.makeText(getActivity(), "Nenhuma imagem selecionada", Toast.LENGTH_SHORT).show();
+                }
+                else if(morphCounter==0){
 
-                }catch (Exception e){
-                    e.printStackTrace();
+                    try{
+
+                        btnMorph.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.VISIBLE);
+
+                        Uri file = Uri.fromFile(compressedFoto(new File(getFilepath())));
+                        String uniqueID = UUID.randomUUID().toString();
+                        UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putFile(file);
+                        uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                int inteiro = (int) progress;
+                                progressBar.setProgress(inteiro);
+
+                            }
+                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                FileInfoUrl fileinfo = new FileInfoUrl();
+                                fileinfo.setImageUrl(downloadUrl.toString());
+                                databaseReference.child("fotosUrl").push().setValue(fileinfo);
+                                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                                alertDialog.setTitle("Upload Completo");
+                                alertDialog.setMessage("Muito obrigado por compartilhar seu momento conosco!");
+                                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        MainActivity mainActivity = (MainActivity) getActivity();
+                                        mainActivity.backfragment();
+                                    }
+                                });
+                                alertDialog.show();
+                            }
+                        });
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -209,6 +235,7 @@ public class CaptureFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
             Uri selectedImage = data.getData();
@@ -224,22 +251,20 @@ public class CaptureFragment extends Fragment {
 
             Bitmap bitmap = BitmapFactory.decodeFile(getFilepath());
 
-            try{
+            try {
                 ExifInterface exif = new ExifInterface(getFilepath());
-                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,1);
+                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
 
                 setMatrix(new Matrix());
                 if (orientation == 6) {
                     getMatrix().postRotate(90);
-                }
-                else if (orientation == 3) {
+                } else if (orientation == 3) {
                     getMatrix().postRotate(180);
-                }
-                else if (orientation == 8) {
+                } else if (orientation == 8) {
                     getMatrix().postRotate(270);
                 }
 
-                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),getMatrix(),true);
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), getMatrix(), true);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -247,8 +272,15 @@ public class CaptureFragment extends Fragment {
 
             customimageView.setBackground(null);
             customimageView.setImageBitmap(bitmap);
-            btn_share.setVisibility(View.VISIBLE);
 
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    morphToSquare(btnMorph,500);
+                    morphCounter=0;
+                }
+            }, 1000);
         }
     }
 
@@ -327,6 +359,32 @@ public class CaptureFragment extends Fragment {
         }
     }
 
+    private void morphToLocked(final MorphingButton btnMorph, int duration) {
+
+        int dp56 = (int) getResources().getDimension(R.dimen.mb_56);
+
+        MorphingButton.Params circle = MorphingButton.Params.create()
+                .duration(duration)
+                .cornerRadius(dp56)
+                .width(dp56)
+                .height(dp56)
+                .color(ContextCompat.getColor(getContext(),R.color.laranjinha))
+                .colorPressed(ContextCompat.getColor(getContext(),R.color.laranjinha))
+                .icon(R.drawable.lock);
+        btnMorph.morph(circle);
+    }
+
+    private void morphToSquare(final MorphingButton btnMorph, int duration) {
+        MorphingButton.Params square = MorphingButton.Params.create()
+                .duration(duration)
+                .cornerRadius((int) getResources().getDimension(R.dimen.mb_10))
+                .width((int) getResources().getDimension(R.dimen.mb_150))
+                .height((int) getResources().getDimension(R.dimen.mb_56))
+                .color(ContextCompat.getColor(getContext(),R.color.laranjinha))
+                .colorPressed(ContextCompat.getColor(getContext(),R.color.laranjinha))
+                .text("Compartilhar");
+        btnMorph.morph(square);
+    }
 
     /**
      * This interface must be implemented by activities that contain this

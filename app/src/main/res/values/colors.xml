@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#327c7c7c</color>
     <color name="colorAccent">#FF4081</color>
     <color name="graytransparent">#ccffffff</color>
+    <color name="laranjinha">#e6d59d</color>
+    <color name="bg_bege">#f4f4f0</color>
+    <color name="marrom_texto">#85460F</color>
 </resources>
