@@ -4,11 +4,20 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.example.home.weddingapp.Others.DatabaseTask;
 import com.example.home.weddingapp.R;
+import com.stripe.*;
+import com.stripe.android.*;
+import com.stripe.android.Stripe;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +28,9 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class PayFragment extends Fragment {
+
+    EditText edt_nome, edt_numero, edt_mes, edt_ano, edt_cvc, edt_valor;
+    Button button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,6 +80,58 @@ public class PayFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pay, container, false);
 
+        edt_nome = (EditText) view.findViewById(R.id.editText4);
+        edt_numero = (EditText) view.findViewById(R.id.editText5);
+        edt_mes = (EditText) view.findViewById(R.id.editText6);
+        edt_ano = (EditText) view.findViewById(R.id.editText7);
+        edt_cvc = (EditText) view.findViewById(R.id.editText8);
+        edt_valor = (EditText) view.findViewById(R.id.editText9);
+
+        button = (Button) view.findViewById(R.id.button6);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i("botao", "onClick: ");
+                String cardNumber = edt_numero.getText().toString();
+                int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
+                int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
+                String cardCVC = edt_cvc.getText().toString();
+                final String valor = edt_valor.getText().toString();
+
+                Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
+                if (!card.validateCard()) {
+                    System.out.println("Error valid card");
+                }
+                else{
+
+                    try {
+                        System.out.println("Valid card");
+                        Stripe stripe = new Stripe(getContext(), "pk_test_vU31MNnKZRBtobErgiqCznGO");
+                        stripe.createToken(card, new TokenCallback() {
+                            @Override
+                            public void onError(Exception error) {
+                                System.out.println("Erro token callback: "+error.toString());
+                            }
+
+                            @Override
+                            public void onSuccess(Token token) {
+
+                                System.out.println("Sucesso token callback");
+
+                                DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor);
+                                databaseTask.execute();
+
+                            }
+                        });
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
 
 
         return view;

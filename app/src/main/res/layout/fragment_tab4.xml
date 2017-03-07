@@ -9,31 +9,61 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sugestões de presentes"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#e6d59d"
             android:fontFamily="serif"
-            android:textSize="25sp"
+            android:text="Pessoal,"
+            android:textColor="#e6d59d"
+            android:textSize="15sp"
             android:textStyle="normal" />
 
-        <Button
-            android:text="Fast Shop"
-            android:id="@+id/button5"
-            android:background="@drawable/round_button"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#e6d59d"
-            android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:textAllCaps="false"
+            android:text="Após o casamento, nosso endereço será nos EUA, portanto, caso queiram nos presentear com algo para a nossa casinha, é só clicar no botão abaixo. Esses valores serão dedicados à construção do nosso lar. Desde já agradecemos e saibam que lembraremos de casa presente com muito carinho."
+            android:textColor="#e6d59d"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:fontFamily="serif"
+            android:text="Thaís &amp; Lucas"
+            android:textColor="#e6d59d"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="240dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/construction"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_width="150dp"
-            android:textSize="15sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="serif"
+            android:text="Presentear os noivos"
+            android:textAllCaps="false"
+            android:textColor="@color/laranjinha"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

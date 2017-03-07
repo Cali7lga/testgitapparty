@@ -30,35 +30,35 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:gravity="center">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#e6d59d"
-            android:text="Lucas Gurgel"
-            android:fontFamily="serif"
-            android:textSize="15dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"/>
+            android:fontFamily="serif"
+            android:gravity="center_horizontal"
+            android:text=" Lucas Gurgel"
+            android:textColor="#e6d59d"
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#e6d59d"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:gravity="center_horizontal"
             android:text="Thaís Marques"
-            android:fontFamily="serif"
-            android:textSize="15dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"/>
+            android:textColor="#e6d59d"
+            android:textSize="15dp" />
 
     </LinearLayout>
 
@@ -90,29 +90,16 @@
             android:fontFamily="serif"
             android:layout_weight="1"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <view
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:id="@+id/ll2"
-            android:layout_weight="0">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrowsleft"
-                android:id="@+id/imageView12" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrowsright"
-                android:id="@+id/imageView17"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp"/>
-
-        </LinearLayout>
+            android:layout_height="1dp"
+            class="android.support.v4.widget.DrawerLayout"
+            android:id="@+id/view2"
+            android:background="#e6d59d"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
 

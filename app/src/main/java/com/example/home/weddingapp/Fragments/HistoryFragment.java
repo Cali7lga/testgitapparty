@@ -72,9 +72,9 @@ public class HistoryFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        LinearLayout layout = (LinearLayout) view.findViewById(R.id.ll2);
-        Animation blink = AnimationUtils.loadAnimation(getActivity(),R.anim.blink);
-        layout.startAnimation(blink);
+//        LinearLayout layout = (LinearLayout) view.findViewById(R.id.ll2);
+//        Animation blink = AnimationUtils.loadAnimation(getActivity(),R.anim.blink);
+//        layout.startAnimation(blink);
 
         TextView textView = (TextView) view.findViewById(R.id.textView3);
         textView.setMovementMethod(new ScrollingMovementMethod());
