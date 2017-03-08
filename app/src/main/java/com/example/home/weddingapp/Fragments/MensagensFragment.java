@@ -1,16 +1,20 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.FileInfoMsg;
@@ -36,6 +40,8 @@ public class MensagensFragment extends Fragment {
     DatabaseReference mRef = database.getReference();
 
     ImageButton imageButton;
+
+    FirebaseRecyclerAdapter<FileInfoMsg,MessageViewHolder> mAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,20 +97,55 @@ public class MensagensFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerAdapter<FileInfoMsg,MessageViewHolder> mAdapter = new FirebaseRecyclerAdapter<FileInfoMsg, MessageViewHolder>(
+        mAdapter = new FirebaseRecyclerAdapter<FileInfoMsg, MessageViewHolder>(
                 FileInfoMsg.class,
                 R.layout.fragment_msgitem,
                 MessageViewHolder.class,
                 mRef.child("messages")
         ) {
             @Override
-            protected void populateViewHolder(MessageViewHolder viewHolder, FileInfoMsg model, int position) {
+            protected void populateViewHolder(MessageViewHolder viewHolder, final FileInfoMsg model, final int position) {
 
                 String msg = model.getMensagem();
                 String nm = model.getNome();
 
                 viewHolder.messageText.setText(msg);
                 viewHolder.nameText.setText(nm);
+
+                viewHolder.messageText.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+
+                        final EditText input = new EditText(getActivity());
+
+                        final AlertDialog aDialog = new AlertDialog.Builder(getActivity()).create();
+                        aDialog.setTitle("Área Reservada");
+                        aDialog.setMessage("Área destinada aos noivos. Se deseja remover a mensagem, digite a senha:");
+                        aDialog.setView(input);
+                        aDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Remover", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                if(input.getText().toString().equals("remove")){
+
+                                    mAdapter.getRef(position).removeValue();
+                                    Toast.makeText(getActivity(), "Mensagem deletada com sucesso", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
+
+                                    Toast.makeText(getActivity(), "Senha incorreta", Toast.LENGTH_SHORT).show();
+                                    aDialog.dismiss();
+
+                                }
+
+                            }
+                        });
+                        aDialog.show();
+
+                        return true;
+                    }
+                });
             }
         };
 

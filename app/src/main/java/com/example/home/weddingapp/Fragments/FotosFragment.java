@@ -5,11 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,8 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.Activity.MainActivity;
@@ -46,6 +50,8 @@ public class FotosFragment extends Fragment {
     DatabaseReference dbRef = database.getReference();
 
     ImageButton imageButton;
+
+    FirebaseRecyclerAdapter<FileInfoUrl,PhotoViewHolder> adapter;
 
     private Animator mCurrentAnimator;
     private int mShortAnimationDuration;
@@ -104,14 +110,14 @@ public class FotosFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerAdapter<FileInfoUrl,PhotoViewHolder> adapter = new FirebaseRecyclerAdapter<FileInfoUrl, PhotoViewHolder>(
+        adapter = new FirebaseRecyclerAdapter<FileInfoUrl, PhotoViewHolder>(
                 FileInfoUrl.class,
                 R.layout.fragment_photoitem,
                 PhotoViewHolder.class,
                 dbRef.child("fotosUrl")
         ) {
             @Override
-            protected void populateViewHolder(final PhotoViewHolder viewHolder, FileInfoUrl model, int position) {
+            protected void populateViewHolder(final PhotoViewHolder viewHolder, FileInfoUrl model, final int position) {
 
                 final String url = model.getImageUrl();
                 Uri uri = Uri.parse(url);
@@ -120,9 +126,43 @@ public class FotosFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        Log.i("lalala", "onClick: "+url);
                         zoomImageFromThumb(viewHolder.imageView, url);
 
+                    }
+                });
+
+                viewHolder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+
+                        final EditText input = new EditText(getActivity());
+
+                        final AlertDialog aDialog = new AlertDialog.Builder(getActivity()).create();
+                        aDialog.setTitle("Área Reservada");
+                        aDialog.setMessage("Área destinada aos noivos. Se deseja remover a foto, digite a senha:");
+                        aDialog.setView(input);
+                        aDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Remover", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                if(input.getText().toString().equals("remove")){
+
+                                    adapter.getRef(position).removeValue();
+                                    Toast.makeText(getActivity(), "Foto deletada com sucesso", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
+
+                                    Toast.makeText(getActivity(), "Senha incorreta", Toast.LENGTH_SHORT).show();
+                                    aDialog.dismiss();
+
+                                }
+
+                            }
+                        });
+                        aDialog.show();
+
+                        return true;
                     }
                 });
 
