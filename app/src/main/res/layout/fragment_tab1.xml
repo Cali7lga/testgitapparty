@@ -1,14 +1,210 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.Tab1Fragment">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
+    <VideoView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/videoView" />
 
-    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000"
+                android:id="@+id/dias"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:id="@+id/horas"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:id="@+id/minutos"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:id="@+id/segundos"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+
+            <TextView
+                android:text="Dias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView18"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:text="Horas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:text="Minutos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:text="Segundos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:fontFamily="serif"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_weight="1"
+            android:src="@drawable/oval128"
+            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_marginTop="3dp" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_weight="1"
+            android:src="@drawable/oval128"
+            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_marginTop="3dp" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_weight="1"
+            android:src="@drawable/oval128"
+            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_marginTop="3dp" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_weight="1"
+            android:src="@drawable/oval128"
+            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_marginTop="3dp" />
+
+    </LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        app:fab_addButtonColorNormal="@color/laranjinha"
+        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:fab_labelStyle="@style/menu_labels_style">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/casal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/laranjinha"
+            app:fab_title="Casal"
+            app:fab_icon="@drawable/couple"
+            app:fab_size="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/laranjinha"
+            app:fab_title="Álbum"
+            app:fab_icon="@drawable/album"
+            app:fab_size="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/som"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/laranjinha"
+            app:fab_title="Som"
+            app:fab_size="mini" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </RelativeLayout>

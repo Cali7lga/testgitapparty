@@ -156,7 +156,7 @@ public class CaptureFragment extends Fragment {
             public void onClick(View v) {
 
                 if(morphCounter==1){
-                    Toast.makeText(getActivity(), "Nenhuma imagem selecionada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Nenhuma imagem selecionada. Escolha entre Câmera ou Galeria para selecionar uma foto.", Toast.LENGTH_LONG).show();
                 }
                 else if(morphCounter==0){
 

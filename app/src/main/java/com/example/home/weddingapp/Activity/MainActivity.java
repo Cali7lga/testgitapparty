@@ -24,19 +24,17 @@ import com.example.home.weddingapp.Fragments.PadrinhosFragment;
 import com.example.home.weddingapp.Fragments.PayFragment;
 import com.example.home.weddingapp.Fragments.PhotosFragment;
 import com.example.home.weddingapp.Fragments.StreetviewFragment;
+import com.example.home.weddingapp.Fragments.Tab1Fragment;
 import com.example.home.weddingapp.Fragments.Tab2Fragment;
 import com.example.home.weddingapp.Fragments.Tab3Fragment;
 import com.example.home.weddingapp.Fragments.Tab4Fragment;
-import com.example.home.weddingapp.Fragments.VideoFragment;
 import com.example.home.weddingapp.R;
-import com.example.home.weddingapp.Fragments.Tab1Fragment;
 import com.example.home.weddingapp.Fragments.TabBarFragment;
 
 public class MainActivity extends FragmentActivity
         implements MainFragment.MainFragmentInteractionListener,
         TabBarFragment.TabBarFragmentInteractionListener,
         Tab1Fragment.Tab1FragmentInteractionListener,
-        VideoFragment.VideoFragmentInteractionListener,
         HistoryFragment.HistoryFragmentInteractionListener,
         PhotosFragment.PhotosFragmentInteractionListener,
         Tab2Fragment.Tab2FragmentInteractionListener,
@@ -122,7 +120,7 @@ public class MainActivity extends FragmentActivity
 
         }
         else{
-            if(TabBarFragment.speaker.getVisibility() == View.VISIBLE) {
+            if(Tab1Fragment.speaking == 1) {
                 startmusic();
             }
         }
@@ -152,6 +150,20 @@ public class MainActivity extends FragmentActivity
 
         TabBarFragment tabbar = new TabBarFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, tabbar).commit();
+
+    }
+
+    public void loadHistory() {
+
+        HistoryFragment history = new HistoryFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, history).addToBackStack(null).commit();
+
+    }
+
+    public void loadPhotos() {
+
+        PhotosFragment photos = new PhotosFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, photos).addToBackStack(null).commit();
 
     }
 
@@ -235,11 +247,6 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onTab1FragmentInteraction(Uri uri) {
-
-    }
-
-    @Override
-    public void onVideoFragmentInteraction(Uri uri) {
 
     }
 

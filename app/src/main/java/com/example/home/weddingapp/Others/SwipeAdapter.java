@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.PhotosFragment;
-import com.example.home.weddingapp.Fragments.VideoFragment;
+import com.example.home.weddingapp.Fragments.Tab1Fragment;
 
 /**
  * Created by Home on 09/09/2016.
@@ -21,7 +21,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 
         Fragment fragment;
         if(position == 0) {
-            fragment = new VideoFragment();
+            fragment = new Tab1Fragment();
         }
         else if(position == 1){
             fragment = new HistoryFragment();

@@ -23,8 +23,6 @@ import com.example.home.weddingapp.R;
  */
 public class TabBarFragment extends Fragment {
 
-    public static ImageButton speaker, mute;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -82,38 +80,35 @@ public class TabBarFragment extends Fragment {
 
         tabHost.setCurrentTab(0);
 
-        MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
-
-        speaker = (ImageButton) view.findViewById(R.id.button3);
-        mute = (ImageButton) view.findViewById(R.id.button4);
-
-        if(MainActivity.mediaPlayer.isPlaying()) {
-            speaker.setVisibility(View.VISIBLE);
-            mute.setVisibility(View.INVISIBLE);
-        }
-        else{
-            speaker.setVisibility(View.INVISIBLE);
-            mute.setVisibility(View.VISIBLE);
-        }
-
-        speaker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.pausemusic();
-                speaker.setVisibility(View.INVISIBLE);
-                mute.setVisibility(View.VISIBLE);
-            }
-        });
-        mute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.startmusic();
-                mute.setVisibility(View.INVISIBLE);
-                speaker.setVisibility(View.VISIBLE);
-            }
-        });
+//        MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
+//
+//        if(MainActivity.mediaPlayer.isPlaying()) {
+//            speaker.setVisibility(View.VISIBLE);
+//            mute.setVisibility(View.INVISIBLE);
+//        }
+//        else{
+//            speaker.setVisibility(View.INVISIBLE);
+//            mute.setVisibility(View.VISIBLE);
+//        }
+//
+//        speaker.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                MainActivity mainActivity = (MainActivity) getActivity();
+//                mainActivity.pausemusic();
+//                speaker.setVisibility(View.INVISIBLE);
+//                mute.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        mute.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                MainActivity mainActivity = (MainActivity) getActivity();
+//                mainActivity.startmusic();
+//                mute.setVisibility(View.INVISIBLE);
+//                speaker.setVisibility(View.VISIBLE);
+//            }
+//        });
 
         return view;
     }

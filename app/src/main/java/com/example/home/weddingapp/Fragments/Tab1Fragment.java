@@ -1,16 +1,23 @@
 package com.example.home.weddingapp.Fragments;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.VideoView;
 
-import com.example.home.weddingapp.Others.SwipeAdapter;
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 
 /**
@@ -23,8 +30,11 @@ import com.example.home.weddingapp.R;
  */
 public class Tab1Fragment extends Fragment {
 
-    ViewPager viewPager;
-
+    public static int speaking=1;
+    TextView textdias, texthoras, textminutos, textsegundos;
+    VideoView videoView;
+    com.getbase.floatingactionbutton.FloatingActionButton som, album, casal;
+    FloatingActionsMenu menu;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,17 +78,135 @@ public class Tab1Fragment extends Fragment {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getChildFragmentManager());
-        viewPager.setAdapter(swipeAdapter);
+        textdias = (TextView) view.findViewById(R.id.dias);
+        texthoras = (TextView) view.findViewById(R.id.horas);
+        textminutos = (TextView) view.findViewById(R.id.minutos);
+        textsegundos = (TextView) view.findViewById(R.id.segundos);
 
-        return view;
+        videoView = (VideoView) view.findViewById(R.id.videoView);
+
+        menu = (FloatingActionsMenu) view.findViewById(R.id.multiple_actions);
+        som = (com.getbase.floatingactionbutton.FloatingActionButton) view.findViewById(R.id.som);
+        album = (com.getbase.floatingactionbutton.FloatingActionButton) view.findViewById(R.id.album);
+        casal = (com.getbase.floatingactionbutton.FloatingActionButton) view.findViewById(R.id.casal);
+
+        SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date d = null;
+        java.util.Date d1 = null;
+        Calendar calendar = Calendar.getInstance();
+        try {
+            d = dfDate.parse("06/05/2017 19:00:00");
+            d1 = dfDate.parse(dfDate.format(calendar.getTime()));
+        } catch (java.text.ParseException e){
+            e.printStackTrace();
+        }
+
+        long milisegundos = (d.getTime() - d1.getTime());
+
+        new CountDownTimer(milisegundos,1000){
+
+            double correcao = 1000*60*60*24;
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int dias = (int) (millisUntilFinished / correcao);
+                textdias.setText(String.valueOf(dias));
+
+                int horas = (int) (((millisUntilFinished / correcao) - dias) * 24);
+                texthoras.setText(String.valueOf(horas));
+
+                int minutos = (int) (((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60);
+                textminutos.setText(String.valueOf(minutos));
+
+                int segundos = (int) (((((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60) - minutos) *60);
+                textsegundos.setText(String.valueOf(segundos));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
+        String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.wildlife;
+        Uri src = Uri.parse(uripath);
+        videoView.setVideoURI(src);
+        videoView.requestFocus();
+        videoView.start();
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setVolume(0,0);
+            }
+        });
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                videoView.start();
+            }
+        });
+
+        MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
+
+        if(MainActivity.mediaPlayer.isPlaying()) {
+            som.setIcon(R.drawable.pause);
+        }
+        else{
+            som.setIcon(R.drawable.play);
+        }
+
+        som.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(speaking==1){
+
+                    speaking = 0;
+                    som.setIcon(R.drawable.play);
+                    MainActivity mainActivity = (MainActivity) getActivity();
+                    mainActivity.pausemusic();
+
+                }
+                else{
+
+                    speaking = 1;
+                    som.setIcon(R.drawable.pause);
+                    MainActivity mainActivity = (MainActivity) getActivity();
+                    mainActivity.startmusic();
+
+                }
+
+            }
+        });
+
+        album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadPhotos();
+
+            }
+        });
+
+        casal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadHistory();
+
+            }
+        });
+
+            return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -110,13 +238,15 @@ public class Tab1Fragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface Tab1FragmentInteractionListener {
         // TODO: Update argument type and name
         void onTab1FragmentInteraction(Uri uri);
     }
+
 }
