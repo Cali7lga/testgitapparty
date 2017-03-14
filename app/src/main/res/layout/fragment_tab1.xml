@@ -175,7 +175,8 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        app:fab_addButtonColorNormal="@color/laranjinha"
+        app:fab_addButtonColorNormal="@color/bg_menu"
+        app:fab_addButtonColorPressed="@color/bg_menu"
         app:fab_addButtonPlusIconColor="@android:color/white"
         app:fab_labelStyle="@style/menu_labels_style">
 
@@ -183,16 +184,18 @@
             android:id="@+id/casal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/laranjinha"
+            app:fab_colorNormal="@color/bg_menu"
+            app:fab_colorPressed="@color/bg_menu"
             app:fab_title="Casal"
             app:fab_icon="@drawable/couple"
-            app:fab_size="mini"/>
+            app:fab_size="mini" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/laranjinha"
+            app:fab_colorNormal="@color/bg_menu"
+            app:fab_colorPressed="@color/bg_menu"
             app:fab_title="Álbum"
             app:fab_icon="@drawable/album"
             app:fab_size="mini"/>
@@ -201,7 +204,8 @@
             android:id="@+id/som"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/laranjinha"
+            app:fab_colorNormal="@color/bg_menu"
+            app:fab_colorPressed="@color/bg_menu"
             app:fab_title="Som"
             app:fab_size="mini" />
 

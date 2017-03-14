@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.HistoryFragment"
-    android:background="#f4f4ec"
+    android:background="@color/bg_bege"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -41,11 +41,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:fontFamily="serif"
+            android:fontFamily="cursive"
             android:gravity="center_horizontal"
             android:text=" Lucas Gurgel"
-            android:textColor="#e6d59d"
-            android:textSize="15dp" />
+            android:textColor="@color/marrom_texto"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,11 +55,12 @@
             android:layout_marginLeft="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="5dp"
-            android:fontFamily="serif"
+            android:fontFamily="cursive"
             android:gravity="center_horizontal"
             android:text="Thaís Marques"
-            android:textColor="#e6d59d"
-            android:textSize="15dp" />
+            android:textColor="@color/marrom_texto"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 
@@ -73,32 +75,34 @@
             android:layout_height="1dp"
             class="android.support.v4.widget.DrawerLayout"
             android:id="@+id/view5"
-            android:background="#e6d59d"
+            android:background="@color/marrom_texto"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:text="Numa bela noite no Bohemia, nos conhecemos. Nos nao queriamos ir, mas acabamos indo. Nao esperavamos conhecer um futuro marido ou futura esposa, nao existe aviso previo para essas coisas. Por obra de Deus, nos conhecemos, nao poderiamos deixar de reconhecer. Nao demorou muito, nos apegamos um ao outro e queriamos estar perto a todo tempo. Nao demorou de novo, e começamos a namorar. O tempo passou e nosso relacionamento se fortaleceu. Passamos por muitos desafios e obstaculos, mas todos foram superados, graças a Deus. Amem. Os ultimos 5 anos foram repletos de momentos e experiencias sensacionais, e nos desejamos vivenciar muitas outras. Ja haviamos decidido casar ha algum tempo, mas finalmente começamos a nos preparar para a concretizaçao do nosso sonho. Seria uma honra ter voce la na hora."
-            android:id="@+id/textView3"
-            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:textSize="16sp"
-            android:textColor="#e6d59d"
-            android:fontFamily="serif"
-            android:layout_weight="1"/>
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:fontFamily="serif-monospace"
+            android:gravity="center_horizontal"
+            android:scrollbars="vertical"
+            android:text="Numa bela noite no Bohemia, nos conhecemos. Nos nao queriamos ir, mas acabamos indo. Nao esperavamos conhecer um futuro marido ou futura esposa, nao existe aviso previo para essas coisas. Por obra de Deus, nos conhecemos, nao poderiamos deixar de reconhecer. Nao demorou muito, nos apegamos um ao outro e queriamos estar perto a todo tempo. Nao demorou de novo, e começamos a namorar. O tempo passou e nosso relacionamento se fortaleceu. Passamos por muitos desafios e obstaculos, mas todos foram superados, graças a Deus. Amem. Os ultimos 5 anos foram repletos de momentos e experiencias sensacionais, e nos desejamos vivenciar muitas outras. Ja haviamos decidido casar ha algum tempo, mas finalmente começamos a nos preparar para a concretizaçao do nosso sonho. Seria uma honra ter voce la na hora."
+            android:textColor="@color/marrom_texto"
+            android:textSize="18sp" />
 
         <view
             android:layout_width="match_parent"
             android:layout_height="1dp"
             class="android.support.v4.widget.DrawerLayout"
             android:id="@+id/view2"
-            android:background="#e6d59d"
+            android:background="@color/marrom_texto"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>

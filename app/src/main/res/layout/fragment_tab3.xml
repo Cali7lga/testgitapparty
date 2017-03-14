@@ -11,13 +11,13 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f4f4ec"
+        android:background="@color/bg_bege"
         android:layout_weight="1">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/camera"
+            android:src="@drawable/momentos"
             android:id="@+id/imageButton14"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -29,15 +29,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView28"
             android:layout_gravity="center_horizontal"
-            android:textColor="#E6D59D"
+            android:textColor="@color/marrom_texto"
             android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_weight="10" />
 
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            class="android.support.v4.widget.DrawerLayout"
+            android:background="@color/marrom_texto"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"/>
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/black"
+            android:src="@drawable/msgenv"
             android:id="@+id/imageButton12"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -49,15 +58,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView24"
             android:layout_gravity="center_horizontal"
-            android:textColor="#E6D59D"
+            android:textColor="@color/marrom_texto"
             android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_weight="10" />
 
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            class="android.support.v4.widget.DrawerLayout"
+            android:background="@color/marrom_texto"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"/>
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/calendar"
+            android:src="@drawable/evento"
             android:id="@+id/imageButton20"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -69,7 +87,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:layout_gravity="center_horizontal"
-            android:textColor="#E6D59D"
+            android:textColor="@color/marrom_texto"
             android:fontFamily="serif"
             android:textStyle="normal"
             android:layout_weight="1" />

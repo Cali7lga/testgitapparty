@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="graytransparent">#ccffffff</color>
     <color name="laranjinha">#e6d59d</color>
-    <color name="bg_bege">#f4f4f0</color>
-    <color name="marrom_texto">#85460F</color>
+    <color name="bg_bege">#f6f6f6</color>
+    <color name="marrom_texto">#74635B</color>
+    <color name="bg_menu">#F2EBC9</color>
+
 </resources>

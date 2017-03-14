@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,7 @@ public class PadrinhosFragment extends Fragment {
 
         int pos = this.getArguments().getInt("pos");
         TextView tv = (TextView) l.findViewById(R.id.text);
+        tv.setMovementMethod(new ScrollingMovementMethod());
         ImageView image = (ImageView) l.findViewById(R.id.content);
         switch(pos) {
             case 0:
@@ -95,7 +97,7 @@ public class PadrinhosFragment extends Fragment {
                 image.setImageResource(R.drawable.pfoto1);
                 break;
             case 2:
-                tv.setText("Dudinha, daminha e irma cacula da noiva");
+                tv.setText("Dudinha, daminha e irma cacula da noivasdghasdgkuasdgasgiuhnfsgikdshiudfnshoiudfshodshioujfiouahsiguahdfgiuhiugadfhghuhaddiu");
                 image.setImageResource(R.drawable.pfoto3);
                 break;
             case 3:
