@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.DatabaseTask;
 import com.example.home.weddingapp.R;
 import com.stripe.*;
@@ -18,6 +19,8 @@ import com.stripe.android.*;
 import com.stripe.android.Stripe;
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,42 +96,86 @@ public class PayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Log.i("botao", "onClick: ");
-                String cardNumber = edt_numero.getText().toString();
-                int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
-                int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
-                String cardCVC = edt_cvc.getText().toString();
-                final String valor = edt_valor.getText().toString();
-
-                Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
-                if (!card.validateCard()) {
-                    System.out.println("Error valid card");
-                }
-                else{
-
-                    try {
-                        System.out.println("Valid card");
-                        Stripe stripe = new Stripe(getContext(), "pk_test_vU31MNnKZRBtobErgiqCznGO");
-                        stripe.createToken(card, new TokenCallback() {
+                new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Antes de finalizar...")
+                        .setContentText("Deseja confirmar a operação?")
+                        .setCancelText("Cancelar")
+                        .setConfirmText("Sim, continuar")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
-                            public void onError(Exception error) {
-                                System.out.println("Erro token callback: "+error.toString());
-                            }
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                            @Override
-                            public void onSuccess(Token token) {
-
-                                System.out.println("Sucesso token callback");
-
-                                DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor);
-                                databaseTask.execute();
+                                sweetAlertDialog.setTitleText("Operação cancelada")
+                                        .setContentText("Nada tema, sua fortuna está intacta")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
 
                             }
-                        });
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                String cardNumber = edt_numero.getText().toString();
+                                int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
+                                int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
+                                String cardCVC = edt_cvc.getText().toString();
+                                final String valor = edt_valor.getText().toString();
+
+                                Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
+                                if (!card.validateCard()) {
+                                    System.out.println("Error valid card");
+                                }
+                                else{
+
+                                    try {
+                                        System.out.println("Valid card");
+                                        Stripe stripe = new Stripe(getContext(), "pk_test_vU31MNnKZRBtobErgiqCznGO");
+                                        stripe.createToken(card, new TokenCallback() {
+                                            @Override
+                                            public void onError(Exception error) {
+                                                System.out.println("Erro token callback: "+error.toString());
+                                            }
+
+                                            @Override
+                                            public void onSuccess(Token token) {
+
+                                                System.out.println("Sucesso token callback");
+
+                                                DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor);
+                                                databaseTask.execute();
+
+                                            }
+                                        });
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                sweetAlertDialog.setTitleText("Sucesso!")
+                                        .setContentText("Muito obrigado por contribuir com a construção do nosso novo lar!")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                                sweetAlertDialog.dismiss();
+                                                MainActivity mainActivity = (MainActivity) getActivity();
+                                                mainActivity.backfragment();
+
+                                            }
+                                        })
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                            }
+                        })
+                        .show();
 
             }
         });

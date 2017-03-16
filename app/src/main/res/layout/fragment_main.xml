@@ -33,52 +33,14 @@
             android:layout_marginBottom="37dp"
             android:background="@drawable/round_button"
             android:clickable="true"
-            android:fontFamily="serif-monospace"
             android:gravity="center"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:padding="10dp"
-            android:text="Bem vindo"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:text="Entrar"
+            android:textColor="@color/dark_gray"
             android:textSize="18sp"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="37dp"
-            android:background="@drawable/round_button"
-            android:backgroundTint="@android:color/white"
-            android:fontFamily="serif-monospace"
-            android:gravity="center"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:padding="10dp"
-            android:text="Bem vindo"
-            android:textAllCaps="false"
-            android:textColor="#e8d587"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:textColor="#797979"
-            android:background="@drawable/textview_digitar"
-            android:gravity="center_vertical|center"
-            android:maxLines="1"
-            android:hint="Senha"
-            android:fontFamily="sans-serif"
-            android:backgroundTint="@android:color/white"
-            android:layout_width="210dp"
-            android:textSize="15sp"
-            android:layout_height="32dp"
-            android:text="teste"
-            android:layout_marginBottom="144dp"
-            android:layout_above="@+id/button"
-            android:layout_centerHorizontal="true" />
+            android:textAllCaps="false"/>
 
     </RelativeLayout>
 

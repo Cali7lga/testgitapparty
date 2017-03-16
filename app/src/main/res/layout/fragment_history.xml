@@ -32,7 +32,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
@@ -80,14 +80,13 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:id="@+id/textView3"
             android:layout_width="300dp"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:fontFamily="serif-monospace"
             android:gravity="center_horizontal"
             android:scrollbars="vertical"
             android:text="Numa bela noite no Bohemia, nos conhecemos. Nos nao queriamos ir, mas acabamos indo. Nao esperavamos conhecer um futuro marido ou futura esposa, nao existe aviso previo para essas coisas. Por obra de Deus, nos conhecemos, nao poderiamos deixar de reconhecer. Nao demorou muito, nos apegamos um ao outro e queriamos estar perto a todo tempo. Nao demorou de novo, e começamos a namorar. O tempo passou e nosso relacionamento se fortaleceu. Passamos por muitos desafios e obstaculos, mas todos foram superados, graças a Deus. Amem. Os ultimos 5 anos foram repletos de momentos e experiencias sensacionais, e nos desejamos vivenciar muitas outras. Ja haviamos decidido casar ha algum tempo, mas finalmente começamos a nos preparar para a concretizaçao do nosso sonho. Seria uma honra ter voce la na hora."

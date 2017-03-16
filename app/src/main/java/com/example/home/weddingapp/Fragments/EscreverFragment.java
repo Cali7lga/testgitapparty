@@ -2,6 +2,7 @@ package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ import com.example.home.weddingapp.Others.FileInfoMsg;
 import com.example.home.weddingapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,6 +90,10 @@ public class EscreverFragment extends Fragment {
         editText2 = (EditText) view.findViewById(R.id.editText3);
         botao = (Button) view.findViewById(R.id.button8);
 
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        editText1.setTypeface(tf);
+        editText2.setTypeface(tf);
+
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,19 +118,21 @@ public class EscreverFragment extends Fragment {
 
                     mRef.child("messages").push().setValue(fileinfo);
 
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Mensagem Enviada");
-                    alertDialog.setMessage("Muito obrigado por nos deixar uma mensagem!");
-                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Mensagem Enviada")
+                            .setContentText("Muito obrigado por nos deixar uma mensagem! :)")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                            MainActivity mainActivity = (MainActivity) getActivity();
-                            mainActivity.backfragment();
+                                    sweetAlertDialog.dismiss();
+                                    MainActivity mainActivity = (MainActivity) getActivity();
+                                    mainActivity.backfragment();
 
-                        }
-                    });
-                    alertDialog.show();
+                                }
+                            })
+                            .show();
+
                 }
             }
         });

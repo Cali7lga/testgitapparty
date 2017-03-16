@@ -48,15 +48,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <TextView
-            android:text="Câmera"
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:id="@+id/textView38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView38"
-            android:textColor="@color/laranjinha"/>
+            android:text="Câmera"
+            android:textColor="@color/laranjinha" />
 
-        <TextView
-            android:text="Galeria"
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Câmera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView39"
@@ -74,7 +74,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="1">
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="Compartilhe seu momento conosco! Sua foto aparecerá aqui :)"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

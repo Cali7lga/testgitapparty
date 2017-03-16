@@ -23,145 +23,120 @@
         android:layout_marginTop="40dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="000"
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/dias"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="30dp"
-                android:textColor="#FFF"
-                android:fontFamily="serif"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@drawable/textview_count"
+                android:gravity="center"
                 android:text="00"
+                android:textColor="@color/dark_gray"
+                android:textSize="30dp" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/horas"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="30dp"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@drawable/textview_count"
+                android:gravity="center"
                 android:text="00"
+                android:textColor="@color/dark_gray"
+                android:textSize="30dp" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/minutos"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="30dp"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@drawable/textview_count"
+                android:gravity="center"
                 android:text="00"
+                android:textColor="@color/dark_gray"
+                android:textSize="30dp" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/segundos"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="30dp"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
+                android:background="@drawable/textview_count"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/dark_gray"
+                android:textSize="30dp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
 
 
-            <TextView
-                android:text="Dias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView18"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:text="Horas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dias"
+                android:textAlignment="center"
+                android:textColor="@color/dark_gray" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView17"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:text="Minutos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Horas"
+                android:textAlignment="center"
+                android:textColor="@color/dark_gray" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView4"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:text="Segundos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView"
                 android:layout_weight="1"
+                android:text="Minutos"
                 android:textAlignment="center"
-                android:textColor="#FFF"
-                android:fontFamily="serif"/>
+                android:textColor="@color/dark_gray" />
+
+            <com.example.home.weddingapp.Others.TextViewAvenir
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Segundos"
+                android:textAlignment="center"
+                android:textColor="@color/dark_gray" />
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_weight="1"
-            android:src="@drawable/oval128"
-            android:layout_height="75dp"
-            android:layout_width="72dp"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_weight="1"
-            android:src="@drawable/oval128"
-            android:layout_height="75dp"
-            android:layout_width="72dp"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_weight="1"
-            android:src="@drawable/oval128"
-            android:layout_height="75dp"
-            android:layout_width="72dp"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_weight="1"
-            android:src="@drawable/oval128"
-            android:layout_height="75dp"
-            android:layout_width="72dp"
-            android:layout_marginTop="3dp" />
 
     </LinearLayout>
 
@@ -177,7 +152,7 @@
         android:layout_marginEnd="16dp"
         app:fab_addButtonColorNormal="@color/bg_menu"
         app:fab_addButtonColorPressed="@color/bg_menu"
-        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:fab_addButtonPlusIconColor="@color/dark_gray"
         app:fab_labelStyle="@style/menu_labels_style">
 
         <com.getbase.floatingactionbutton.FloatingActionButton

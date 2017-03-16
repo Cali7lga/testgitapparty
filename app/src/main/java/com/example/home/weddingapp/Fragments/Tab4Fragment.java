@@ -2,6 +2,7 @@ package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
@@ -73,6 +75,8 @@ public class Tab4Fragment extends Fragment {
 
         Button btn_fs = (Button) view.findViewById(R.id.button5);
 
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        btn_fs.setTypeface(tf);
         btn_fs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

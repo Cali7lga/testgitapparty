@@ -23,13 +23,12 @@
         android:background="@color/graytransparent"
         android:layout_weight="1">
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="Deixe a sua mensagem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView25"
-            android:textAlignment="center"
-            android:fontFamily="serif"/>
+            android:textAlignment="center" />
 
         <ImageButton
             android:layout_width="wrap_content"

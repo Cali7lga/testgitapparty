@@ -1,6 +1,7 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,8 +40,7 @@ public class MainFragment extends Fragment{
 
     private MainFragmentInteractionListener mListener;
 
-    private Button botaoCerto, botaoErrado;
-    private EditText texto;
+    private Button botao;
 
     public MainFragment() {
         // Required empty public constructor
@@ -78,46 +78,11 @@ public class MainFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        botaoErrado = (Button) view.findViewById(R.id.button);
-        botaoCerto = (Button) view.findViewById(R.id.button11);
-        texto = (EditText) view.findViewById(R.id.editText);
+        botao = (Button) view.findViewById(R.id.button);
 
-        texto.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if(texto.getText().toString().equals("teste")){
-                    botaoErrado.setVisibility(View.INVISIBLE);
-                    botaoCerto.setVisibility(View.VISIBLE);
-                }
-                else{
-                    botaoErrado.setVisibility(View.VISIBLE);
-                    botaoCerto.setVisibility(View.INVISIBLE);
-                }
-
-            }
-        });
-
-        botaoErrado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                    Toast.makeText(getActivity(), "Senha Incorreta", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        botaoCerto.setOnClickListener(new View.OnClickListener() {
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        botao.setTypeface(tf);
+        botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

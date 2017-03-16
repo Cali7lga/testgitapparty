@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +47,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -164,6 +168,7 @@ public class CaptureFragment extends Fragment {
 
                         btnMorph.setVisibility(View.INVISIBLE);
                         progressBar.setVisibility(View.VISIBLE);
+                        progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.laranjinha), PorterDuff.Mode.SRC_IN);
 
                         Uri file = Uri.fromFile(compressedFoto(new File(getFilepath())));
                         String uniqueID = UUID.randomUUID().toString();
@@ -185,17 +190,21 @@ public class CaptureFragment extends Fragment {
                                 FileInfoUrl fileinfo = new FileInfoUrl();
                                 fileinfo.setImageUrl(downloadUrl.toString());
                                 databaseReference.child("fotosUrl").push().setValue(fileinfo);
-                                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                                alertDialog.setTitle("Upload Completo");
-                                alertDialog.setMessage("Muito obrigado por compartilhar seu momento conosco!");
-                                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        MainActivity mainActivity = (MainActivity) getActivity();
-                                        mainActivity.backfragment();
-                                    }
-                                });
-                                alertDialog.show();
+                                progressBar.setVisibility(View.INVISIBLE);
+                                new SweetAlertDialog(getActivity(),SweetAlertDialog.SUCCESS_TYPE)
+                                        .setTitleText("Bela foto ;)")
+                                        .setContentText("Muito obriagdo por compartilhar este momento conosco!")
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                                sweetAlertDialog.dismiss();
+                                                MainActivity mainActivity = (MainActivity) getActivity();
+                                                mainActivity.backfragment();
+
+                                            }
+                                        })
+                                        .show();
                             }
                         });
 

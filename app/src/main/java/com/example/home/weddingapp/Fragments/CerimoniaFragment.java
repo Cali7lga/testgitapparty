@@ -93,7 +93,7 @@ public class  CerimoniaFragment extends Fragment {
             }
         });
 
-        Button botao3 = (Button) view.findViewById(R.id.button2);
+        ImageButton botao3 = (ImageButton) view.findViewById(R.id.imageButton9);
         botao3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
