@@ -16,13 +16,13 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:src="@drawable/lucas"
+            android:src="@drawable/luquenha"
             android:layout_width="90dp"
             android:layout_height="90dp" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:src="@drawable/thais"
+            android:src="@drawable/thatai"
             android:layout_marginLeft="50dp"
             android:layout_marginStart="50dp"
             android:layout_width="90dp"
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="40dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginStart="38dp"
             android:layout_marginTop="5dp"
             android:fontFamily="cursive"
             android:gravity="center_horizontal"
@@ -78,6 +78,8 @@
             android:background="@color/marrom_texto"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"/>
 
         <com.example.home.weddingapp.Others.TextViewAvenir
@@ -101,6 +103,8 @@
             android:background="@color/marrom_texto"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
 

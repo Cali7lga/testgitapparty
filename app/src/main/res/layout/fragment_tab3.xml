@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.Tab3Fragment"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@color/bg_bege">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_bege"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
             android:src="@drawable/momentos"
             android:id="@+id/imageButton14"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:background="@android:color/transparent"/>
 
         <com.example.home.weddingapp.Others.TextViewAvenir
@@ -29,17 +27,33 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView28"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/marrom_texto"
-            android:layout_weight="10" />
+            android:textColor="@color/marrom_texto" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
 
         <view
+            android:id="@+id/view3"
+            class="android.support.v4.widget.SlidingPaneLayout"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            class="android.support.v4.widget.DrawerLayout"
-            android:background="@color/marrom_texto"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@color/marrom_texto" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -47,7 +61,6 @@
             android:src="@drawable/msgenv"
             android:id="@+id/imageButton12"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:background="@android:color/transparent" />
 
         <com.example.home.weddingapp.Others.TextViewAvenir
@@ -56,17 +69,34 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView24"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/marrom_texto"
-            android:layout_weight="10" />
+            android:textColor="@color/marrom_texto" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
 
         <view
+            android:id="@+id/view4"
+            class="android.support.v4.widget.SlidingPaneLayout"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            class="android.support.v4.widget.DrawerLayout"
-            android:background="@color/marrom_texto"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@color/marrom_texto" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -74,7 +104,6 @@
             android:src="@drawable/evento"
             android:id="@+id/imageButton20"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:background="@android:color/transparent"/>
 
         <com.example.home.weddingapp.Others.TextViewAvenir
@@ -83,8 +112,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/marrom_texto"
-            android:layout_weight="1" />
+            android:textColor="@color/marrom_texto" />
 
     </LinearLayout>
 

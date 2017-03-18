@@ -126,7 +126,7 @@ public class MensagensFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if(input.getText().toString().equals("remove")){
+                                if(input.getText().toString().equals("Remove")){
 
                                     mAdapter.getRef(position).removeValue();
                                     Toast.makeText(getActivity(), "Mensagem deletada com sucesso", Toast.LENGTH_SHORT).show();
@@ -139,6 +139,12 @@ public class MensagensFragment extends Fragment {
 
                                 }
 
+                            }
+                        });
+                        aDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                            @Override
+                            public void onShow(DialogInterface dialog) {
+                                aDialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.dark_gray));
                             }
                         });
                         aDialog.show();

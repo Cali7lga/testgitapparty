@@ -93,13 +93,14 @@ public class EscreverFragment extends Fragment {
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
         editText1.setTypeface(tf);
         editText2.setTypeface(tf);
+        botao.setTypeface(tf);
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("")) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                     alertDialog.setTitle("Ops!");
                     alertDialog.setMessage("Por favor, verifique se preencheu ambos os campos");
                     alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {

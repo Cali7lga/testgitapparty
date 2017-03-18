@@ -41,7 +41,7 @@
                 android:background="@drawable/textview_count"
                 android:gravity="center"
                 android:text="00"
-                android:textColor="@color/dark_gray"
+                android:textColor="@android:color/white"
                 android:textSize="30dp" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
@@ -56,7 +56,7 @@
                 android:background="@drawable/textview_count"
                 android:gravity="center"
                 android:text="00"
-                android:textColor="@color/dark_gray"
+                android:textColor="@android:color/white"
                 android:textSize="30dp" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
@@ -71,7 +71,7 @@
                 android:background="@drawable/textview_count"
                 android:gravity="center"
                 android:text="00"
-                android:textColor="@color/dark_gray"
+                android:textColor="@android:color/white"
                 android:textSize="30dp" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
@@ -86,7 +86,7 @@
                 android:background="@drawable/textview_count"
                 android:gravity="center"
                 android:text="00"
-                android:textColor="@color/dark_gray"
+                android:textColor="@android:color/white"
                 android:textSize="30dp" />
 
         </LinearLayout>
@@ -107,7 +107,7 @@
                 android:layout_weight="1"
                 android:text="Dias"
                 android:textAlignment="center"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@android:color/white" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView17"
@@ -116,7 +116,7 @@
                 android:layout_weight="1"
                 android:text="Horas"
                 android:textAlignment="center"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@android:color/white" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView4"
@@ -125,7 +125,7 @@
                 android:layout_weight="1"
                 android:text="Minutos"
                 android:textAlignment="center"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@android:color/white" />
 
             <com.example.home.weddingapp.Others.TextViewAvenir
                 android:id="@+id/textView"
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:text="Segundos"
                 android:textAlignment="center"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
@@ -152,7 +152,7 @@
         android:layout_marginEnd="16dp"
         app:fab_addButtonColorNormal="@color/bg_menu"
         app:fab_addButtonColorPressed="@color/bg_menu"
-        app:fab_addButtonPlusIconColor="@color/dark_gray"
+        app:fab_addButtonPlusIconColor="@android:color/white"
         app:fab_labelStyle="@style/menu_labels_style">
 
         <com.getbase.floatingactionbutton.FloatingActionButton

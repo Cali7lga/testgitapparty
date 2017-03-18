@@ -7,26 +7,29 @@
     tools:context="com.example.home.weddingapp.Fragments.EscreverFragment">
 
     <EditText
-        android:layout_width="300dp"
         android:id="@+id/editText2"
-        android:hint="Deixe sua mensagem aqui"
-        android:background="@drawable/textview_digitar"
+        android:layout_width="300dp"
+        android:layout_height="230dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
+        android:background="@drawable/textview_digitar"
         android:gravity="top"
-        android:fontFamily="serif"
-        android:layout_height="230dp"
+        android:hint="Deixe sua mensagem aqui"
+        android:inputType="textImeMultiLine"
+        android:textColor="@color/dark_gray"
         android:textSize="17sp" />
 
     <EditText
-        android:layout_height="wrap_content"
         android:id="@+id/editText3"
-        android:hint="Ass.:"
-        android:background="@drawable/textview_digitar"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:fontFamily="serif"
-        android:layout_width="240dp"
+        android:background="@drawable/textview_digitar"
+        android:hint="Ass.:"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:textColor="@color/dark_gray"
         android:textSize="17sp" />
 
     <Button
@@ -35,8 +38,7 @@
         android:background="@drawable/enviar_btn"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:textColor="@android:color/white"
-        android:fontFamily="serif"
+        android:textColor="@color/dark_gray"
         android:textSize="16sp"
         android:layout_width="80dp"
         android:layout_height="80dp"

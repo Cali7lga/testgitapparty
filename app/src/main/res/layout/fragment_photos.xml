@@ -15,35 +15,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView5"
-            android:src="@drawable/foto1"
+            android:src="@drawable/app1"
             android:scaleType="centerCrop" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView6"
-            android:src="@drawable/foto2"
+            android:src="@drawable/app2"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView7"
-            android:src="@drawable/foto6"
+            android:src="@drawable/app3"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView8"
-            android:src="@drawable/foto4"
+            android:src="@drawable/app4"
             android:scaleType="centerCrop"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/imageView9"
-            android:src="@drawable/foto5"
+            android:src="@drawable/app5"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView79"
+            android:src="@drawable/app6"
             android:scaleType="centerCrop"/>
 
     </ViewFlipper>

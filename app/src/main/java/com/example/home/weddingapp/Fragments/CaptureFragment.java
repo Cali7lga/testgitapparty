@@ -160,7 +160,7 @@ public class CaptureFragment extends Fragment {
             public void onClick(View v) {
 
                 if(morphCounter==1){
-                    Toast.makeText(getActivity(), "Nenhuma imagem selecionada. Escolha entre Câmera ou Galeria para selecionar uma foto.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Nenhuma imagem selecionada. Escolha entre Câmera ou Galeria, no topo da tela, para selecionar uma foto.", Toast.LENGTH_LONG).show();
                 }
                 else if(morphCounter==0){
 
@@ -379,7 +379,7 @@ public class CaptureFragment extends Fragment {
                 .height(dp56)
                 .color(ContextCompat.getColor(getContext(),R.color.laranjinha))
                 .colorPressed(ContextCompat.getColor(getContext(),R.color.laranjinha))
-                .icon(R.drawable.lock);
+                .icon(R.drawable.locked);
         btnMorph.morph(circle);
     }
 

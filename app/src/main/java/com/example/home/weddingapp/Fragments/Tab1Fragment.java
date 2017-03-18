@@ -135,7 +135,7 @@ public class Tab1Fragment extends Fragment {
             }
         }.start();
 
-        String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.wildlife;
+        String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.video_casal;
         Uri src = Uri.parse(uripath);
         videoView.setVideoURI(src);
         videoView.requestFocus();

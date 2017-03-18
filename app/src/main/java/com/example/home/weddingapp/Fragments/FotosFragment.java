@@ -145,7 +145,7 @@ public class FotosFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if(input.getText().toString().equals("remove")){
+                                if(input.getText().toString().equals("Remove")){
 
                                     adapter.getRef(position).removeValue();
                                     Toast.makeText(getActivity(), "Foto deletada com sucesso", Toast.LENGTH_SHORT).show();
