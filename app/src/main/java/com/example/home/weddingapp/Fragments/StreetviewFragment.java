@@ -42,7 +42,7 @@ public class StreetviewFragment extends Fragment implements OnStreetViewPanorama
 
         stview = streetViewPanorama;
 
-        LatLng local = new LatLng(-12.962219, -38.409109);
+        LatLng local = new LatLng(-12.976903, -38.516542);
 
         stview.setPosition(local);
 

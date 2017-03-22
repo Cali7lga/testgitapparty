@@ -24,107 +24,102 @@
         <ImageView
             android:id="@+id/imageView22"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/buque" />
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/nameicon" />
 
         <EditText
             android:id="@+id/editText4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:hint="Seu nome"
             android:inputType="textPersonName" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
 
         <ImageView
             android:id="@+id/imageView23"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             android:src="@drawable/buque" />
 
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="4242 4242 4242 4242"
-            android:inputType="textPersonName" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="4242 4242 4242 4242"
+                android:inputType="textPersonName" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
 
-        <ImageView
-            android:id="@+id/imageView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/buque" />
+                <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="MES"
+                    android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="MES"
-            android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/editText7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="ANO"
+                    android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/editText7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="ANO"
-            android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/editText8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="CVC"
+                    android:inputType="textPersonName" />
 
-        <ImageView
-            android:id="@+id/imageView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/buque" />
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/editText8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="CVC"
-            android:inputType="textPersonName" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
 
-        <ImageView
-            android:id="@+id/imageView26"
+        <TextView
+            android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/buque" />
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="R$"
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/editText9"
@@ -141,9 +136,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/round_button"
         android:text="Confirmar"
-        android:textColor="@color/laranjinha" />
+        android:textColor="@color/dark_gray" />
 
 </LinearLayout>

@@ -73,28 +73,261 @@ public class FornecedoresFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_fornecedores, container, false);
 
         final PackageManager packageManager = getActivity().getPackageManager();
-        final String face = "https://www.facebook.com/lucas.gurgel.963?fref=ts";
 
-        ImageButton btn_face1 = (ImageButton) view.findViewById(R.id.imageButton3);
-        btn_face1.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn_faceHera = (ImageButton) view.findViewById(R.id.imageButton16);
+        ImageButton btn_faceBeth = (ImageButton) view.findViewById(R.id.imageButton3);
+        ImageButton btn_face3img = (ImageButton) view.findViewById(R.id.imageButton5);
+        ImageButton btn_faceDeni = (ImageButton) view.findViewById(R.id.imageButton7);
+        ImageButton btn_faceSidn = (ImageButton) view.findViewById(R.id.imageButton17);
+        ImageButton btn_faceHarm = (ImageButton) view.findViewById(R.id.imageButton30);
+        ImageButton btn_faceCBar = (ImageButton) view.findViewById(R.id.imageButton32);
+        ImageButton btn_facePark = (ImageButton) view.findViewById(R.id.imageButton34);
+        ImageButton btn_faceFoto = (ImageButton) view.findViewById(R.id.imageButton36);
+        ImageButton btn_faceDrea = (ImageButton) view.findViewById(R.id.imageButton38);
+        ImageButton btn_faceFati = (ImageButton) view.findViewById(R.id.imageButton40);
+        ImageButton btn_faceTani = (ImageButton) view.findViewById(R.id.imageButton42);
+        ImageButton btn_faceLuci = (ImageButton) view.findViewById(R.id.imageButton44);
+
+        ImageButton btn_instaHera = (ImageButton) view.findViewById(R.id.imageButton15);
+        ImageButton btn_instaBeth = (ImageButton) view.findViewById(R.id.imageButton4);
+        ImageButton btn_insta3img = (ImageButton) view.findViewById(R.id.imageButton6);
+        ImageButton btn_instaDeni = (ImageButton) view.findViewById(R.id.imageButton8);
+        ImageButton btn_instaSidn = (ImageButton) view.findViewById(R.id.imageButton18);
+        ImageButton btn_instaHarm = (ImageButton) view.findViewById(R.id.imageButton31);
+        ImageButton btn_instaCBar = (ImageButton) view.findViewById(R.id.imageButton33);
+        ImageButton btn_instaPark = (ImageButton) view.findViewById(R.id.imageButton35);
+        ImageButton btn_instaFoto = (ImageButton) view.findViewById(R.id.imageButton37);
+        ImageButton btn_instaDrea = (ImageButton) view.findViewById(R.id.imageButton39);
+        ImageButton btn_instaFati = (ImageButton) view.findViewById(R.id.imageButton41);
+        ImageButton btn_instaTani = (ImageButton) view.findViewById(R.id.imageButton43);
+        ImageButton btn_instaLuci = (ImageButton) view.findViewById(R.id.imageButton45);
+
+        btn_faceHera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent openface =  newFacebookIntent(packageManager,face);
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/heratechnologies/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceBeth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/bethbahienseeventos/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_face3img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/3imagens/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceDeni.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/deniselins.salvador?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceSidn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/sidney.h.rodriguez?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceHarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/Harmonizi-118915164884644/");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceCBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/Concept-Bar-117047165004007/");
+                startActivity(openface);
+
+            }
+        });
+        btn_facePark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/vallet.park.3?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/digitalmasterfoto/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceDrea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/dream.rasteirinha/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceFati.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/fatima.bemcasados?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceTani.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/T%C3%A2nia-Belos-Bolos-537163883070941/?fref=ts");
+                startActivity(openface);
+
+            }
+        });
+        btn_faceLuci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/luciana.m.cerimonialista?fref=ts");
                 startActivity(openface);
 
             }
         });
 
-        ImageButton btn_insta1 = (ImageButton) view.findViewById(R.id.imageButton4);
-        btn_insta1.setOnClickListener(new View.OnClickListener() {
+    //------------------------------------------------------------------------------------
+
+        btn_instaHera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                newInstagramIntent("tata_thaismarques");
+                newInstagramIntent("heratechnologies");
 
             }
         });
+
+        btn_instaBeth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("bethbahiense");
+
+            }
+        });
+        btn_insta3img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("3imagens");
+
+            }
+        });
+        btn_instaDeni.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("deniselinsconvitessalvador");
+
+            }
+        });
+        btn_instaSidn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("sidneyhaackphotos");
+
+            }
+        });
+        btn_instaHarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("harmonizi");
+
+            }
+        });
+        btn_instaCBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("conceptbar");
+
+            }
+        });
+        btn_instaPark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("valletpark");
+
+            }
+        });
+        btn_instaFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("masterfotodigital");
+
+            }
+        });
+        btn_instaDrea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("dream_rasteirinhas");
+
+            }
+        });
+        btn_instaFati.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("fatimabemcasados");
+
+            }
+        });
+        btn_instaTani.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("taniabelosbolos");
+
+            }
+        });
+        btn_instaLuci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                newInstagramIntent("luciana_cerimonialista");
+
+            }
+        });
+
 
         return view;
     }

@@ -13,27 +13,24 @@
         android:background="#333333">
 
         <TextView
-            android:text="Tecnologia e Desenvolvimento"
+            android:text="App &amp; Website"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView31"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
             android:textSize="20sp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="cursive"
             android:textColor="#B3B3B3"/>
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="Hera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView32"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="19sp"
-            android:fontFamily="serif"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -44,20 +41,29 @@
             android:layout_gravity="center_horizontal">
 
             <ImageButton
+                android:id="@+id/imageButton16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fb"
-                android:id="@+id/imageButton16"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
 
             <ImageButton
+                android:id="@+id/imageButton15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton15"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/insta" />
+                android:src="@drawable/instagram" />
+
+            <ImageButton
+                android:id="@+id/imageButton22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/site" />
 
         </LinearLayout>
 
@@ -65,7 +71,6 @@
             android:text="Buffet e Decoração"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView7"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
@@ -74,15 +79,13 @@
             android:fontFamily="cursive"
             android:textColor="#B3B3B3" />
 
-        <TextView
-            android:text="Alex Sandes Cerimonial"
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Beth Bahiense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView12"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
-            android:fontFamily="serif"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -93,21 +96,20 @@
             android:layout_gravity="center_horizontal">
 
             <ImageButton
+                android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton3"
                 android:background="@android:color/transparent"
-                android:src="@drawable/fb" />
+                android:src="@drawable/facebook" />
 
             <ImageButton
+                android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton4"
-                android:layout_weight="0"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/insta" />
+                android:src="@drawable/instagram" />
 
         </LinearLayout>
 
@@ -115,7 +117,6 @@
             android:text="Filme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView13"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="20sp"
@@ -124,15 +125,13 @@
             android:textStyle="bold|italic"
             android:textColor="#B3B3B3" />
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="3Imagens"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView14"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
-            android:fontFamily="serif"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -143,20 +142,20 @@
             android:layout_marginTop="10dp">
 
             <ImageButton
+                android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton5"
                 android:background="@android:color/transparent"
-                android:src="@drawable/fb"/>
+                android:src="@drawable/facebook" />
 
             <ImageButton
+                android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton6"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/insta"/>
+                android:src="@drawable/instagram" />
 
         </LinearLayout>
 
@@ -164,7 +163,6 @@
             android:text="Convite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView15"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
@@ -173,15 +171,13 @@
             android:fontFamily="cursive"
             android:textColor="#B3B3B3" />
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="Denise Lins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView16"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
-            android:fontFamily="serif"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -192,20 +188,20 @@
             android:layout_marginTop="10dp">
 
             <ImageButton
+                android:id="@+id/imageButton7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton7"
                 android:background="@android:color/transparent"
-                android:src="@drawable/fb"/>
+                android:src="@drawable/facebook" />
 
             <ImageButton
+                android:id="@+id/imageButton8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton8"
-                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/insta"/>
+                android:src="@drawable/instagram" />
 
         </LinearLayout>
 
@@ -213,7 +209,6 @@
             android:text="Fotografia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView33"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold|italic"
@@ -222,15 +217,13 @@
             android:fontFamily="cursive"
             android:textColor="#B3B3B3"/>
 
-        <TextView
+        <com.example.home.weddingapp.Others.TextViewAvenir
             android:text="Sidney Haack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView34"
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
-            android:fontFamily="serif"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -241,21 +234,388 @@
             android:layout_gravity="center_horizontal">
 
             <ImageButton
+                android:id="@+id/imageButton17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/fb"
-                android:id="@+id/imageButton17"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
 
             <ImageButton
+                android:id="@+id/imageButton18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton18"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/insta"
-                android:layout_marginBottom="20dp"/>
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Som, Iluminação &amp; DJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Harmonizi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Concept Bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Manobristas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Vallet Park"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Plotagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Master Foto Digital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Lembranças"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Dream Rasteirinhas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Bem casados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Fátima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Bolo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Tânia Belos Bolos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Cerimonialista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="cursive"
+            android:textColor="#B3B3B3"/>
+
+        <com.example.home.weddingapp.Others.TextViewAvenir
+            android:text="Luciana Moreira"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#FFF"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/imageButton45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/instagram" />
 
         </LinearLayout>
 

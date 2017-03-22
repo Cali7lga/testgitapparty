@@ -67,11 +67,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng local = new LatLng(-12.962219, -38.409109);
+        LatLng local = new LatLng(-12.976903, -38.516542);
         float zoom = 14;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(true);
-        mMap.addMarker(new MarkerOptions().position(local).title("Condominio Parque Tropical")).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(local).title("Porto Trapiche Eventos")).showInfoWindow();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(local,zoom));
 
     }

@@ -4,34 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.home.weddingapp.Activity.MainActivity;
-import com.example.home.weddingapp.Others.PagerAdapter;
 import com.example.home.weddingapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Tab2Fragment.Tab2FragmentInteractionListener} interface
+ * {@link HelpFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Tab2Fragment#newInstance} factory method to
+ * Use the {@link HelpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tab2Fragment extends Fragment {
-
-    public final static int PAGES = 11;
-    public final static int LOOPS = 1000;
-    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
-
-    public PagerAdapter adapter;
-    public ViewPager pager;
-
+public class HelpFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,9 +28,9 @@ public class Tab2Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Tab2FragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
 
-    public Tab2Fragment() {
+    public HelpFragment() {
         // Required empty public constructor
     }
 
@@ -53,11 +40,11 @@ public class Tab2Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Tab2Fragment.
+     * @return A new instance of fragment HelpFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Tab2Fragment newInstance(String param1, String param2) {
-        Tab2Fragment fragment = new Tab2Fragment();
+    public static HelpFragment newInstance(String param1, String param2) {
+        HelpFragment fragment = new HelpFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,40 +65,21 @@ public class Tab2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tab2, container, false);
-
-        pager = (ViewPager) view.findViewById(R.id.view_pager2);
-
-        adapter = new PagerAdapter((MainActivity) getActivity(), getChildFragmentManager());
-        pager.setAdapter(adapter);
-        pager.setPageTransformer(false,adapter);
-
-        pager.setCurrentItem(FIRST_PAGE);
-        pager.setOffscreenPageLimit(3);
-
-        DisplayMetrics dM = getResources().getDisplayMetrics();
-        int widthOfScreen = dM.widthPixels;
-        int widthOfView = 250; //in DP
-        int spaceBetweenViews = 5; // in DP
-        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
-
-        pager.setPageMargin((int) (-widthOfScreen+offset));
-
-        return view;
+        return inflater.inflate(R.layout.fragment_help, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTab2FragmentInteraction(uri);
+            mListener.onFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Tab2FragmentInteractionListener) {
-            mListener = (Tab2FragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -134,8 +102,8 @@ public class Tab2Fragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface Tab2FragmentInteractionListener {
+    public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTab2FragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 }
