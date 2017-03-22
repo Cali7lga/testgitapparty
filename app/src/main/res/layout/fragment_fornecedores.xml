@@ -25,13 +25,14 @@
             android:textColor="#B3B3B3"/>
 
         <com.example.home.weddingapp.Others.TextViewAvenir
-            android:text="Hera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:layout_gravity="center_horizontal"
-            android:textSize="19sp"
-            android:textColor="#FFF"/>
+            android:layout_marginTop="20dp"
+            android:layout_weight="0"
+            android:text="Hera Technologies"
+            android:textColor="#FFF"
+            android:textSize="19sp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -86,6 +87,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -132,6 +134,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -178,6 +181,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF" />
 
         <LinearLayout
@@ -224,6 +228,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -270,6 +275,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -316,6 +322,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -362,6 +369,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -408,6 +416,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -454,6 +463,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -500,6 +510,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -546,6 +557,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -592,6 +604,7 @@
             android:layout_weight="0"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"/>
 
         <LinearLayout
@@ -599,7 +612,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
 
             <ImageButton
                 android:id="@+id/imageButton44"

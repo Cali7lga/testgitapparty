@@ -19,11 +19,13 @@ public class DatabaseTask extends AsyncTask<String, Void, String> {
     String command = "";
     Token token;
     String amount = "";
+    String desc = "";
 
-    public DatabaseTask(String mCommand, Token mToken, String mAmount) {
+    public DatabaseTask(String mCommand, Token mToken, String mAmount, String mDescription) {
         command = mCommand;
         token = mToken;
         amount = mAmount;
+        desc = mDescription;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class DatabaseTask extends AsyncTask<String, Void, String> {
 
                 DataOutputStream dStream = new DataOutputStream(connection.getOutputStream());
 
-                dStream.writeBytes("stripeToken=" + token.getId() + "&amount=" + amount);
+                dStream.writeBytes("stripeToken=" + token.getId() + "&amount=" + amount + "&description=" + desc);
                 dStream.flush();
                 dStream.close();
 

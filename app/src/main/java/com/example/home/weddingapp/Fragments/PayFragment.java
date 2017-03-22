@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.DatabaseTask;
@@ -120,59 +121,64 @@ public class PayFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                                String cardNumber = edt_numero.getText().toString();
-                                int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
-                                int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
-                                String cardCVC = edt_cvc.getText().toString();
-                                final String valor = edt_valor.getText().toString();
+                                try {
 
-                                Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
-                                if (!card.validateCard()) {
-                                    System.out.println("Error valid card");
-                                }
-                                else{
+                                    String cardNumber = edt_numero.getText().toString();
+                                    int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
+                                    int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
+                                    String cardCVC = edt_cvc.getText().toString();
+                                    final String valor = edt_valor.getText().toString();
+                                    final String desc = ("Doação feita por "+edt_nome.getText().toString());
 
-                                    try {
-                                        System.out.println("Valid card");
-                                        Stripe stripe = new Stripe(getContext(), "pk_test_vU31MNnKZRBtobErgiqCznGO");
-                                        stripe.createToken(card, new TokenCallback() {
-                                            @Override
-                                            public void onError(Exception error) {
-                                                System.out.println("Erro token callback: "+error.toString());
-                                            }
+                                    Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
+                                    if (!card.validateCard()) {
+                                        System.out.println("Error valid card");
+                                    } else {
 
-                                            @Override
-                                            public void onSuccess(Token token) {
+                                        try {
+                                            System.out.println("Valid card");
+                                            Stripe stripe = new Stripe(getContext(), "pk_live_68BdK9ZwAWbirEQYYSTH7Wpg");
+                                            stripe.createToken(card, new TokenCallback() {
+                                                @Override
+                                                public void onError(Exception error) {
+                                                    System.out.println("Erro token callback: " + error.toString());
+                                                }
 
-                                                System.out.println("Sucesso token callback");
+                                                @Override
+                                                public void onSuccess(Token token) {
 
-                                                DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor);
-                                                databaseTask.execute();
+                                                    System.out.println("Sucesso token callback");
 
-                                            }
-                                        });
-                                    }catch (Exception e){
-                                        e.printStackTrace();
+                                                    DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor, desc);
+                                                    databaseTask.execute();
+
+                                                }
+                                            });
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                     }
+
+                                    sweetAlertDialog.setTitleText("Sucesso!")
+                                            .setContentText("Muito obrigado por contribuir com a construção do nosso novo lar!")
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                @Override
+                                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                                    sweetAlertDialog.dismiss();
+                                                    MainActivity mainActivity = (MainActivity) getActivity();
+                                                    mainActivity.backfragment();
+
+                                                }
+                                            })
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                } catch(Exception e){
+                                    Toast.makeText(getActivity(),"ERRO! Preencha corretamente os campos acima.",Toast.LENGTH_SHORT).show();
+                                    sweetAlertDialog.dismiss();
                                 }
-
-                                sweetAlertDialog.setTitleText("Sucesso!")
-                                        .setContentText("Muito obrigado por contribuir com a construção do nosso novo lar!")
-                                        .setConfirmText("OK")
-                                        .showCancelButton(false)
-                                        .setCancelClickListener(null)
-                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                            @Override
-                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                                                sweetAlertDialog.dismiss();
-                                                MainActivity mainActivity = (MainActivity) getActivity();
-                                                mainActivity.backfragment();
-
-                                            }
-                                        })
-                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-
                             }
                         })
                         .show();
