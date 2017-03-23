@@ -1,15 +1,20 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.home.weddingapp.Activity.MainActivity;
@@ -35,6 +40,7 @@ public class PayFragment extends Fragment {
 
     EditText edt_nome, edt_numero, edt_mes, edt_ano, edt_cvc, edt_valor;
     Button button;
+    ImageButton help;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,7 +97,52 @@ public class PayFragment extends Fragment {
         edt_cvc = (EditText) view.findViewById(R.id.editText8);
         edt_valor = (EditText) view.findViewById(R.id.editText9);
 
+        help = (ImageButton) view.findViewById(R.id.imageButton10);
         button = (Button) view.findViewById(R.id.button6);
+
+        edt_numero.addTextChangedListener(new TextWatcher() {
+            private static final char space = ' ';
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // Remove spacing char
+                if (s.length() > 0 && (s.length() % 5) == 0) {
+                    final char c = s.charAt(s.length() - 1);
+                    if (space == c) {
+                        s.delete(s.length() - 1, s.length());
+                    }
+                }
+                // Insert char where needed.
+                if (s.length() > 0 && (s.length() % 5) == 0) {
+                    char c = s.charAt(s.length() - 1);
+                    // Only if its a digit where there should be a space we insert a space
+                    if (Character.isDigit(c) && TextUtils.split(s.toString(), String.valueOf(space)).length <= 3) {
+                        s.insert(s.length() - 1, String.valueOf(space));
+                    }
+                }
+
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadHelp();
+
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,7 +26,7 @@
             android:layout_marginTop="10dp"
             android:text="Av Lafayete Coutinho, 496, Comércio"
             android:textColor="@color/marrom_texto"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <com.example.home.weddingapp.Others.TextViewAvenir
             android:id="@+id/textView19"

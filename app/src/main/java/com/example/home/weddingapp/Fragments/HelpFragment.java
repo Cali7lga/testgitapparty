@@ -13,7 +13,7 @@ import com.example.home.weddingapp.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HelpFragment.OnFragmentInteractionListener} interface
+ * {@link HelpFragment.HelpFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link HelpFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -28,7 +28,7 @@ public class HelpFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private HelpFragmentInteractionListener mListener;
 
     public HelpFragment() {
         // Required empty public constructor
@@ -71,15 +71,15 @@ public class HelpFragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onHelpFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof HelpFragmentInteractionListener) {
+            mListener = (HelpFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -102,8 +102,8 @@ public class HelpFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface HelpFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onHelpFragmentInteraction(Uri uri);
     }
 }

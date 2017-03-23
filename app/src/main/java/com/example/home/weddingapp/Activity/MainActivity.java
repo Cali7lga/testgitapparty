@@ -16,6 +16,7 @@ import com.example.home.weddingapp.Fragments.CerimoniaFragment;
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.FotosFragment;
+import com.example.home.weddingapp.Fragments.HelpFragment;
 import com.example.home.weddingapp.Fragments.HistoryFragment;
 import com.example.home.weddingapp.Fragments.MainFragment;
 import com.example.home.weddingapp.Fragments.MapsFragment;
@@ -49,7 +50,8 @@ public class MainActivity extends FragmentActivity
         StreetviewFragment.StviewFragmentInteractionListener,
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
         Tab4Fragment.Tab5FragmentInteractionListener,
-        PayFragment.PayFragmentInteractionListener {
+        PayFragment.PayFragmentInteractionListener,
+        HelpFragment.HelpFragmentInteractionListener {
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -230,6 +232,13 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadHelp(){
+
+        HelpFragment helpFragment = new HelpFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, helpFragment).addToBackStack(null).commit();
+
+    }
+
     public void backfragment(){
         getSupportFragmentManager().popBackStack();
     }
@@ -322,6 +331,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onPayFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onHelpFragmentInteraction(Uri uri) {
 
     }
 }
