@@ -8,10 +8,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TabHost;
 
-import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 
 /**
@@ -80,36 +77,6 @@ public class TabBarFragment extends Fragment {
         tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", getResources().getDrawable(R.drawable.christmas)),Tab4Fragment.class,null);
 
         tabHost.setCurrentTab(0);
-        
-//        MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
-//
-//        if(MainActivity.mediaPlayer.isPlaying()) {
-//            speaker.setVisibility(View.VISIBLE);
-//            mute.setVisibility(View.INVISIBLE);
-//        }
-//        else{
-//            speaker.setVisibility(View.INVISIBLE);
-//            mute.setVisibility(View.VISIBLE);
-//        }
-//
-//        speaker.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MainActivity mainActivity = (MainActivity) getActivity();
-//                mainActivity.pausemusic();
-//                speaker.setVisibility(View.INVISIBLE);
-//                mute.setVisibility(View.VISIBLE);
-//            }
-//        });
-//        mute.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MainActivity mainActivity = (MainActivity) getActivity();
-//                mainActivity.startmusic();
-//                mute.setVisibility(View.INVISIBLE);
-//                speaker.setVisibility(View.VISIBLE);
-//            }
-//        });
 
         return view;
     }

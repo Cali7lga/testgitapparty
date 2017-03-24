@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.home.weddingapp.Activity.MainActivity;
@@ -130,16 +129,6 @@ public class  CerimoniaFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-/*    @Override
-    public void onClick(View v) {
-
-        if (v == getId(R.id.imageButton)) {
-            MainActivity mainactivity = (MainActivity) getActivity();
-            mainactivity.loadMaps();
-        }
-    }
-*/
 
     /**
      * This interface must be implemented by activities that contain this
