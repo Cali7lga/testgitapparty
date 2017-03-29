@@ -8,9 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +31,13 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class  CerimoniaFragment extends Fragment {
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento");
+
+    ImageView local;
+    TextView endereco;
+    LinearLayout my_layout;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,6 +86,66 @@ public class  CerimoniaFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_cerimonia, container, false);
+
+        local = (ImageView) view.findViewById(R.id.imageView10);
+        endereco = (TextView) view.findViewById(R.id.textView5);
+        my_layout = (LinearLayout) view.findViewById(R.id.my_layout);
+
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String url = dataSnapshot.child("fotolocal").getValue(String.class);
+                Uri uri = Uri.parse(url);
+                Glide.with(getActivity()).load(uri).centerCrop().into(local);
+
+                endereco.setText(dataSnapshot.child("endereco").getValue(String.class));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("informacoes").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View v = li.inflate(R.layout.fragment_eventitem,null);
+
+                TextView titulo = (TextView) v.findViewById(R.id.titulo_info);
+                TextView texto = (TextView) v.findViewById(R.id.texto_info);
+
+                titulo.setText(dataSnapshot.child("titulo").getValue(String.class));
+                texto.setText(dataSnapshot.child("texto").getValue(String.class));
+
+                my_layout.addView(v);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         ImageButton botao = (ImageButton) view.findViewById(R.id.imageButton);
         botao.setOnClickListener(new View.OnClickListener() {

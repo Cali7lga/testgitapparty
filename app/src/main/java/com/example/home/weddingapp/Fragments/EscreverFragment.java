@@ -36,7 +36,7 @@ public class EscreverFragment extends Fragment {
     private Button botao;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = database.getReference();
+    DatabaseReference mRef = database.getReference().child("Codes").child("999");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -117,7 +117,7 @@ public class EscreverFragment extends Fragment {
                     fileinfo.setMensagem(editText1.getText().toString());
                     fileinfo.setName(editText2.getText().toString());
 
-                    mRef.child("messages").push().setValue(fileinfo);
+                    mRef.child("mensagens").push().setValue(fileinfo);
 
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("Mensagem Enviada")

@@ -8,12 +8,20 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.home.weddingapp.Others.FileInfoFornecedor;
+import com.example.home.weddingapp.Others.FileInfoMsg;
 import com.example.home.weddingapp.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +32,14 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class FornecedoresFragment extends Fragment {
+
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+
+    FirebaseRecyclerAdapter<FileInfoFornecedor,FornecedorViewHolder> mAdapter;
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("fornecedores");
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,260 +90,46 @@ public class FornecedoresFragment extends Fragment {
 
         final PackageManager packageManager = getActivity().getPackageManager();
 
-        ImageButton btn_faceHera = (ImageButton) view.findViewById(R.id.imageButton16);
-        ImageButton btn_faceBeth = (ImageButton) view.findViewById(R.id.imageButton3);
-        ImageButton btn_face3img = (ImageButton) view.findViewById(R.id.imageButton5);
-        ImageButton btn_faceDeni = (ImageButton) view.findViewById(R.id.imageButton7);
-        ImageButton btn_faceSidn = (ImageButton) view.findViewById(R.id.imageButton17);
-        ImageButton btn_faceHarm = (ImageButton) view.findViewById(R.id.imageButton30);
-        ImageButton btn_faceCBar = (ImageButton) view.findViewById(R.id.imageButton32);
-        ImageButton btn_facePark = (ImageButton) view.findViewById(R.id.imageButton34);
-        ImageButton btn_faceFoto = (ImageButton) view.findViewById(R.id.imageButton36);
-        ImageButton btn_faceDrea = (ImageButton) view.findViewById(R.id.imageButton38);
-        ImageButton btn_faceFati = (ImageButton) view.findViewById(R.id.imageButton40);
-        ImageButton btn_faceTani = (ImageButton) view.findViewById(R.id.imageButton42);
-        ImageButton btn_faceLuci = (ImageButton) view.findViewById(R.id.imageButton44);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_rv3);
+        mRecyclerView.setHasFixedSize(true);
 
-        ImageButton btn_instaHera = (ImageButton) view.findViewById(R.id.imageButton15);
-        ImageButton btn_instaBeth = (ImageButton) view.findViewById(R.id.imageButton4);
-        ImageButton btn_insta3img = (ImageButton) view.findViewById(R.id.imageButton6);
-        ImageButton btn_instaDeni = (ImageButton) view.findViewById(R.id.imageButton8);
-        ImageButton btn_instaSidn = (ImageButton) view.findViewById(R.id.imageButton18);
-        ImageButton btn_instaHarm = (ImageButton) view.findViewById(R.id.imageButton31);
-        ImageButton btn_instaCBar = (ImageButton) view.findViewById(R.id.imageButton33);
-        ImageButton btn_instaPark = (ImageButton) view.findViewById(R.id.imageButton35);
-        ImageButton btn_instaFoto = (ImageButton) view.findViewById(R.id.imageButton37);
-        ImageButton btn_instaDrea = (ImageButton) view.findViewById(R.id.imageButton39);
-        ImageButton btn_instaFati = (ImageButton) view.findViewById(R.id.imageButton41);
-        ImageButton btn_instaTani = (ImageButton) view.findViewById(R.id.imageButton43);
-        ImageButton btn_instaLuci = (ImageButton) view.findViewById(R.id.imageButton45);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        btn_faceHera.setOnClickListener(new View.OnClickListener() {
+        mAdapter = new FirebaseRecyclerAdapter<FileInfoFornecedor, FornecedorViewHolder>(
+                FileInfoFornecedor.class,
+                R.layout.fragment_fornecedoritem,
+                FornecedorViewHolder.class,
+                mRef
+        ) {
             @Override
-            public void onClick(View v) {
+            protected void populateViewHolder(FornecedorViewHolder viewHolder, FileInfoFornecedor model, int position) {
 
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/heratechnologies/?fref=ts");
-                startActivity(openface);
+                String f_nome = model.getNome();
+                String f_titulo = model.getTitulo();
+                final String f_face = model.getFacebook();
+                final String f_insta = model.getInstagram();
+
+                viewHolder.tituloText.setText(f_titulo);
+                viewHolder.nameText.setText(f_nome);
+                viewHolder.ic_face.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent openface = newFacebookIntent(packageManager,f_face);
+                        startActivity(openface);
+                    }
+                });
+                viewHolder.ic_insta.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        newInstagramIntent(f_insta);
+                    }
+                });
 
             }
-        });
-        btn_faceBeth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        };
 
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/bethbahienseeventos/?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_face3img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/3imagens/?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceDeni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/deniselins.salvador?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceSidn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/sidney.h.rodriguez?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceHarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/Harmonizi-118915164884644/");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceCBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/Concept-Bar-117047165004007/");
-                startActivity(openface);
-
-            }
-        });
-        btn_facePark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/vallet.park.3?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/digitalmasterfoto/?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceDrea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/dream.rasteirinha/?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceFati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/fatima.bemcasados?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceTani.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/T%C3%A2nia-Belos-Bolos-537163883070941/?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-        btn_faceLuci.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent openface =  newFacebookIntent(packageManager,"https://www.facebook.com/luciana.m.cerimonialista?fref=ts");
-                startActivity(openface);
-
-            }
-        });
-
-    //------------------------------------------------------------------------------------
-
-        btn_instaHera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("heratechnologies");
-
-            }
-        });
-
-        btn_instaBeth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("bethbahiense");
-
-            }
-        });
-        btn_insta3img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("3imagens");
-
-            }
-        });
-        btn_instaDeni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("deniselinsconvitessalvador");
-
-            }
-        });
-        btn_instaSidn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("sidneyhaackphotos");
-
-            }
-        });
-        btn_instaHarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("harmonizi");
-
-            }
-        });
-        btn_instaCBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("conceptbar");
-
-            }
-        });
-        btn_instaPark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("valletpark");
-
-            }
-        });
-        btn_instaFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("masterfotodigital");
-
-            }
-        });
-        btn_instaDrea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("dream_rasteirinhas");
-
-            }
-        });
-        btn_instaFati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("fatimabemcasados");
-
-            }
-        });
-        btn_instaTani.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("taniabelosbolos");
-
-            }
-        });
-        btn_instaLuci.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                newInstagramIntent("luciana_cerimonialista");
-
-            }
-        });
-
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
@@ -381,6 +183,23 @@ public class FornecedoresFragment extends Fragment {
                     Uri.parse("http://instagram.com/"+url)));
         }
 
+    }
+
+    private static class FornecedorViewHolder extends RecyclerView.ViewHolder {
+        TextView tituloText;
+        TextView nameText;
+        ImageButton ic_insta;
+        ImageButton ic_face;
+
+        public FornecedorViewHolder(View itemView) {
+            super(itemView);
+
+            tituloText = (TextView) itemView.findViewById(R.id.txt_titulo);
+            nameText = (TextView) itemView.findViewById(R.id.txt_nome);
+            ic_face = (ImageButton) itemView.findViewById(R.id.imageButton16);
+            ic_insta = (ImageButton) itemView.findViewById(R.id.imageButton15);
+
+        }
     }
 
     /**

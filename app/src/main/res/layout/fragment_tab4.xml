@@ -26,17 +26,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Após o casamento, nosso endereço será nos EUA, portanto, caso queiram nos presentear com algo para a nossa casinha, é só clicar no botão abaixo. Esses valores serão dedicados à construção do nosso lar. Desde já agradecemos e saibam que lembraremos de casa presente com muito carinho."
             android:textColor="@color/marrom_texto"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/txt_ass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="10dp"
             android:fontFamily="cursive"
-            android:text="Thaís &amp; Lucas"
             android:textColor="@color/marrom_texto"
             android:textSize="24sp"
             android:textStyle="bold|italic" />
@@ -46,7 +45,6 @@
             android:layout_width="240dp"
             android:layout_height="160dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/construction"
             android:layout_marginTop="10dp"/>
 
         <Button

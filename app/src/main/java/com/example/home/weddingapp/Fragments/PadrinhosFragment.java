@@ -12,9 +12,15 @@ import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 import com.example.home.weddingapp.Others.MyLinearLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,56 +89,28 @@ public class PadrinhosFragment extends Fragment {
 
         LinearLayout l = (LinearLayout) inflater.inflate(R.layout.fragment_padrinhos, container, false);
 
-        int pos = this.getArguments().getInt("pos");
-        TextView tv = (TextView) l.findViewById(R.id.text);
+        final int pos = this.getArguments().getInt("pos");
+        final TextView tv = (TextView) l.findViewById(R.id.text);
         tv.setMovementMethod(new ScrollingMovementMethod());
-        ImageView image = (ImageView) l.findViewById(R.id.content);
-        switch(pos) {
-            case 0:
-                tv.setText("Livia & Clebinho. Somos fãs desse casal atleta e guardamos um lugar especial no nosso coração para esses dois. Queremos só e somente só o melhor para esses dois. Deus os abençoe!");
-                image.setImageResource(R.drawable.pfoto1);
-                break;
-            case 1:
-                tv.setText("Betinha. Nossa futura advogada, uma menina de fibra, guerreira que é nossa inspiração. Nosso amor por ela não tem medida. É uma alegria tê-la como irmã.");
-                image.setImageResource(R.drawable.pfoto2);
-                break;
-            case 2:
-                tv.setText("Juliana & Murillo. São os mais novos pais de família. A chegada de Maya trará muita alegria e nos dará mais um motivo para comemorar. Deus os abençoe e parabéns pela filhota!");
-                image.setImageResource(R.drawable.pfoto3);
-                break;
-            case 3:
-                tv.setText("Miguel. O ex-caçula cresceu, e mantendo um coração puro continua sendo o nosso amado Gui. É um menino bom que merece toda a felicidade do mundo. Que Deus o abençoe e ilumine.");
-                image.setImageResource(R.drawable.pfoto4);
-                break;
-            case 4:
-                tv.setText("Dudinha. Ela tem um jeitinho doce de demonstrar carinho. Suas cartinhas e desenhos são cheios de amor por todos. Amamos essa boneca!");
-                image.setImageResource(R.drawable.pfoto5);
-                break;
-            case 5:
-                tv.setText("Matheus & Bruna. Conheço esses dois desde os tempos de escola. Matheus foi o meu primeiro amigo na escola e já faz quase 20 anos que ele é como um irmão para mim. Desejamos toda a feliciade e sucesso do mundo para este casal pelo qual temos tanto carinho. O Canadá nem imagina o presente que vai receber!");
-                image.setImageResource(R.drawable.pfoto6);
-                break;
-            case 6:
-                tv.setText("Tati, Ícaro & Iago. Mais que prima, ela é irmã. Seu amor veio antes do seu nascimento e a inspiração que ela me trouxe fortaleceu meus sonhos. Seu amado Ícaro, além de guardião do coração dela, nos deu nosso pajem lindo, Iago, e nossa cãopanheira diária, Iunna. Nosso amor e gratidão por vocês é imenso.");
-                image.setImageResource(R.drawable.pfoto7);
-                break;
-            case 7:
-                tv.setText("Artur. Conheci Artur na segunda série, enquanto esperávamos nossas mães virem nos buscar na escola. Eu, ele e Matheus formavamos um trio inseparável quando éramos pequenos. Sou muito grato por esse irmão que Deus me deu.");
-                image.setImageResource(R.drawable.pfoto8);
-                break;
-            case 8:
-                tv.setText("Elaine e Gefferson. Amiga-irmã do coração, verdadeiro presente de Deus, e Geff, que é o dono do valioso coração dela. Não podia pedir por uma amiga melhor, pois não importa o que aconteça, sempre nos entenderemos e é isso que torna uma amizade especial");
-                image.setImageResource(R.drawable.pfoto9);
-                break;
-            case 9:
-                tv.setText("Ludmilla. Amiga de todas as horas que se faz presente mesmo a distância. Uma menina de ouro à quem só queremos bem.");
-                image.setImageResource(R.drawable.pfoto10);
-                break;
-            case 10:
-                tv.setText("Iunna. Nossa cachorrinha, um dos presentes que Deus nos deu. Thaís fez uma oração e Ele enviou Iunna por express delivery e hoje ela é como uma filha pra nós.");
-                image.setImageResource(R.drawable.pfoto11);
-                break;
-        }
+        final ImageView image = (ImageView) l.findViewById(R.id.content);
+
+        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("padrinhos");
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int aux = pos+1;
+                tv.setText(dataSnapshot.child("padrinho"+aux).child("texto").getValue(String.class));
+                String url = dataSnapshot.child("padrinho"+aux).child("foto").getValue(String.class);
+                Uri uri = Uri.parse(url);
+                Glide.with(getActivity()).load(uri).centerCrop().into(image);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         MyLinearLayout root = (MyLinearLayout) l.findViewById(R.id.root);
         float scale = this.getArguments().getFloat("scale");

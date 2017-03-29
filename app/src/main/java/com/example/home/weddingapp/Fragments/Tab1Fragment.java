@@ -18,6 +18,11 @@ import android.widget.VideoView;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -31,10 +36,11 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 public class Tab1Fragment extends Fragment {
 
     public static int speaking=1;
-    TextView textdias, texthoras, textminutos, textsegundos;
+    TextView textdias, texthoras, textminutos, textsegundos, data, noivos;
     VideoView videoView;
     com.getbase.floatingactionbutton.FloatingActionButton som, album, casal;
     FloatingActionsMenu menu;
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("video");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,6 +96,9 @@ public class Tab1Fragment extends Fragment {
         textminutos = (TextView) view.findViewById(R.id.minutos);
         textsegundos = (TextView) view.findViewById(R.id.segundos);
 
+        data = (TextView) view.findViewById(R.id.textView7);
+        noivos = (TextView) view.findViewById(R.id.textView8);
+
         videoView = (VideoView) view.findViewById(R.id.videoView);
 
         menu = (FloatingActionsMenu) view.findViewById(R.id.multiple_actions);
@@ -97,61 +106,79 @@ public class Tab1Fragment extends Fragment {
         album = (com.getbase.floatingactionbutton.FloatingActionButton) view.findViewById(R.id.album);
         casal = (com.getbase.floatingactionbutton.FloatingActionButton) view.findViewById(R.id.casal);
 
-        SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        java.util.Date d = null;
-        java.util.Date d1 = null;
-        Calendar calendar = Calendar.getInstance();
-        try {
-            d = dfDate.parse("06/05/2017 19:00:00");
-            d1 = dfDate.parse(dfDate.format(calendar.getTime()));
-        } catch (java.text.ParseException e){
-            e.printStackTrace();
-        }
-
-        long milisegundos = (d.getTime() - d1.getTime());
-
-        new CountDownTimer(milisegundos,1000){
-
-            double correcao = 1000*60*60*24;
-
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onTick(long millisUntilFinished) {
-                int dias = (int) (millisUntilFinished / correcao);
-                textdias.setText(String.valueOf(dias));
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                int horas = (int) (((millisUntilFinished / correcao) - dias) * 24);
-                texthoras.setText(String.valueOf(horas));
+                data.setText(dataSnapshot.child("datastring").getValue(String.class));
+                noivos.setText(dataSnapshot.child("casal").getValue(String.class));
 
-                int minutos = (int) (((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60);
-                textminutos.setText(String.valueOf(minutos));
+                String date = dataSnapshot.child("data").getValue().toString();
 
-                int segundos = (int) (((((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60) - minutos) *60);
-                textsegundos.setText(String.valueOf(segundos));
-            }
+                SimpleDateFormat dfDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                java.util.Date d = null;
+                java.util.Date d1 = null;
+                Calendar calendar = Calendar.getInstance();
+                try {
+                    d = dfDate.parse(date+" 19:00:00");
+                    d1 = dfDate.parse(dfDate.format(calendar.getTime()));
+                } catch (java.text.ParseException e){
+                    e.printStackTrace();
+                }
 
-            @Override
-            public void onFinish() {
+                long milisegundos = (d.getTime() - d1.getTime());
 
-            }
-        }.start();
+                new CountDownTimer(milisegundos,1000){
 
-        String uripath = "android.resource://com.example.home.weddingapp/"+R.raw.video_casal;
-        Uri src = Uri.parse(uripath);
-        videoView.setVideoURI(src);
-        videoView.requestFocus();
-        videoView.start();
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setVolume(0,0);
-            }
-        });
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
+                    double correcao = 1000*60*60*24;
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        int dias = (int) (millisUntilFinished / correcao);
+                        textdias.setText(String.valueOf(dias));
+
+                        int horas = (int) (((millisUntilFinished / correcao) - dias) * 24);
+                        texthoras.setText(String.valueOf(horas));
+
+                        int minutos = (int) (((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60);
+                        textminutos.setText(String.valueOf(minutos));
+
+                        int segundos = (int) (((((((millisUntilFinished / correcao) - dias) * 24) - horas) * 60) - minutos) *60);
+                        textsegundos.setText(String.valueOf(segundos));
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+                }.start();
+
+                String uripath = dataSnapshot.child("urlVideo").getValue(String.class);
+                Uri src = Uri.parse(uripath);
+                videoView.setVideoURI(src);
+                videoView.requestFocus();
                 videoView.start();
+                videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.setVolume(0,0);
+                    }
+                });
+                videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        videoView.start();
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
 
         MainActivity.mediaPlayer.setVolume(1.0f,1.0f);
 

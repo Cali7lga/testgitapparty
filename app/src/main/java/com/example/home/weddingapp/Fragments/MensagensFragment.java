@@ -33,11 +33,11 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class MensagensFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = database.getReference();
+    DatabaseReference mRef = database.getReference().child("Codes").child("999");
 
     ImageButton imageButton;
 
@@ -101,7 +101,7 @@ public class MensagensFragment extends Fragment {
                 FileInfoMsg.class,
                 R.layout.fragment_msgitem,
                 MessageViewHolder.class,
-                mRef.child("messages")
+                mRef.child("mensagens")
         ) {
             @Override
             protected void populateViewHolder(MessageViewHolder viewHolder, final FileInfoMsg model, final int position) {

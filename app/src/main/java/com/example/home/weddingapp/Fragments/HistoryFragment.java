@@ -8,9 +8,16 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.home.weddingapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +28,11 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class HistoryFragment extends Fragment{
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("story");
+    TextView texto, noivo, noiva;
+    ImageView fpnoivo, fpnoiva;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,8 +81,36 @@ public class HistoryFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        TextView textView = (TextView) view.findViewById(R.id.textView3);
-        textView.setMovementMethod(new ScrollingMovementMethod());
+        fpnoivo = (ImageView) view.findViewById(R.id.imageView2);
+        fpnoiva = (ImageView) view.findViewById(R.id.imageView3);
+        noivo = (TextView) view.findViewById(R.id.nome_noivo);
+        noiva = (TextView) view.findViewById(R.id.nome_noiva);
+        texto = (TextView) view.findViewById(R.id.textView3);
+        texto.setMovementMethod(new ScrollingMovementMethod());
+
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String url = dataSnapshot.child("noivo").child("foto").getValue(String.class);
+                Uri uri = Uri.parse(url);
+                Glide.with(getActivity()).load(uri).into(fpnoivo);
+                String url2 = dataSnapshot.child("noiva").child("foto").getValue(String.class);
+                Uri uri2 = Uri.parse(url2);
+                Glide.with(getActivity()).load(uri2).into(fpnoiva);
+
+                noivo.setText(dataSnapshot.child("noivo").child("nome").getValue(String.class));
+                noiva.setText(dataSnapshot.child("noiva").child("nome").getValue(String.class));
+
+                texto.setText(dataSnapshot.child("texto").getValue(String.class));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         return view;
     }

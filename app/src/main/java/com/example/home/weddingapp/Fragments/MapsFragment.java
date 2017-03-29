@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento").child("localizacao");
 
     private GoogleMap mMap;
 
@@ -66,13 +74,27 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng local = new LatLng(-12.976903, -38.516542);
-        float zoom = 14;
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setMapToolbarEnabled(true);
-        mMap.addMarker(new MarkerOptions().position(local).title("Porto Trapiche Eventos")).showInfoWindow();
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(local,zoom));
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                double latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+
+                LatLng local = new LatLng(latitude, longitude);
+                float zoom = 14;
+                mMap.getUiSettings().setZoomControlsEnabled(true);
+                mMap.getUiSettings().setMapToolbarEnabled(true);
+                mMap.addMarker(new MarkerOptions().position(local).title(dataSnapshot.child("nomelocal").getValue(String.class))).showInfoWindow();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(local,zoom));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

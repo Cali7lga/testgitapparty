@@ -1,17 +1,32 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.home.weddingapp.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +38,10 @@ import com.example.home.weddingapp.R;
  */
 public class PhotosFragment extends Fragment {
 
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("slideshow");
     ViewFlipper viewFlipper;
     Animation fade_in, fade_out;
+    ProgressBar progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +93,42 @@ public class PhotosFragment extends Fragment {
 
         viewFlipper = (ViewFlipper) view.findViewById(R.id.viewFlipper);
 
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar3);
+
+        mRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                ImageView foto = new ImageView(getActivity());
+                String url = dataSnapshot.child("foto").getValue(String.class);
+                Uri uri = Uri.parse(url);
+                Glide.with(getActivity()).load(uri).centerCrop().into(foto);
+                viewFlipper.addView(foto);
+                progressBar.setVisibility(View.INVISIBLE);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         fade_in = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_in);
         fade_out = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_out);
 
@@ -85,8 +138,6 @@ public class PhotosFragment extends Fragment {
         viewFlipper.setInAnimation(fade_in);
         viewFlipper.setOutAnimation(fade_out);
 
-        viewFlipper.setAutoStart(true);
-        viewFlipper.setFlipInterval(4000);
         viewFlipper.startFlipping();
 
         return view;

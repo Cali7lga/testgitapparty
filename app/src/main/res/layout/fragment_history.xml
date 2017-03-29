@@ -9,66 +9,59 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:src="@drawable/lperfil" />
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginStart="50dp"
-            android:src="@drawable/tperfil" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/nome_noivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
             android:fontFamily="cursive"
-            android:gravity="center_horizontal"
-            android:text=" Lucas Gurgel"
             android:textColor="@color/marrom_texto"
             android:textSize="20sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/nome_noiva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="5dp"
             android:fontFamily="cursive"
-            android:gravity="center_horizontal"
-            android:text="Thaís Marques"
             android:textColor="@color/marrom_texto"
             android:textSize="20sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/imageView4">
+        android:layout_height="match_parent">
 
         <view
             android:layout_width="match_parent"
@@ -91,7 +84,6 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:scrollbars="vertical"
-            android:text="Numa bela noite no Bohemia, nos conhecemos. Nós não queríamos ir, mas acabamos indo. Não esperávamos conhecer um futuro marido ou futura esposa, não existe aviso previo para essas coisas. Por obra de Deus, nos conhecemos, não poderiamos deixar de reconhecer. Não demorou muito, nos apegamos um ao outro e queríamos estar perto a todo tempo. Não demorou de novo, e começamos a namorar. O tempo passou e nosso relacionamento se fortaleceu. Passamos por muitos desafios e obstáculos, mas todos foram superados, graças a Deus. Amem. Os últimos 5 anos foram repletos de momentos e experiências sensacionais, e nós desejamos vivenciar muitas outras. Ja havíamos decidido casar ha algum tempo, mas finalmente começamos a nos preparar para a concretizaçao do nosso sonho. Seria uma honra ter você lá na hora."
             android:textColor="@color/marrom_texto"
             android:textSize="18sp" />
 

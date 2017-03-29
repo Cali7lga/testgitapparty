@@ -13,8 +13,15 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class StreetviewFragment extends Fragment implements OnStreetViewPanoramaReadyCallback {
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento").child("localizacao");
 
     private StreetViewPanorama stview;
 
@@ -42,9 +49,24 @@ public class StreetviewFragment extends Fragment implements OnStreetViewPanorama
 
         stview = streetViewPanorama;
 
-        LatLng local = new LatLng(-12.976903, -38.516542);
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        stview.setPosition(local);
+                Double latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+
+                LatLng local = new LatLng(latitude, longitude);
+
+                stview.setPosition(local);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

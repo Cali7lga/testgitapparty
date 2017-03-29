@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.MensagensFragment"
     android:orientation="vertical"
-    android:background="#f4f4ec">
+    android:background="@color/bg_bege">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_rv"

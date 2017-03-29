@@ -15,8 +15,7 @@
             android:id="@+id/imageView10"
             android:layout_width="wrap_content"
             android:layout_height="210dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/place" />
+            android:scaleType="centerCrop" />
 
         <com.example.home.weddingapp.Others.TextViewAvenir
             android:id="@+id/textView5"
@@ -24,7 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="Av Lafayete Coutinho, 496, Comércio"
             android:textColor="@color/marrom_texto"
             android:textSize="12sp" />
 
@@ -124,67 +122,13 @@
                 android:textColor="@color/marrom_texto" />
         </LinearLayout>
 
-
-        <com.example.home.weddingapp.Others.TextViewAvenir
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/my_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:text="Cerimonia e Recepção"
-            android:textColor="@color/marrom_texto"
-            android:textSize="12sp"
-            android:textStyle="normal|italic" />
+            android:orientation="vertical">
 
-        <view
-            class="android.support.v4.widget.DrawerLayout"
-            android:layout_width="132dp"
-            android:layout_height="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@color/marrom_texto" />
-
-        <com.example.home.weddingapp.Others.TextViewAvenir
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:text="Porto Trapiche Eventos - 6 de Maio de 2017, às 19h."
-            android:textColor="@color/marrom_texto"
-            android:textSize="14sp" />
-
-        <com.example.home.weddingapp.Others.TextViewAvenir
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:text="Estacionamento"
-            android:textColor="@color/marrom_texto"
-            android:textSize="12sp"
-            android:textStyle="normal|italic" />
-
-        <view
-            class="android.support.v4.widget.DrawerLayout"
-            android:layout_width="100dp"
-            android:layout_height="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@color/marrom_texto" />
-
-        <com.example.home.weddingapp.Others.TextViewAvenir
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:text="Haverá manobristas no local."
-            android:textColor="@color/marrom_texto"
-            android:textSize="14sp" />
+        </LinearLayout>
 
         <com.example.home.weddingapp.Others.TextViewAvenir
             android:id="@+id/textView22"

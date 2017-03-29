@@ -47,7 +47,7 @@ public class FotosFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbRef = database.getReference();
+    DatabaseReference dbRef = database.getReference().child("Codes").child("999");
 
     ImageButton imageButton;
 
@@ -114,7 +114,7 @@ public class FotosFragment extends Fragment {
                 FileInfoUrl.class,
                 R.layout.fragment_photoitem,
                 PhotoViewHolder.class,
-                dbRef.child("fotosUrl")
+                dbRef.child("fotos")
         ) {
             @Override
             protected void populateViewHolder(final PhotoViewHolder viewHolder, FileInfoUrl model, final int position) {

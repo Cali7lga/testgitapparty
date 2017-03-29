@@ -129,7 +129,7 @@ public class CaptureFragment extends Fragment {
         btn_gallery = (ImageButton) view.findViewById(R.id.imageButton21);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Codes").child("999");
         btnMorph = (MorphingButton) view.findViewById(R.id.btnMorph);
         morphToLocked(btnMorph,0);
 
@@ -172,7 +172,7 @@ public class CaptureFragment extends Fragment {
 
                         Uri file = Uri.fromFile(compressedFoto(new File(getFilepath())));
                         String uniqueID = UUID.randomUUID().toString();
-                        UploadTask uploadTask = storageReference.child("fotosUrl/"+uniqueID).putFile(file);
+                        UploadTask uploadTask = storageReference.child("ThaiseLucas/fotosUrl/"+uniqueID).putFile(file);
                         uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
@@ -189,7 +189,7 @@ public class CaptureFragment extends Fragment {
                                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
                                 FileInfoUrl fileinfo = new FileInfoUrl();
                                 fileinfo.setImageUrl(downloadUrl.toString());
-                                databaseReference.child("fotosUrl").push().setValue(fileinfo);
+                                databaseReference.child("fotos").push().setValue(fileinfo);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 new SweetAlertDialog(getActivity(),SweetAlertDialog.SUCCESS_TYPE)
                                         .setTitleText("Bela foto ;)")

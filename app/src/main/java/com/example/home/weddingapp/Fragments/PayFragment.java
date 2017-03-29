@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.DatabaseTask;
 import com.example.home.weddingapp.R;
-import com.stripe.*;
 import com.stripe.android.*;
 import com.stripe.android.Stripe;
 import com.stripe.android.model.Card;

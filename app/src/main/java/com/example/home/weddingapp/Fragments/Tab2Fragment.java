@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,11 @@ import android.view.ViewGroup;
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.Others.PagerAdapter;
 import com.example.home.weddingapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,12 +31,14 @@ import com.example.home.weddingapp.R;
  */
 public class Tab2Fragment extends Fragment {
 
-    public final static int PAGES = 11;
-    public final static int LOOPS = 1000;
-    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+    public static int PAGES;
+    public static int LOOPS = 1000;
+    public static int FIRST_PAGE;
 
     public PagerAdapter adapter;
     public ViewPager pager;
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("padrinhos");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,20 +90,35 @@ public class Tab2Fragment extends Fragment {
 
         pager = (ViewPager) view.findViewById(R.id.view_pager2);
 
-        adapter = new PagerAdapter((MainActivity) getActivity(), getChildFragmentManager());
-        pager.setAdapter(adapter);
-        pager.setPageTransformer(false,adapter);
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        pager.setCurrentItem(FIRST_PAGE);
-        pager.setOffscreenPageLimit(3);
+                PAGES = (int) dataSnapshot.getChildrenCount();
+                FIRST_PAGE = PAGES * LOOPS / 2;
 
-        DisplayMetrics dM = getResources().getDisplayMetrics();
-        int widthOfScreen = dM.widthPixels;
-        int widthOfView = 250; //in DP
-        int spaceBetweenViews = 5; // in DP
-        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
+                adapter = new PagerAdapter((MainActivity) getActivity(), getChildFragmentManager());
+                pager.setAdapter(adapter);
+                pager.setPageTransformer(false,adapter);
 
-        pager.setPageMargin((int) (-widthOfScreen+offset));
+                pager.setCurrentItem(FIRST_PAGE);
+                pager.setOffscreenPageLimit(3);
+
+                DisplayMetrics dM = getResources().getDisplayMetrics();
+                int widthOfScreen = dM.widthPixels;
+                int widthOfView = 250; //in DP
+                int spaceBetweenViews = 5; // in DP
+                float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
+
+                pager.setPageMargin((int) (-widthOfScreen+offset));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         return view;
     }
