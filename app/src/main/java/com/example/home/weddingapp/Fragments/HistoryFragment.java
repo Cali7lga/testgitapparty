@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class HistoryFragment extends Fragment{
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("story");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("story");
     TextView texto, noivo, noiva;
     ImageView fpnoivo, fpnoiva;
 

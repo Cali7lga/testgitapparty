@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento").child("localizacao");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("evento").child("localizacao");
 
     private GoogleMap mMap;
 

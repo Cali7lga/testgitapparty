@@ -5,13 +5,21 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
 import com.example.home.weddingapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -23,6 +31,15 @@ import com.example.home.weddingapp.R;
  * create an instance of this fragment.
  */
 public class MainFragment extends Fragment{
+
+    public static String codigo;
+
+    Button entrar, solicite;
+    EditText code;
+    TextView due;
+
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes");
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,8 +50,6 @@ public class MainFragment extends Fragment{
     private String mParam2;
 
     private MainFragmentInteractionListener mListener;
-
-    private Button botao;
 
     public MainFragment() {
         // Required empty public constructor
@@ -72,19 +87,58 @@ public class MainFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        botao = (Button) view.findViewById(R.id.button);
+        due = (TextView) view.findViewById(R.id.textView9);
+        solicite = (Button) view.findViewById(R.id.button);
+        entrar = (Button) view.findViewById(R.id.button2);
+        code = (EditText) view.findViewById(R.id.editText);
+
+        Typeface tf_due = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
+        due.setTypeface(tf_due);
 
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
-        botao.setTypeface(tf);
-        botao.setOnClickListener(new View.OnClickListener() {
+
+        code.setTypeface(tf);
+
+        entrar.setTypeface(tf);
+        entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadTabBar();
+                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.hasChild(code.getText().toString())){
+
+                            codigo = code.getText().toString();
+                            MainActivity mainactivity = (MainActivity) getActivity();
+                            mainactivity.loadTabBar();
+
+                        }
+                        else{
+
+                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                            alertDialog.setTitle("Código inválido");
+                            alertDialog.setMessage("Você digitou um código inexistente. Por favor, tente novamente.");
+                            alertDialog.show();
+                            code.setText(null);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
 
             }
         });
+
+        solicite.setTypeface(tf);
 
         MainActivity mainactivity = (MainActivity) getActivity();
         mainactivity.stopmusic();

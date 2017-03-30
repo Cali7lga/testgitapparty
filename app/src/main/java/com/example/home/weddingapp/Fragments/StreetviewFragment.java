@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class StreetviewFragment extends Fragment implements OnStreetViewPanoramaReadyCallback {
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento").child("localizacao");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("evento").child("localizacao");
 
     private StreetViewPanorama stview;
 

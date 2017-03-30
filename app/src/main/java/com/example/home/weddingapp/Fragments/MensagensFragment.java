@@ -37,7 +37,7 @@ public class MensagensFragment extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = database.getReference().child("Codes").child("999");
+    DatabaseReference mRef = database.getReference().child("Codes").child(MainFragment.codigo);
 
     ImageButton imageButton;
 

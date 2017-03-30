@@ -38,7 +38,7 @@ public class FornecedoresFragment extends Fragment {
 
     FirebaseRecyclerAdapter<FileInfoFornecedor,FornecedorViewHolder> mAdapter;
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("fornecedores");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("fornecedores");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

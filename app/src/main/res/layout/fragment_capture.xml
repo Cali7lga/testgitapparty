@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.CaptureFragment"
     android:orientation="vertical"
-    android:background="@color/bg_bege"
+    android:background="@drawable/bg_degrade"
     android:weightSum="1">
 
     <LinearLayout

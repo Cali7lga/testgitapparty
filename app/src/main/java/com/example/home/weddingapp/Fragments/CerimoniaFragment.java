@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class  CerimoniaFragment extends Fragment {
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("evento");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("evento");
 
     ImageView local;
     TextView endereco;

@@ -38,7 +38,7 @@ public class Tab2Fragment extends Fragment {
     public PagerAdapter adapter;
     public ViewPager pager;
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("padrinhos");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("padrinhos");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

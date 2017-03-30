@@ -47,7 +47,7 @@ public class FotosFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbRef = database.getReference().child("Codes").child("999");
+    DatabaseReference dbRef = database.getReference().child("Codes").child(MainFragment.codigo);
 
     ImageButton imageButton;
 

@@ -129,7 +129,7 @@ public class CaptureFragment extends Fragment {
         btn_gallery = (ImageButton) view.findViewById(R.id.imageButton21);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Codes").child("999");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo);
         btnMorph = (MorphingButton) view.findViewById(R.id.btnMorph);
         morphToLocked(btnMorph,0);
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.home.weddingapp.Fragments.PayFragment"
-    android:background="@color/bg_bege">
+    android:background="@drawable/bg_degrade">
 
     <ImageButton
         android:id="@+id/imageButton10"

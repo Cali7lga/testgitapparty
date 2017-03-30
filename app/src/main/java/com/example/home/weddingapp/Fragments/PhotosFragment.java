@@ -38,7 +38,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class PhotosFragment extends Fragment {
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("slideshow");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("slideshow");
     ViewFlipper viewFlipper;
     Animation fade_in, fade_out;
     ProgressBar progressBar;

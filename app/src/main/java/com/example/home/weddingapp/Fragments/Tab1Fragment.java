@@ -40,7 +40,7 @@ public class Tab1Fragment extends Fragment {
     VideoView videoView;
     com.getbase.floatingactionbutton.FloatingActionButton som, album, casal;
     FloatingActionsMenu menu;
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("video");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("video");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

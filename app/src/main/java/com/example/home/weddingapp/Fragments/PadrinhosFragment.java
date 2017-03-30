@@ -94,7 +94,7 @@ public class PadrinhosFragment extends Fragment {
         tv.setMovementMethod(new ScrollingMovementMethod());
         final ImageView image = (ImageView) l.findViewById(R.id.content);
 
-        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("padrinhos");
+        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo).child("padrinhos");
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
