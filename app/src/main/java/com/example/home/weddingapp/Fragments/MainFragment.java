@@ -1,6 +1,7 @@
 package com.example.home.weddingapp.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -108,7 +109,7 @@ public class MainFragment extends Fragment{
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        if (dataSnapshot.hasChild(code.getText().toString())){
+                        if (dataSnapshot.hasChild(code.getText().toString()) && !code.getText().toString().equals("")){
 
                             codigo = code.getText().toString();
                             MainActivity mainactivity = (MainActivity) getActivity();
@@ -120,8 +121,13 @@ public class MainFragment extends Fragment{
                             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                             alertDialog.setTitle("Código inválido");
                             alertDialog.setMessage("Você digitou um código inexistente. Por favor, tente novamente.");
+                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    code.setText(null);
+                                }
+                            });
                             alertDialog.show();
-                            code.setText(null);
 
                         }
 
@@ -139,6 +145,15 @@ public class MainFragment extends Fragment{
         });
 
         solicite.setTypeface(tf);
+        solicite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.loadContato();
+
+            }
+        });
 
         MainActivity mainactivity = (MainActivity) getActivity();
         mainactivity.stopmusic();

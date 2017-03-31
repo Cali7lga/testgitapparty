@@ -1,13 +1,59 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.ContatoFragment"
-    android:background="@drawable/bg_due">
+    android:background="@drawable/bg_due"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="10dp"
+    tools:context="com.example.home.weddingapp.Fragments.ContatoFragment">
 
-    <TextView
+    <com.example.home.weddingapp.Others.TextViewAvenir
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Estamos em processo de desenvolvimento da nossa plataforma, portanto, caso queira uma versão do Due para o seu casamento, por favor, deixe uma mensagem com os nomes dos noivos e a data do evento. Responderemos assim que possível! "
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editText10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textview_digitar"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/gray_btn_bg_color" />
+
+    <com.example.home.weddingapp.Others.MsgEditText
+        android:id="@+id/editText11"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_digitar"
+        android:gravity="top"
+        android:hint="Mensagem"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/gray_btn_bg_color" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/enviar_white_btn"
+        android:text="Enviar"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

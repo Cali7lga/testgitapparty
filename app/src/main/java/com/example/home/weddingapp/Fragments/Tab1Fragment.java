@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -89,7 +90,7 @@ public class Tab1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+        final View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
         textdias = (TextView) view.findViewById(R.id.dias);
         texthoras = (TextView) view.findViewById(R.id.horas);
@@ -128,6 +129,8 @@ public class Tab1Fragment extends Fragment {
 
                 long milisegundos = (d.getTime() - d1.getTime());
 
+                if(milisegundos>0){
+
                 new CountDownTimer(milisegundos,1000){
 
                     double correcao = 1000*60*60*24;
@@ -152,6 +155,13 @@ public class Tab1Fragment extends Fragment {
 
                     }
                 }.start();
+
+                }else{
+
+                    LinearLayout cont = (LinearLayout) view.findViewById(R.id.contagem);
+                    cont.setVisibility(View.INVISIBLE);
+
+                }
 
                 String uripath = dataSnapshot.child("urlVideo").getValue(String.class);
                 Uri src = Uri.parse(uripath);

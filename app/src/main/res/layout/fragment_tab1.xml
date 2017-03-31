@@ -17,10 +17,11 @@
         android:id="@+id/videoView" />
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/contagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,9 +159,9 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"/>
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -169,11 +170,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         app:fab_addButtonColorNormal="@color/bg_menu"
         app:fab_addButtonColorPressed="@color/bg_menu"
         app:fab_addButtonPlusIconColor="@android:color/white"
@@ -185,9 +185,9 @@
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/bg_menu"
             app:fab_colorPressed="@color/bg_menu"
-            app:fab_title="Casal"
             app:fab_icon="@drawable/couple"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            app:fab_title="Casal" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/album"
@@ -195,9 +195,9 @@
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/bg_menu"
             app:fab_colorPressed="@color/bg_menu"
-            app:fab_title="Álbum"
             app:fab_icon="@drawable/album"
-            app:fab_size="mini"/>
+            app:fab_size="mini"
+            app:fab_title="Álbum" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/som"
@@ -205,8 +205,8 @@
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/bg_menu"
             app:fab_colorPressed="@color/bg_menu"
-            app:fab_title="Som"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            app:fab_title="Som" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

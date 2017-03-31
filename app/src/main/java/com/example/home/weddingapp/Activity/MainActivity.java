@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.example.home.weddingapp.Fragments.CaptureFragment;
 import com.example.home.weddingapp.Fragments.CerimoniaFragment;
+import com.example.home.weddingapp.Fragments.ContatoFragment;
 import com.example.home.weddingapp.Fragments.EscreverFragment;
 import com.example.home.weddingapp.Fragments.FornecedoresFragment;
 import com.example.home.weddingapp.Fragments.FotosFragment;
@@ -59,7 +60,8 @@ public class MainActivity extends FragmentActivity
         FornecedoresFragment.FornecedoresFragmentInteractionListener,
         Tab4Fragment.Tab5FragmentInteractionListener,
         PayFragment.PayFragmentInteractionListener,
-        HelpFragment.HelpFragmentInteractionListener {
+        HelpFragment.HelpFragmentInteractionListener,
+        ContatoFragment.ContatoFragmentInteractionListener{
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -274,6 +276,13 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadContato(){
+
+        ContatoFragment contatoFragment = new ContatoFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, contatoFragment).addToBackStack(null).commit();
+
+    }
+
     public void backfragment(){
         getSupportFragmentManager().popBackStack();
     }
@@ -371,6 +380,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onHelpFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onContatoFragmentInteraction(Uri uri) {
 
     }
 }
