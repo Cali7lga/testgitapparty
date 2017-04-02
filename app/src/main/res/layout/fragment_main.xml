@@ -113,7 +113,7 @@
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:paddingTop="10dp"
-                android:text="Solicite"
+                android:text="Saiba mais"
                 android:textAllCaps="false"
                 android:textColor="#F3A183"
                 android:textSize="18sp" />

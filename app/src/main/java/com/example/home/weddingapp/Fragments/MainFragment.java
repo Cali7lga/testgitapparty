@@ -3,6 +3,8 @@ package com.example.home.weddingapp.Fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.IOException;
 
 
 /**
@@ -112,6 +116,17 @@ public class MainFragment extends Fragment{
                         if (dataSnapshot.hasChild(code.getText().toString()) && !code.getText().toString().equals("")){
 
                             codigo = code.getText().toString();
+                            Uri uri = Uri.parse(dataSnapshot.child(codigo).child("video").child("musica").getValue(String.class));
+                            try {
+                                MainActivity.mediaPlayer = new MediaPlayer();
+                                MainActivity.mediaPlayer.setDataSource(getActivity(), uri);
+                                MainActivity.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                                MainActivity.mediaPlayer.setLooping(true);
+                                MainActivity.mediaPlayer.setVolume(1.0f, 1.0f);
+                                MainActivity.mediaPlayer.prepare();
+                            }catch (IOException e){
+                                e.printStackTrace();
+                            }
                             MainActivity mainactivity = (MainActivity) getActivity();
                             mainactivity.loadTabBar();
 

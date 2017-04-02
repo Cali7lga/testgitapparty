@@ -2,7 +2,6 @@ package com.example.home.weddingapp.Activity;
 
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.view.View;
 
 import com.example.home.weddingapp.Fragments.CaptureFragment;
 import com.example.home.weddingapp.Fragments.CerimoniaFragment;
@@ -33,13 +31,6 @@ import com.example.home.weddingapp.Fragments.Tab3Fragment;
 import com.example.home.weddingapp.Fragments.Tab4Fragment;
 import com.example.home.weddingapp.R;
 import com.example.home.weddingapp.Fragments.TabBarFragment;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.io.IOException;
 
 public class MainActivity extends FragmentActivity
         implements MainFragment.MainFragmentInteractionListener,
@@ -65,7 +56,6 @@ public class MainActivity extends FragmentActivity
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes").child("999").child("video");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,31 +63,6 @@ public class MainActivity extends FragmentActivity
         setContentView(R.layout.activity_main);
 
         getWindow().setBackgroundDrawable(new ColorDrawable(0xffffffff));
-
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Uri uri = Uri.parse(dataSnapshot.child("musica").getValue(String.class));
-                try {
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setDataSource(MainActivity.this, uri);
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setLooping(true);
-                    mediaPlayer.setVolume(1.0f, 1.0f);
-                    mediaPlayer.prepare();
-
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         FragmentManager manager = getSupportFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.FragmentContainer);
