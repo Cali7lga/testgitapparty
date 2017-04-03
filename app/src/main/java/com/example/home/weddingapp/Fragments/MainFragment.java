@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.home.weddingapp.Activity.MainActivity;
@@ -25,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -39,6 +42,7 @@ public class MainFragment extends Fragment{
 
     public static String codigo;
 
+    ImageButton info;
     Button entrar, solicite;
     EditText code;
     TextView due;
@@ -92,6 +96,7 @@ public class MainFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        info = (ImageButton) view.findViewById(R.id.imageButton3);
         due = (TextView) view.findViewById(R.id.textView9);
         solicite = (Button) view.findViewById(R.id.button);
         entrar = (Button) view.findViewById(R.id.button2);
@@ -103,6 +108,24 @@ public class MainFragment extends Fragment{
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
 
         code.setTypeface(tf);
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Não tem um código?")
+                        .setContentText("Use o código 000 para visualizar a versão Due de demonstração :)")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismiss();
+                            }
+                        })
+                        .show();
+
+            }
+        });
 
         entrar.setTypeface(tf);
         entrar.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +230,9 @@ public class MainFragment extends Fragment{
 
         MainActivity mainactivity = (MainActivity) getActivity();
         mainactivity.startmusic();
-        MainActivity.mediaPlayer.setVolume(0,0);
+        if(MainActivity.mediaPlayer!=null) {
+            MainActivity.mediaPlayer.setVolume(0, 0);
+        }
 
     }
 

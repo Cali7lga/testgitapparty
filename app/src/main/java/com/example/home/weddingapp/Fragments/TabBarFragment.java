@@ -71,7 +71,7 @@ public class TabBarFragment extends Fragment {
         FragmentTabHost tabHost = (FragmentTabHost) view.findViewById(android.R.id.tabhost);
         tabHost.setup(getActivity(),getChildFragmentManager(),R.id.realtabcontent);
 
-        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", getResources().getDrawable(R.drawable.animal)),Tab1Fragment.class,null);
+        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", getResources().getDrawable(R.drawable.infinite)),Tab1Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", getResources().getDrawable(R.drawable.people)),Tab2Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", getResources().getDrawable(R.drawable.business)),Tab3Fragment.class,null);
         tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", getResources().getDrawable(R.drawable.christmas)),Tab4Fragment.class,null);
