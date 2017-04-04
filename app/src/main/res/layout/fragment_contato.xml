@@ -7,9 +7,9 @@
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
     android:paddingTop="10dp"
-    tools:context="com.example.home.weddingapp.Fragments.ContatoFragment">
+    tools:context="com.herasoft.due.Fragments.ContatoFragment">
 
-    <com.example.home.weddingapp.Others.TextViewAvenir
+    <com.herasoft.due.Others.TextViewAvenir
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:textColor="@color/dark_gray"
         android:textColorHint="@color/gray_btn_bg_color" />
 
-    <com.example.home.weddingapp.Others.MsgEditText
+    <com.herasoft.due.Others.MsgEditText
         android:id="@+id/editText11"
         android:layout_width="match_parent"
         android:layout_height="140dp"

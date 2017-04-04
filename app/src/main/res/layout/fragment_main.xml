@@ -9,7 +9,7 @@
     tools:context=".Fragments.MainFragment">
 
 
-    <com.example.home.weddingapp.Others.TextViewAvenir
+    <com.herasoft.due.Others.TextViewAvenir
         android:id="@+id/textView9"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -29,7 +29,7 @@
         android:gravity="bottom|center_horizontal"
         android:orientation="vertical">
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/textView10"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <com.example.home.weddingapp.Others.TextViewAvenir
+            <com.herasoft.due.Others.TextViewAvenir
                 android:id="@+id/textView12"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
 
         </LinearLayout>
 
-    <com.example.home.weddingapp.Others.TextViewAvenir
+    <com.herasoft.due.Others.TextViewAvenir
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

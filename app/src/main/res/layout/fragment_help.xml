@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.HelpFragment"
+    tools:context="com.herasoft.due.Fragments.HelpFragment"
     android:background="@color/bg_bege">
 
     <LinearLayout
@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -33,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/gray_btn_bg_pressed_color" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -50,7 +50,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/gray_btn_bg_pressed_color" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -71,7 +71,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/gray_btn_bg_pressed_color" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -88,7 +88,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/gray_btn_bg_pressed_color" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -109,7 +109,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/gray_btn_bg_pressed_color" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

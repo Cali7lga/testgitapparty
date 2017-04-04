@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.Tab4Fragment"
+    tools:context="com.herasoft.due.Fragments.Tab4Fragment"
     android:background="@color/bg_bege">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:padding="30dp"
         android:weightSum="1">
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/txt_pessoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:textColor="@color/marrom_texto"
             android:textSize="18sp" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/txt_texto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

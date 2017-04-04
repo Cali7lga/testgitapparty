@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.home.weddingapp.Others.TextViewAvenir
+    <com.herasoft.due.Others.TextViewAvenir
         android:text="Mensagem para o casal asgsdg s gdsg sfd gsdfgsdfg gsga dfsgdfg sfgdf gdfs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +12,7 @@
         android:background="@drawable/textview_messages"
         android:textColor="@android:color/white" />
 
-    <com.example.home.weddingapp.Others.TextViewAvenir
+    <com.herasoft.due.Others.TextViewAvenir
         android:text="Autor"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -25,4 +25,5 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+
 </LinearLayout>

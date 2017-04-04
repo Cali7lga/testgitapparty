@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <com.example.home.weddingapp.Others.MyLinearLayout
+    <com.herasoft.due.Others.MyLinearLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +18,7 @@
             android:layout_width="250dp"
             android:layout_height="250dp"/>
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/text"
             android:layout_width="250dp"
             android:layout_height="100dp"
@@ -28,5 +28,6 @@
             android:textColor="@color/marrom_texto"
             android:textSize="16sp" />
 
-    </com.example.home.weddingapp.Others.MyLinearLayout>
+    </com.herasoft.due.Others.MyLinearLayout>
+
 </LinearLayout>

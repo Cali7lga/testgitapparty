@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_degrade"
-    tools:context="com.example.home.weddingapp.Fragments.EscreverFragment">
+    tools:context="com.herasoft.due.Fragments.EscreverFragment">
 
-    <com.example.home.weddingapp.Others.MsgEditText
+    <com.herasoft.due.Others.MsgEditText
         android:id="@+id/editText2"
         android:layout_width="300dp"
         android:layout_height="230dp"

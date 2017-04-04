@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.CaptureFragment"
+    tools:context="com.herasoft.due.Fragments.CaptureFragment"
     android:orientation="vertical"
     android:background="@drawable/bg_degrade"
     android:weightSum="1">
@@ -48,14 +48,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/textView38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Câmera"
             android:textColor="@color/laranjinha" />
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:text="Câmera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="1">
 
-        <com.example.home.weddingapp.Others.TextViewAvenir
+        <com.herasoft.due.Others.TextViewAvenir
             android:id="@+id/textView37"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -84,7 +84,7 @@
             android:text="Compartilhe seu momento conosco! Sua foto aparecerá aqui :)"
             android:textColor="@android:color/black" />
 
-        <com.example.home.weddingapp.Others.CustomImageView
+        <com.herasoft.due.Others.CustomImageView
             android:layout_width="match_parent"
             android:id="@+id/imageView20"
             android:layout_height="match_parent"

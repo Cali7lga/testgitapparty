@@ -3,7 +3,7 @@
     android:id="@+id/container_rv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.home.weddingapp.Fragments.FotosFragment">
+    tools:context="com.herasoft.due.Fragments.FotosFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:background="@color/graytransparent"
             android:layout_weight="1">
 
-            <com.example.home.weddingapp.Others.TextViewAvenir
+            <com.herasoft.due.Others.TextViewAvenir
                 android:text="Compartilhe tambem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
