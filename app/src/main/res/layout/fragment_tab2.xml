@@ -5,6 +5,16 @@
     tools:context="com.herasoft.due.Fragments.Tab2Fragment"
     android:background="@color/bg_bege">
 
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Padrinhos & Madrinhas"
+        android:textColor="@color/marrom_texto"
+        android:textSize="24sp" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager2"
         android:layout_width="match_parent"
