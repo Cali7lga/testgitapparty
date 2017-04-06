@@ -1,20 +1,20 @@
 package com.herasoft.due.Fragments;
 
 import android.content.Context;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.herasoft.due.Activity.MainActivity;
@@ -37,7 +37,8 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class PayFragment extends Fragment {
 
-    EditText edt_nome, edt_numero, edt_mes, edt_ano, edt_cvc, edt_valor;
+    Spinner spinner;
+    EditText edt_nome, edt_numero, edt_mes, edt_ano, edt_cvc;
     Button button;
     ImageButton help;
 
@@ -94,10 +95,15 @@ public class PayFragment extends Fragment {
         edt_mes = (EditText) view.findViewById(R.id.editText6);
         edt_ano = (EditText) view.findViewById(R.id.editText7);
         edt_cvc = (EditText) view.findViewById(R.id.editText8);
-        edt_valor = (EditText) view.findViewById(R.id.editText9);
 
         help = (ImageButton) view.findViewById(R.id.imageButton10);
         button = (Button) view.findViewById(R.id.button6);
+
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+
+        String[] items = new String[]{"50.00", "100.00", "150.00", "200.00", "250.00", "300.00", "350.00", "400.00", "450.00", "500.00", "600.00", "700.00", "800.00", "900.00", "1000.00", "1500.00", "2000.00"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        spinner.setAdapter(adapter);
 
         edt_numero.addTextChangedListener(new TextWatcher() {
             private static final char space = ' ';
@@ -177,7 +183,7 @@ public class PayFragment extends Fragment {
                                     int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
                                     int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
                                     String cardCVC = edt_cvc.getText().toString();
-                                    final String valor = edt_valor.getText().toString();
+                                    final String valor = spinner.getSelectedItem().toString();
                                     final String desc = ("Doação feita por "+edt_nome.getText().toString());
 
                                     Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);

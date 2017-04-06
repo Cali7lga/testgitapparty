@@ -143,14 +143,11 @@
                 android:text="R$"
                 android:textSize="21sp" />
 
-            <EditText
-                android:id="@+id/editText9"
+            <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Valor desejado"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 

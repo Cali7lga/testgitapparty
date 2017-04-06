@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Padrinhos & Madrinhas"
+        android:text="Padrinhos &amp; Madrinhas"
         android:textColor="@color/marrom_texto"
         android:textSize="24sp" />
 
