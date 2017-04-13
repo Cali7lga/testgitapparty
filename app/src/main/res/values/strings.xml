@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">Due</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="deu_bom">DEU BOM CARAI</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="facebook_application_id" translatable="false">1867580070175802</string>
 </resources>
