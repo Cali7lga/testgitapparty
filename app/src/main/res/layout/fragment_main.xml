@@ -4,21 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_due"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".Fragments.MainFragment">
 
 
     <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Logout"
+        android:textColor="@android:color/white" />
+
+    <com.herasoft.due.Others.TextViewAvenir
         android:id="@+id/textView9"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@drawable/circle_due"
-        android:gravity="center"
-        android:text="Due"
         android:textColor="@android:color/white"
-        android:textSize="36sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,125 +34,72 @@
         android:gravity="bottom|center_horizontal"
         android:orientation="vertical">
 
-        <com.herasoft.due.Others.TextViewAvenir
-            android:id="@+id/textView10"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Digite abaixo o código do casamento"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/round_white_btn"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Código"
-                android:inputType="textPersonName"
-                android:lines="1"
-                android:padding="10dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/editText"
-                android:layout_toRightOf="@+id/editText"
-                android:background="@android:color/transparent"
-                android:src="@drawable/info_button" />
-
-        </RelativeLayout>
-
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/btn_solicite"
             android:gravity="center"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="10dp"
-            android:text="Entrar"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:text="Acessar evento"
             android:textAllCaps="false"
             android:textColor="#F3A183"
             android:textSize="18sp" />
 
     </LinearLayout>
 
-        <view
-            android:id="@+id/view5"
-            class="android.support.v4.widget.SlidingPaneLayout"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:background="@android:color/white" />
+    <view
+        android:id="@+id/view5"
+        class="android.support.v4.widget.SlidingPaneLayout"
+        android:layout_width="70dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/white" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_white_btn"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:text="Criar evento"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:clickable="true"
+            android:text="Versão demonstrativa"
+            android:textColor="@android:color/white" />
 
-            <com.herasoft.due.Others.TextViewAvenir
-                android:id="@+id/textView12"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Quer uma versão Due para o seu casamento?"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btn_solicite"
-                android:gravity="center"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:paddingTop="10dp"
-                android:text="Saiba mais"
-                android:textAllCaps="false"
-                android:textColor="#F3A183"
-                android:textSize="18sp" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <com.herasoft.due.Others.TextViewAvenir
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:gravity="bottom"
-        android:paddingBottom="10dp"
         android:text="© 2017 Hera"
         android:textColor="@android:color/white" />
 

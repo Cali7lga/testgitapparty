@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
     <string name="facebook_application_id" translatable="false">1867580070175802</string>
+    <string name="oauth_id_client">379830176093-69qt267c2aokq3b2ksvg56s6gfi6be9g.apps.googleusercontent.com</string>
+
 </resources>

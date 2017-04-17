@@ -18,6 +18,7 @@ import com.herasoft.due.Fragments.FornecedoresFragment;
 import com.herasoft.due.Fragments.FotosFragment;
 import com.herasoft.due.Fragments.HelpFragment;
 import com.herasoft.due.Fragments.HistoryFragment;
+import com.herasoft.due.Fragments.LoginFragment;
 import com.herasoft.due.Fragments.MainFragment;
 import com.herasoft.due.Fragments.MapsFragment;
 import com.herasoft.due.Fragments.MensagensFragment;
@@ -34,6 +35,7 @@ import com.herasoft.due.Fragments.TabBarFragment;
 
 public class MainActivity extends FragmentActivity
         implements MainFragment.MainFragmentInteractionListener,
+        LoginFragment.LoginFragmentInteractionListener,
         TabBarFragment.TabBarFragmentInteractionListener,
         Tab1Fragment.Tab1FragmentInteractionListener,
         HistoryFragment.HistoryFragmentInteractionListener,
@@ -69,7 +71,7 @@ public class MainActivity extends FragmentActivity
 
         if (fragment == null) {
 
-            fragment = new MainFragment();
+            fragment = new LoginFragment();
             manager.beginTransaction().add(R.id.FragmentContainer, fragment, "login").commit();
 
         }
@@ -149,6 +151,19 @@ public class MainActivity extends FragmentActivity
         }
     }
 
+    public void loadLogin() {
+
+        LoginFragment login = new LoginFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, login).commit();
+
+    }
+
+    public void loadMain() {
+
+        MainFragment main = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, main).commit();
+
+    }
 
     public void loadTabBar() {
 
@@ -350,6 +365,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onContatoFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onLoginFragmentInteraction(Uri uri) {
 
     }
 }

@@ -7,8 +7,10 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.R;
 import com.google.firebase.database.DataSnapshot;
@@ -41,13 +46,14 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class MainFragment extends Fragment{
 
     public static String codigo;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
 
-    ImageButton info;
     Button entrar, solicite;
     EditText code;
-    TextView due;
+    TextView nome, menu;
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes");
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,105 +102,98 @@ public class MainFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        info = (ImageButton) view.findViewById(R.id.imageButton3);
-        due = (TextView) view.findViewById(R.id.textView9);
+        mAuth = FirebaseAuth.getInstance();
+
+        menu = (TextView) view.findViewById(R.id.textView10);
+        nome = (TextView) view.findViewById(R.id.textView9);
         solicite = (Button) view.findViewById(R.id.button);
         entrar = (Button) view.findViewById(R.id.button2);
-        code = (EditText) view.findViewById(R.id.editText);
-
-        Typeface tf_due = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
-        due.setTypeface(tf_due);
 
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
 
-        code.setTypeface(tf);
-
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Não tem um código?")
-                        .setContentText("Use o código 000 para visualizar a versão Due de demonstração :)")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismiss();
-                            }
-                        })
-                        .show();
-
-            }
-        });
+        String s = "Olá, " + LoginFragment.login_nome;
+        nome.setText(s);
 
         entrar.setTypeface(tf);
-        entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        entrar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                        if (dataSnapshot.hasChild(code.getText().toString()) && !code.getText().toString().equals("")){
+//
+//                            codigo = code.getText().toString();
+//                            Uri uri = Uri.parse(dataSnapshot.child(codigo).child("video").child("musica").getValue(String.class));
+//                            try {
+//                                MainActivity.mediaPlayer = new MediaPlayer();
+//                                MainActivity.mediaPlayer.setDataSource(getActivity(), uri);
+//                                MainActivity.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//                                MainActivity.mediaPlayer.setLooping(true);
+//                                MainActivity.mediaPlayer.setVolume(1.0f, 1.0f);
+//                                MainActivity.mediaPlayer.prepare();
+//                            }catch (IOException e){
+//                                e.printStackTrace();
+//                            }
+//                            MainActivity mainactivity = (MainActivity) getActivity();
+//                            mainactivity.loadTabBar();
+//
+//                        }
+//                        else{
+//
+//                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+//                            alertDialog.setTitle("Código inválido");
+//                            alertDialog.setMessage("Você digitou um código inexistente. Por favor, tente novamente.");
+//                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    code.setText(null);
+//                                }
+//                            });
+//                            alertDialog.show();
+//
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+//
+//
+//
+//            }
+//        });
 
-                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        if (dataSnapshot.hasChild(code.getText().toString()) && !code.getText().toString().equals("")){
-
-                            codigo = code.getText().toString();
-                            Uri uri = Uri.parse(dataSnapshot.child(codigo).child("video").child("musica").getValue(String.class));
-                            try {
-                                MainActivity.mediaPlayer = new MediaPlayer();
-                                MainActivity.mediaPlayer.setDataSource(getActivity(), uri);
-                                MainActivity.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                                MainActivity.mediaPlayer.setLooping(true);
-                                MainActivity.mediaPlayer.setVolume(1.0f, 1.0f);
-                                MainActivity.mediaPlayer.prepare();
-                            }catch (IOException e){
-                                e.printStackTrace();
-                            }
-                            MainActivity mainactivity = (MainActivity) getActivity();
-                            mainactivity.loadTabBar();
-
-                        }
-                        else{
-
-                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                            alertDialog.setTitle("Código inválido");
-                            alertDialog.setMessage("Você digitou um código inexistente. Por favor, tente novamente.");
-                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    code.setText(null);
-                                }
-                            });
-                            alertDialog.show();
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-
-            }
-        });
+//        solicite.setTypeface(tf);
+//        solicite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                MainActivity mainActivity = (MainActivity) getActivity();
+//                mainActivity.loadContato();
+//
+//            }
+//        });
+//
+//        MainActivity mainactivity = (MainActivity) getActivity();
+//        mainactivity.stopmusic();
 
         solicite.setTypeface(tf);
-        solicite.setOnClickListener(new View.OnClickListener() {
+
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.loadContato();
-
+                mAuth.signOut();
+                LoginManager.getInstance().logOut();
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadLogin();
             }
         });
-
-        MainActivity mainactivity = (MainActivity) getActivity();
-        mainactivity.stopmusic();
 
         // Inflate the layout for this fragment
         return view;
