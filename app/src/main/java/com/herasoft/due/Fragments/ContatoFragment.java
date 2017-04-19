@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.Others.FileInfoContato;
 import com.herasoft.due.Others.FileInfoMsg;
@@ -32,7 +34,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class ContatoFragment extends Fragment {
 
-    EditText email, msg;
+    EditText noivo, noiva, data, local, email;
     Button enviar;
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
@@ -84,52 +86,71 @@ public class ContatoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contato, container, false);
 
+        noivo = (EditText) view.findViewById(R.id.editText16);
+        noiva = (EditText) view.findViewById(R.id.editText17);
+        data = (EditText) view.findViewById(R.id.editText15);
+        local = (EditText) view.findViewById(R.id.editText11);
         email = (EditText) view.findViewById(R.id.editText10);
-        msg = (EditText) view.findViewById(R.id.editText11);
         enviar = (Button) view.findViewById(R.id.button3);
 
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf_light = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
+
+        noivo.setTypeface(tf);
+        noiva.setTypeface(tf);
+        data.setTypeface(tf);
+        local.setTypeface(tf);
         email.setTypeface(tf);
-        msg.setTypeface(tf);
         enviar.setTypeface(tf);
+
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (email.getText().toString().equals("") || msg.getText().toString().equals("")) {
-                    final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Ops!");
-                    alertDialog.setMessage("Por favor, verifique se preencheu ambos os campos");
-                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                if (noivo.getText().toString().equals("")
+                        || noiva.getText().toString().equals("")
+                        || data.getText().toString().equals("")
+                        || local.getText().toString().equals("")
+                        || email.getText().toString().equals("")) {
 
-                        }
-                    });
-                    alertDialog.show();
+                    new MaterialDialog.Builder(getActivity())
+                            .title("Oops...")
+                            .titleColorRes(R.color.dark_gray)
+                            .typeface(tf, tf_light)
+                            .content("Por favor, verifique se preencheu todos os campos corretamente e tente novamente.")
+                            .contentColorRes(R.color.dark_gray)
+                            .positiveText("Ok")
+                            .positiveColorRes(android.R.color.holo_blue_dark)
+                            .show();
 
                 } else {
 
                     FileInfoContato fileinfo = new FileInfoContato();
-                    fileinfo.setMensagem(msg.getText().toString());
+                    fileinfo.setNoivo(noivo.getText().toString());
+                    fileinfo.setNoiva(noiva.getText().toString());
+                    fileinfo.setData(data.getText().toString());
+                    fileinfo.setLocal(local.getText().toString());
                     fileinfo.setEmail(email.getText().toString());
 
-                    mRef.child("Contato").push().setValue(fileinfo);
+                    mRef.child("Contato").push().setValue(fileinfo).addOnSuccessListener(getActivity(), new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                    .setTitleText("Tudo certo!")
+                                    .setContentText("Muito obrigado por entrar em contato conosco! Responderemos via email o mais breve possível!")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                            .setTitleText("Sucesso!")
-                            .setContentText("Muito obrigado por entrar em contato conosco! Responderemos via email o mais breve possível!")
-                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                            sweetAlertDialog.dismiss();
+                                            MainActivity mainActivity = (MainActivity) getActivity();
+                                            mainActivity.backfragment();
 
-                                    sweetAlertDialog.dismiss();
-                                    MainActivity mainActivity = (MainActivity) getActivity();
-                                    mainActivity.backfragment();
-
-                                }
-                            })
-                            .show();
+                                        }
+                                    })
+                                    .show();
+                        }
+                    });
 
                 }
 

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_due"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
@@ -14,35 +15,99 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Estamos em processo de desenvolvimento da nossa plataforma, portanto, caso queira uma versão do Due para o seu casamento, por favor, deixe uma mensagem com os nomes dos noivos e a data do evento. Responderemos assim que possível! "
+        android:text="Cadastre o seu evento :)"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="18sp" />
+
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Noivos"
+        android:textColor="@android:color/white"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/gray_btn_bg_pressed_color"/>
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&amp;"
+            android:textColor="@android:color/white"/>
+
+        <EditText
+            android:id="@+id/editText17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/dark_gray"/>
+
+    </LinearLayout>
+
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data"
+        android:textColor="@android:color/white"/>
+
+    <EditText
+        android:id="@+id/editText15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Data"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/dark_gray" />
+
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cidade/UF"
+        android:textColor="@android:color/white"/>
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cidade/UF"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/dark_gray" />
+
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email de contato"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/editText10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/textview_digitar"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:textColor="@color/dark_gray"
-        android:textColorHint="@color/gray_btn_bg_color" />
-
-    <com.herasoft.due.Others.MsgEditText
-        android:id="@+id/editText11"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/textview_digitar"
-        android:gravity="top"
-        android:hint="Mensagem"
-        android:imeOptions="actionDone"
-        android:inputType="textMultiLine"
-        android:maxLines="5"
         android:textColor="@color/dark_gray"
         android:textColorHint="@color/gray_btn_bg_color" />
 

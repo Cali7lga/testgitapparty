@@ -15,6 +15,7 @@
         android:layout_height="30dp"
         android:layout_gravity="end"
         android:background="@drawable/circle_info"
+        android:clickable="true"
         android:gravity="center"
         android:text="\?"
         android:textColor="@android:color/white"
@@ -34,120 +35,140 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alpha="0.3"
-        android:background="@drawable/textview_digitar"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:paddingBottom="15dp"
-        android:paddingEnd="40dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:paddingStart="40dp"
-        android:paddingTop="15dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textPersonName" />
+            android:alpha="0.3"
+            android:background="@drawable/textview_digitar"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingEnd="40dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingStart="40dp"
+            android:paddingTop="15dp">
 
-        <view
-            android:id="@+id/view7"
-            class="android.support.v4.widget.SlidingPaneLayout"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/black" />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/editText9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:hint="Senha"
-            android:inputType="textPersonName" />
+            <view
+                android:id="@+id/view7"
+                class="android.support.v4.widget.SlidingPaneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/dark_gray" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black" />
 
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Não lembra sua senha?"
-        android:textColor="@android:color/white"
-        android:layout_gravity="end"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_solicite"
-        android:text="Entrar"
-        android:textColor="#F3A183" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <view
-            android:id="@+id/view17"
-            class="android.support.v4.widget.SlidingPaneLayout"
-            android:layout_width="20dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center"
-            android:background="@android:color/white" />
+        </LinearLayout>
 
         <com.herasoft.due.Others.TextViewAvenir
-            android:id="@+id/textView31"
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginStart="5dp"
-            android:text="ou"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:text="Não lembra sua senha?"
             android:textColor="@android:color/white" />
 
-        <view
-            android:id="@+id/view27"
-            class="android.support.v4.widget.SlidingPaneLayout"
-            android:layout_width="20dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center"
-            android:background="@android:color/white" />
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:alpha="0.3"
+            android:background="@drawable/textview_shape"
+            android:src="@drawable/right_arrow" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/loginButton"
+            <view
+                android:id="@+id/view17"
+                class="android.support.v4.widget.SlidingPaneLayout"
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@android:color/white" />
+
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
+                android:text="ou"
+                android:textColor="@android:color/white" />
+
+            <view
+                android:id="@+id/view27"
+                class="android.support.v4.widget.SlidingPaneLayout"
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView42"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/btn_google"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="G+"
+                android:textColor="#EC6F66"
+                android:textSize="24sp" />
+
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView43"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/btn_facebook"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="F"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -156,7 +177,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
         android:clickable="true"
         android:text="Não tem uma conta? Cadastre-se :)"
         android:textColor="@android:color/white" />

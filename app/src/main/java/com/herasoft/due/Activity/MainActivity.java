@@ -18,6 +18,7 @@ import com.herasoft.due.Fragments.FornecedoresFragment;
 import com.herasoft.due.Fragments.FotosFragment;
 import com.herasoft.due.Fragments.HelpFragment;
 import com.herasoft.due.Fragments.HistoryFragment;
+import com.herasoft.due.Fragments.LoadWebFragment;
 import com.herasoft.due.Fragments.LoginFragment;
 import com.herasoft.due.Fragments.MainFragment;
 import com.herasoft.due.Fragments.MapsFragment;
@@ -54,7 +55,8 @@ public class MainActivity extends FragmentActivity
         Tab4Fragment.Tab5FragmentInteractionListener,
         PayFragment.PayFragmentInteractionListener,
         HelpFragment.HelpFragmentInteractionListener,
-        ContatoFragment.ContatoFragmentInteractionListener{
+        ContatoFragment.ContatoFragmentInteractionListener,
+        LoadWebFragment.LoadWebFragmentInteractionListener{
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -263,6 +265,13 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadWeb(String url){
+
+        LoadWebFragment webFragment = LoadWebFragment.newInstance(url);
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, webFragment).addToBackStack(null).commit();
+
+    }
+
     public void backfragment(){
         getSupportFragmentManager().popBackStack();
     }
@@ -370,6 +379,11 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onLoginFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onLoadWebFragmentInteraction(Uri uri) {
 
     }
 }

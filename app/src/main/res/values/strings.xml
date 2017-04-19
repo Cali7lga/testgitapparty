@@ -6,4 +6,10 @@
     <string name="facebook_application_id" translatable="false">1867580070175802</string>
     <string name="oauth_id_client">379830176093-69qt267c2aokq3b2ksvg56s6gfi6be9g.apps.googleusercontent.com</string>
 
+    <string-array name="menu">
+        <item>Sair</item>
+        <item>Termos</item>
+        <item>Privacidade</item>
+    </string-array>
+
 </resources>

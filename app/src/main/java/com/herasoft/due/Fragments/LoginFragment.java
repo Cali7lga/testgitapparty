@@ -2,27 +2,35 @@ package com.herasoft.due.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.internal.MDButton;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -33,6 +41,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -48,6 +57,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.R;
+
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,10 +82,9 @@ public class LoginFragment extends Fragment {
 
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-    SignInButton gmail;
-    LoginButton face;
-    Button entrar, created;
-    TextView cadastrar, back;
+    ImageButton entrar;
+    Button created;
+    TextView cadastrar, back, help, redefinir, gmail, face, due;
     EditText c_nome, c_email, c_senha, l_email, l_senha;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -130,11 +140,19 @@ public class LoginFragment extends Fragment {
         l_email = (EditText) view.findViewById(R.id.editText);
         l_senha = (EditText) view.findViewById(R.id.editText9);
 
-        entrar = (Button) view.findViewById(R.id.button4);
+        entrar = (ImageButton) view.findViewById(R.id.imageButton3);
         cadastrar = (TextView) view.findViewById(R.id.textView32);
+        help = (TextView) view.findViewById(R.id.textView36);
+        redefinir = (TextView) view.findViewById(R.id.textView12);
+        due = (TextView) view.findViewById(R.id.textView16);
 
-        gmail = (SignInButton) view.findViewById(R.id.sign_in_button);
-        face = (LoginButton) view.findViewById(R.id.loginButton);
+        gmail = (TextView) view.findViewById(R.id.textView42);
+        face = (TextView) view.findViewById(R.id.textView43);
+
+        final Typeface tf_m = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf_r = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
+
+        due.setTypeface(tf_r);
 
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +171,75 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        redefinir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!l_email.getText().toString().equals("")) {
+                    mAuth.sendPasswordResetEmail(l_email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                new MaterialDialog.Builder(getActivity())
+                                        .title("Email enviado")
+                                        .titleColorRes(R.color.dark_gray)
+                                        .typeface(tf_m, tf_r)
+                                        .content("Verifique o email que enviamos em sua caixa de entrada para redefinir a sua senha.")
+                                        .contentColorRes(R.color.dark_gray)
+                                        .positiveText("Ok")
+                                        .positiveColorRes(android.R.color.holo_blue_dark)
+                                        .show();
+                            } else {
+                                task.addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        new MaterialDialog.Builder(getActivity())
+                                                .title("Oops...")
+                                                .titleColorRes(R.color.dark_gray)
+                                                .typeface(tf_m, tf_r)
+                                                .content(e.getLocalizedMessage())
+                                                .contentColorRes(R.color.dark_gray)
+                                                .positiveText("Ok")
+                                                .positiveColorRes(android.R.color.holo_blue_dark)
+                                                .show();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                } else{
+                    new MaterialDialog.Builder(getActivity())
+                            .title("Oops...")
+                            .titleColorRes(R.color.dark_gray)
+                            .typeface(tf_m, tf_r)
+                            .content("Preencha o campo de email para que possamos lhe enviar o email de redefinição de senha.")
+                            .contentColorRes(R.color.dark_gray)
+                            .positiveText("Ok")
+                            .positiveColorRes(android.R.color.holo_blue_dark)
+                            .show();
+                }
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                        .title("Por que criar uma conta")
+                        .titleColorRes(R.color.dark_gray)
+                        .titleGravity(GravityEnum.CENTER)
+                        .typeface(tf_m,tf_r)
+                        .positiveText("OK")
+                        .positiveColorRes(android.R.color.holo_blue_dark)
+                        .buttonsGravity(GravityEnum.END)
+                        .customView(R.layout.dialog_help,true)
+                        .build();
+                dialog.show();
+
+            }
+        });
+
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,6 +247,7 @@ public class LoginFragment extends Fragment {
                         .title("Conta Due")
                         .titleColorRes(R.color.dark_gray)
                         .titleGravity(GravityEnum.CENTER)
+                        .typeface(tf_m,tf_r)
                         .customView(R.layout.dialog_cadastrar,true)
                         .build();
 
@@ -223,10 +311,15 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginFragment.this, Arrays.asList("email", "public_profile"));
+            }
+        });
+
         callbackManager = CallbackManager.Factory.create();
-        face.setReadPermissions("email", "public_profile");
-        face.setFragment(this);
-        face.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
 

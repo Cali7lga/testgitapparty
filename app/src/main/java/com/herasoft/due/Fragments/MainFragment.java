@@ -14,11 +14,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,11 +55,12 @@ public class MainFragment extends Fragment{
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
 
-    Button entrar, solicite;
+    Button entrar, solicite, btn_codigo;
     EditText code;
-    TextView nome, menu;
+    TextView nome, demo;
+    LinearLayout menu;
 
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -104,94 +111,175 @@ public class MainFragment extends Fragment{
 
         mAuth = FirebaseAuth.getInstance();
 
-        menu = (TextView) view.findViewById(R.id.textView10);
+        menu = (LinearLayout) view.findViewById(R.id.linear_menu);
         nome = (TextView) view.findViewById(R.id.textView9);
+        demo = (TextView) view.findViewById(R.id.textView33);
         solicite = (Button) view.findViewById(R.id.button);
         entrar = (Button) view.findViewById(R.id.button2);
 
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf_light = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
 
         String s = "Olá, " + LoginFragment.login_nome;
         nome.setText(s);
+        nome.setTypeface(tf_light);
 
         entrar.setTypeface(tf);
-//        entrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                        if (dataSnapshot.hasChild(code.getText().toString()) && !code.getText().toString().equals("")){
-//
-//                            codigo = code.getText().toString();
-//                            Uri uri = Uri.parse(dataSnapshot.child(codigo).child("video").child("musica").getValue(String.class));
-//                            try {
-//                                MainActivity.mediaPlayer = new MediaPlayer();
-//                                MainActivity.mediaPlayer.setDataSource(getActivity(), uri);
-//                                MainActivity.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//                                MainActivity.mediaPlayer.setLooping(true);
-//                                MainActivity.mediaPlayer.setVolume(1.0f, 1.0f);
-//                                MainActivity.mediaPlayer.prepare();
-//                            }catch (IOException e){
-//                                e.printStackTrace();
-//                            }
-//                            MainActivity mainactivity = (MainActivity) getActivity();
-//                            mainactivity.loadTabBar();
-//
-//                        }
-//                        else{
-//
-//                            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-//                            alertDialog.setTitle("Código inválido");
-//                            alertDialog.setMessage("Você digitou um código inexistente. Por favor, tente novamente.");
-//                            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    code.setText(null);
-//                                }
-//                            });
-//                            alertDialog.show();
-//
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-//
-//
-//
-//            }
-//        });
+        entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        solicite.setTypeface(tf);
-//        solicite.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                MainActivity mainActivity = (MainActivity) getActivity();
-//                mainActivity.loadContato();
-//
-//            }
-//        });
-//
-//        MainActivity mainactivity = (MainActivity) getActivity();
-//        mainactivity.stopmusic();
+                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                        .title("Evento Due")
+                        .titleColorRes(R.color.dark_gray)
+                        .titleGravity(GravityEnum.CENTER)
+                        .typeface(tf,tf_light)
+                        .customView(R.layout.dialog_codigo,true)
+                        .positiveText("Fechar")
+                        .positiveColorRes(android.R.color.holo_blue_dark)
+                        .backgroundColorRes(R.color.bg_bege)
+                        .build();
+
+                code = (EditText) dialog.findViewById(R.id.editText18);
+                btn_codigo = (Button) dialog.findViewById(R.id.button4);
+                btn_codigo.setTypeface(tf);
+                btn_codigo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(code.getText().toString().equals("")){
+                            new MaterialDialog.Builder(getActivity())
+                                    .title("Oops...")
+                                    .titleColorRes(R.color.dark_gray)
+                                    .typeface(tf, tf_light)
+                                    .content("Digite o código do evento que deseja acessar.")
+                                    .contentColorRes(R.color.dark_gray)
+                                    .positiveText("Ok")
+                                    .positiveColorRes(android.R.color.holo_blue_dark)
+                                    .show();
+                        } else{
+                            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if (dataSnapshot.hasChild(code.getText().toString())){
+
+                                        codigo = code.getText().toString();
+                                        Uri uri = Uri.parse(dataSnapshot.child(codigo).child("video").child("musica").getValue(String.class));
+                                        loadMusic(uri);
+                                        MainActivity mainactivity = (MainActivity) getActivity();
+                                        mainactivity.loadTabBar();
+                                        dialog.dismiss();
+
+                                    } else{
+                                        new MaterialDialog.Builder(getActivity())
+                                                .title("Oops...")
+                                                .titleColorRes(R.color.dark_gray)
+                                                .typeface(tf, tf_light)
+                                                .content("Você digitou um código inexistente. Por favor, tente novamente.")
+                                                .contentColorRes(R.color.dark_gray)
+                                                .positiveText("Ok")
+                                                .positiveColorRes(android.R.color.holo_blue_dark)
+                                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                                    @Override
+                                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                        code.setText(null);
+                                                    }
+                                                })
+                                                .show();
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+
+                    }
+                });
+
+                dialog.show();
+
+            }
+        });
+
+        demo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                codigo = "000";
+                mRef.child(codigo).child("video").child("musica").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Uri uri = Uri.parse(dataSnapshot.getValue(String.class));
+                        loadMusic(uri);
+                        MainActivity mainactivity = (MainActivity) getActivity();
+                        mainactivity.loadTabBar();
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
 
         solicite.setTypeface(tf);
+        solicite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadContato();
+            }
+        });
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAuth.signOut();
-                LoginManager.getInstance().logOut();
-                MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadLogin();
+                new MaterialDialog.Builder(getActivity())
+                        .title("O que deseja fazer?")
+                        .titleGravity(GravityEnum.CENTER)
+                        .titleColorRes(R.color.dark_gray)
+                        .typeface(tf,tf_light)
+                        .items(R.array.menu)
+                        .itemsColorRes(android.R.color.holo_blue_dark)
+                        .itemsGravity(GravityEnum.CENTER)
+                        .itemsCallback(new MaterialDialog.ListCallback() {
+                            @Override
+                            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+
+                                MainActivity mainactivity = (MainActivity) getActivity();
+
+                                switch (position){
+                                    case 0:
+
+                                        mAuth.signOut();
+                                        LoginManager.getInstance().logOut();
+                                        dialog.dismiss();
+                                        mainactivity.loadLogin();
+
+                                        break;
+                                    case 1:
+
+                                        mainactivity.loadWeb("https://www.herasoft.com.br/terms.html");
+
+                                        break;
+                                    case 2:
+
+                                        mainactivity.loadWeb("https://www.herasoft.com.br/privacy.html");
+
+                                        break;
+                                }
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -233,6 +321,18 @@ public class MainFragment extends Fragment{
             MainActivity.mediaPlayer.setVolume(0, 0);
         }
 
+    }
+
+    public void loadMusic (Uri newUri){
+        try {
+            MainActivity.mediaPlayer = new MediaPlayer();
+            MainActivity.mediaPlayer.setDataSource(getActivity(), newUri);
+            MainActivity.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            MainActivity.mediaPlayer.setLooping(true);
+            MainActivity.mediaPlayer.prepare();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**

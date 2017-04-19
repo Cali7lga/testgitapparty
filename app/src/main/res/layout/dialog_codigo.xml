@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_bege"
+    android:gravity="center">
+
+    <view
+        class="android.support.v4.widget.SlidingPaneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/dark_gray" />
+
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Qual o código do evento?"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/dark_gray"/>
+
+    <EditText
+        android:id="@+id/editText18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_digitar"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Ex.: 000"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/gray_btn_bg_pressed_color"
+        android:gravity="center"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_button"
+        android:text="Entrar"
+        android:textColor="@color/dark_gray"/>
+
+</LinearLayout>
