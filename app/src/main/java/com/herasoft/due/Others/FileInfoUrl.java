@@ -6,22 +6,26 @@ package com.herasoft.due.Others;
 
 public class FileInfoUrl {
 
-        private String imageUrl;
+    private String imageUrl;
+    private String txt_leg;
 
-        public FileInfoUrl() {
-        }
+    public FileInfoUrl() {
+    }
 
-/**        public FileInfoUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
-         }
-**/
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-        public String getImageUrl() {
-            return imageUrl;
-        }
+    public void setImageUrl(String Url) {
+        this.imageUrl = Url;
+    }
 
-        public void setImageUrl(String Url) {
-            this.imageUrl = Url;
-        }
+    public String getLegenda() {
+        return txt_leg;
+    }
+
+    public void setLegenda(String Legenda) {
+        this.txt_leg = Legenda;
+    }
 
     }

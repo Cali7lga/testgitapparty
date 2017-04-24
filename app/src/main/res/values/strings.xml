@@ -12,4 +12,20 @@
         <item>Privacidade</item>
     </string-array>
 
+    <string-array name="perguntas">
+        <item>O que é?</item>
+        <item>Quais são as features?</item>
+        <item>Como obter minha versão Due?</item>
+        <item>Por que criar uma conta?</item>
+        <item>Convidados precisam pagar?</item>
+    </string-array>
+
+    <string-array name="respostas">
+        <item>Due é uma plataforma para casamentos dedicada a hospedar diversos eventos. Cada casamento possui uma versão Due diferente, acessível através de um nome ou número que lhe é atribuido pelos próprios noivos</item>
+        <item>Estamos sempre buscando inovar e acrescentar novas features na nossa plataforma, mas desde já, o app oferece diversas funcionalidades, como os feeds de fotos e mensagens, cotas de lua de mel, trailer e fotos do pré casamento, informações da cerimônia e muito mais!</item>
+        <item>Para obter uma versão Due é preciso adquirir nosso produto através do app. É um valor pago uma única vez do qual vocês, com certeza, não vão se arrepender ;)</item>
+        <item>Queremos que os noivos se sintam seguros no nosso app, por isso pedimos que todos os usuários efetuem o cadastro para que possamos identificá-los. OBS: Não se preocupe, nós também não gostamos de spam. Seu email estará seguro conosco.</item>
+        <item>Não. Convidados podem acessar eventos e interagir gratuitamente.</item>
+    </string-array>
+
 </resources>

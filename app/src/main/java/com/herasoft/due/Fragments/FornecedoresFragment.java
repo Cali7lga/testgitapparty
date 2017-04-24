@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.herasoft.due.Others.FileInfoFornecedor;
-import com.herasoft.due.Others.FileInfoMsg;
 import com.herasoft.due.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;

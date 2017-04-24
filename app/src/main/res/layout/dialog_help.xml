@@ -10,23 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/dark_gray" />
+        android:background="@color/gray_btn_bg_color" />
 
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView40"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Queremos que os noivos se sintam seguros no nosso app, por isso pedimos que os usuários efetuem o cadastro para que possamos identificá-los."
-        android:layout_marginTop="40dp"
-        android:textColor="@color/dark_gray"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView41"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PS: Não se preocupe, nós também não gostamos de spam. Seu email estará seguro conosco ;)"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/gray_btn_bg_pressed_color"/>
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/dark_gray" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView41"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text=""
+            android:textColor="@color/gray_btn_bg_pressed_color" />
+    </LinearLayout>
 
 </LinearLayout>

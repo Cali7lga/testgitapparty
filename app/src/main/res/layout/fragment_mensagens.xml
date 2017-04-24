@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.herasoft.due.Fragments.MensagensFragment"
     android:orientation="vertical"
-    android:background="@color/bg_bege">
+    android:background="@drawable/bg_degrade">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_rv"

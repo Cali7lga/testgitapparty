@@ -175,7 +175,7 @@ public class PayFragment extends Fragment {
                         })
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            public void onClick(final SweetAlertDialog sweetAlertDialog) {
 
                                 try {
 
@@ -188,11 +188,17 @@ public class PayFragment extends Fragment {
 
                                     Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
                                     if (!card.validateCard()) {
-                                        System.out.println("Error valid card");
+                                        sweetAlertDialog.setTitleText("Erro")
+                                                .setContentText("Cartão inválido :(")
+                                                .setConfirmText("OK")
+                                                .showCancelButton(false)
+                                                .setCancelClickListener(null)
+                                                .setConfirmClickListener(null)
+                                                .changeAlertType(SweetAlertDialog.ERROR_TYPE);
                                     } else {
 
                                         try {
-                                            System.out.println("Valid card");
+
                                             Stripe stripe = new Stripe(getContext(), "pk_live_68BdK9ZwAWbirEQYYSTH7Wpg");
                                             stripe.createToken(card, new TokenCallback() {
                                                 @Override
@@ -205,8 +211,25 @@ public class PayFragment extends Fragment {
 
                                                     System.out.println("Sucesso token callback");
 
-                                                    DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor, desc);
+                                                    DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor, desc,LoginFragment.login_email);
                                                     databaseTask.execute();
+
+                                                    sweetAlertDialog.setTitleText("Muito obrigado! S2")
+                                                            .setContentText("Você receberá a confirmação do seu presente por email!")
+                                                            .setConfirmText("OK")
+                                                            .showCancelButton(false)
+                                                            .setCancelClickListener(null)
+                                                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                                @Override
+                                                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                                                    sweetAlertDialog.dismiss();
+                                                                    MainActivity mainActivity = (MainActivity) getActivity();
+                                                                    mainActivity.backfragment();
+
+                                                                }
+                                                            })
+                                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
 
                                                 }
                                             });
@@ -215,22 +238,6 @@ public class PayFragment extends Fragment {
                                         }
                                     }
 
-                                    sweetAlertDialog.setTitleText("Sucesso!")
-                                            .setContentText("Muito obrigado por contribuir com a construção do nosso novo lar!")
-                                            .setConfirmText("OK")
-                                            .showCancelButton(false)
-                                            .setCancelClickListener(null)
-                                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                @Override
-                                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                                                    sweetAlertDialog.dismiss();
-                                                    MainActivity mainActivity = (MainActivity) getActivity();
-                                                    mainActivity.backfragment();
-
-                                                }
-                                            })
-                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                                 } catch(Exception e){
                                     Toast.makeText(getActivity(),"ERRO! Preencha corretamente os campos acima.",Toast.LENGTH_SHORT).show();
                                     sweetAlertDialog.dismiss();

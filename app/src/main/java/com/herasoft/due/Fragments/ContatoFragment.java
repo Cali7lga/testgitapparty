@@ -1,23 +1,24 @@
 package com.herasoft.due.Fragments;
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.Others.FileInfoContato;
-import com.herasoft.due.Others.FileInfoMsg;
 import com.herasoft.due.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,6 +37,7 @@ public class ContatoFragment extends Fragment {
 
     EditText noivo, noiva, data, local, email;
     Button enviar;
+    CheckBox checkBox;
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
     // TODO: Rename parameter arguments, choose names that match
@@ -92,17 +94,37 @@ public class ContatoFragment extends Fragment {
         local = (EditText) view.findViewById(R.id.editText11);
         email = (EditText) view.findViewById(R.id.editText10);
         enviar = (Button) view.findViewById(R.id.button3);
+        checkBox = (CheckBox) view.findViewById(R.id.checkBox1);
 
         final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
         final Typeface tf_light = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
 
         noivo.setTypeface(tf);
+        noivo.getBackground().mutate().setColorFilter(ContextCompat.getColor(getActivity(),android.R.color.white), PorterDuff.Mode.SRC_ATOP);
         noiva.setTypeface(tf);
+        noiva.getBackground().mutate().setColorFilter(ContextCompat.getColor(getActivity(),android.R.color.white), PorterDuff.Mode.SRC_ATOP);
         data.setTypeface(tf);
+        data.getBackground().mutate().setColorFilter(ContextCompat.getColor(getActivity(),android.R.color.white), PorterDuff.Mode.SRC_ATOP);
         local.setTypeface(tf);
+        local.getBackground().mutate().setColorFilter(ContextCompat.getColor(getActivity(),android.R.color.white), PorterDuff.Mode.SRC_ATOP);
         email.setTypeface(tf);
-        enviar.setTypeface(tf);
+        email.getBackground().mutate().setColorFilter(ContextCompat.getColor(getActivity(),android.R.color.white), PorterDuff.Mode.SRC_ATOP);
+        email.setText(LoginFragment.login_email);
 
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    email.setText(LoginFragment.login_email);
+                    email.setEnabled(false);
+                } else{
+                    email.setText(null);
+                    email.setEnabled(true);
+                }
+            }
+        });
+
+        enviar.setTypeface(tf);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

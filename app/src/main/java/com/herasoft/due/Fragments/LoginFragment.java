@@ -5,43 +5,33 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.MDButton;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -56,6 +46,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.herasoft.due.Activity.MainActivity;
+import com.herasoft.due.Others.FAQAdapter;
 import com.herasoft.due.R;
 
 import java.util.Arrays;
@@ -225,17 +216,16 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                        .title("Por que criar uma conta")
+                final FAQAdapter adapter = new FAQAdapter(getActivity(),R.array.perguntas,R.array.respostas);
+
+                new MaterialDialog.Builder(getActivity())
+                        .title("Dúvidas Frequentes")
                         .titleColorRes(R.color.dark_gray)
                         .titleGravity(GravityEnum.CENTER)
                         .typeface(tf_m,tf_r)
-                        .positiveText("OK")
-                        .positiveColorRes(android.R.color.holo_blue_dark)
-                        .buttonsGravity(GravityEnum.END)
-                        .customView(R.layout.dialog_help,true)
-                        .build();
-                dialog.show();
+                        .backgroundColorRes(R.color.bg_bege)
+                        .adapter(adapter,null)
+                        .show();
 
             }
         });
@@ -255,19 +245,36 @@ public class LoginFragment extends Fragment {
                 c_email = (EditText) dialog.getCustomView().findViewById(R.id.editText13);
                 c_senha = (EditText) dialog.getCustomView().findViewById(R.id.editText14);
 
+                c_nome.setTypeface(tf_m);
+                c_email.setTypeface(tf_m);
+                c_senha.setTypeface(tf_m);
+
                 created = (Button) dialog.getCustomView().findViewById(R.id.button7);
+                created.setTypeface(tf_m);
                 created.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         mAuth.createUserWithEmailAndPassword(c_email.getText().toString(),c_senha.getText().toString())
-                                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                Toast.makeText(getActivity(),"Conta criada com sucesso!",Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            }
-                        });
+                            .addOnSuccessListener(getActivity(), new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    dialog.dismiss();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    new MaterialDialog.Builder(getActivity())
+                                            .title("Oops...")
+                                            .titleColorRes(R.color.dark_gray)
+                                            .typeface(tf_m, tf_r)
+                                            .content(e.getLocalizedMessage())
+                                            .contentColorRes(R.color.dark_gray)
+                                            .positiveText("Ok")
+                                            .positiveColorRes(android.R.color.holo_blue_dark)
+                                            .show();
+                                }
+                            });
 
                     }
                 });

@@ -3,111 +3,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.herasoft.due.Fragments.CaptureFragment"
-    android:orientation="vertical"
     android:background="@drawable/bg_degrade"
-    android:weightSum="1">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:weightSum="1"
+    tools:context="com.herasoft.due.Fragments.CaptureFragment">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center">
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/laranjinha"
-            android:id="@+id/button12"
-            android:background="@drawable/enviar_btn" />
-
-        <view
-            android:layout_width="1dp"
-            android:layout_height="60dp"
-            class="android.support.v4.widget.DrawerLayout"
-            android:id="@+id/view"
-            android:background="@color/laranjinha"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"/>
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@android:color/transparent"
-            android:id="@+id/imageButton21"
-            android:src="@drawable/galeria"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <com.herasoft.due.Others.TextViewAvenir
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Câmera"
-            android:textColor="@color/laranjinha" />
-
-        <com.herasoft.due.Others.TextViewAvenir
-            android:text="Câmera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView39"
-            android:textColor="@color/laranjinha"
-            android:layout_marginLeft="55dp"
-            android:layout_marginStart="55dp"/>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="275dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1">
-
-        <com.herasoft.due.Others.TextViewAvenir
-            android:id="@+id/textView37"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/enviar_btn"
+                android:backgroundTint="@color/laranjinha" />
+
+            <view
+                android:id="@+id/view"
+                class="android.support.v4.widget.DrawerLayout"
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/laranjinha" />
+
+            <ImageButton
+                android:id="@+id/imageButton21"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/galeria" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="center"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:text="Compartilhe seu momento conosco! Sua foto aparecerá aqui :)"
-            android:textColor="@android:color/black" />
+            android:orientation="horizontal">
 
-        <com.herasoft.due.Others.CustomImageView
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Câmera"
+                android:textColor="@color/laranjinha" />
+
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:text="Galeria"
+                android:textColor="@color/laranjinha" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/preview"
             android:layout_width="match_parent"
-            android:id="@+id/imageView20"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corners"
-            android:backgroundTint="@color/graytransparent"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"/>
+            android:layout_height="100dp">
 
-    </RelativeLayout>
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Fiquem a vontade para postar quantas fotos quiserem por aqui. Com os botões acima vocês podem buscar uma foto na galeria ou tirar uma nova :D"
+                android:textColor="@android:color/black" />
+
+            <com.herasoft.due.Others.CustomImageView
+                android:id="@+id/imageView20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_corners"
+                android:backgroundTint="@color/graytransparent"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:text="Adicionar legenda"
+            android:textColor="@color/dark_gray" />
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
         android:orientation="horizontal">
 
         <com.dd.morphingbutton.MorphingButton
             android:id="@+id/btnMorph"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:textColor="@color/bg_bege" />
 
         <ProgressBar
@@ -115,9 +137,9 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:max="100"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </FrameLayout>
 

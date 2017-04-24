@@ -14,14 +14,18 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -102,7 +106,7 @@ public class FotosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fotos, container, false);
+        final View view = inflater.inflate(R.layout.fragment_fotos, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.my_rv2);
         mRecyclerView.setHasFixedSize(true);
@@ -117,11 +121,44 @@ public class FotosFragment extends Fragment {
                 dbRef.child("fotos")
         ) {
             @Override
-            protected void populateViewHolder(final PhotoViewHolder viewHolder, FileInfoUrl model, final int position) {
+            protected void populateViewHolder(final PhotoViewHolder viewHolder, final FileInfoUrl model, final int position) {
+
+                viewHolder.imageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+
+                        int width = viewHolder.imageView.getMeasuredWidth();
+                        int height = width*3/4;
+
+                        viewHolder.imageView.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+                        viewHolder.legenda.setHeight(height/4);
+
+                        viewHolder.imageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                    }
+                });
+
+                if(model.getLegenda()!=null) {
+
+                    viewHolder.legenda.setVisibility(View.VISIBLE);
+                    viewHolder.legenda.setText(model.getLegenda());
+                    viewHolder.legenda.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            view.getParent().requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        }
+                    });
+                    viewHolder.legenda.setMovementMethod(new ScrollingMovementMethod());
+
+                } else{
+                    viewHolder.legenda.setVisibility(View.INVISIBLE);
+                }
 
                 final String url = model.getImageUrl();
                 Uri uri = Uri.parse(url);
                 Glide.with(getActivity()).load(uri).centerCrop().into(viewHolder.imageView);
+
                 viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -210,11 +247,15 @@ public class FotosFragment extends Fragment {
     public static class PhotoViewHolder extends RecyclerView.ViewHolder {
 
         CustomImageView imageView;
+        TextView legenda;
+        RelativeLayout relativeLayout;
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
 
+            legenda = (TextView) itemView.findViewById(R.id.textView49);
             imageView = (CustomImageView) itemView.findViewById(R.id.imageView19);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relative_photo);
 
         }
     }
@@ -230,7 +271,7 @@ public class FotosFragment extends Fragment {
         // Load the high-resolution "zoomed-in" image.
         final ImageView expandedImageView = (ImageView) getView().findViewById(
                 R.id.expanded_image);
-        Log.i("lalala", "onClick2: "+imageUrl);
+
         Uri uri = Uri.parse(imageUrl);
         Glide.with(getActivity()).load(uri).into(expandedImageView);
 

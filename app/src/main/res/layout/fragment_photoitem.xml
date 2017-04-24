@@ -1,21 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <com.herasoft.due.Others.CustomImageView
+<RelativeLayout
+        android:id="@+id/relative_photo"
         android:layout_width="match_parent"
-        android:src="@android:color/holo_green_light"
-        android:id="@+id/imageView19"
-        android:layout_height="275dp"
-        android:scaleType="centerCrop"
-        android:clickable="true" />
+        android:layout_height="wrap_content">
+
+        <com.herasoft.due.Others.CustomImageView
+            android:id="@+id/imageView19"
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:src="@android:color/holo_green_light" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView49"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView19"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/textview_legenda"
+            android:textColor="@color/dark_gray" />
+
+    </RelativeLayout>
 
     <view
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:id="@+id/view6"
         class="android.support.v4.widget.Space"
-        android:id="@+id/view6" />
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 
 </LinearLayout>

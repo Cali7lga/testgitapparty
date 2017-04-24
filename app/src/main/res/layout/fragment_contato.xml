@@ -1,13 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_due"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp"
-    android:paddingTop="10dp"
+    android:padding="20dp"
     tools:context="com.herasoft.due.Fragments.ContatoFragment">
 
     <com.herasoft.due.Others.TextViewAvenir
@@ -19,106 +18,132 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView46"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Noivos"
-        android:textColor="@android:color/white"/>
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editText16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="5"
-            android:inputType="textPersonName"
-            android:hint="Name"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/gray_btn_bg_pressed_color"/>
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.herasoft.due.Others.TextViewAvenir
-            android:id="@+id/textView47"
+            android:id="@+id/textView46"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&amp;"
-            android:textColor="@android:color/white"/>
+            android:text="Noivos"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:hint="Ex.: Fran"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white" />
+
+            <com.herasoft.due.Others.TextViewAvenir
+                android:id="@+id/textView47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&amp;"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/editText17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:hint="Ex.: Ruby"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Data"
+            android:textColor="@android:color/white" />
 
         <EditText
-            android:id="@+id/editText17"
+            android:id="@+id/editText15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="5"
+            android:layout_marginTop="5dp"
+            android:ems="7"
+            android:gravity="center_horizontal"
+            android:hint="09/11/2017"
+            android:inputType="date"
+            android:textColor="@android:color/white" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Cidade/UF"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:hint="Salvador/BA"
             android:inputType="textPersonName"
-            android:hint="Name"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/dark_gray"/>
+            android:textColor="@android:color/white" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Email de contato"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="12"
+            android:enabled="false"
+            android:gravity="center_horizontal"
+            android:hint="contato@exemplo.com"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/white" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"
+            android:checked="true"
+            android:text="Deseja usar o email de cadastro?"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/enviar_white_btn"
+            android:text="Enviar"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
-
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data"
-        android:textColor="@android:color/white"/>
-
-    <EditText
-        android:id="@+id/editText15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Data"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        android:textColorHint="@color/dark_gray" />
-
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cidade/UF"
-        android:textColor="@android:color/white"/>
-
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Cidade/UF"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        android:textColorHint="@color/dark_gray" />
-
-    <com.herasoft.due.Others.TextViewAvenir
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email de contato"
-        android:textColor="@android:color/white" />
-
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/dark_gray"
-        android:textColorHint="@color/gray_btn_bg_color" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/enviar_white_btn"
-        android:text="Enviar"
-        android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.herasoft.due.Fragments;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -16,19 +15,24 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.dd.morphingbutton.MorphingButton;
 import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.Others.CustomImageView;
@@ -64,11 +68,13 @@ public class CaptureFragment extends Fragment {
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
+    RelativeLayout preview;
     CustomImageView customimageView;
     Button btn_new;
     ImageButton btn_gallery;
+    TextView txv_legenda;
     ProgressBar progressBar;
-    String filepath;
+    String filepath, legenda;
     Matrix matrix;
     MorphingButton btnMorph;
 
@@ -124,9 +130,11 @@ public class CaptureFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_capture, container, false);
 
+        preview = (RelativeLayout) view.findViewById(R.id.preview);
         customimageView = (CustomImageView) view.findViewById(R.id.imageView20);
         btn_new = (Button) view.findViewById(R.id.button12);
         btn_gallery = (ImageButton) view.findViewById(R.id.imageButton21);
+        txv_legenda = (TextView) view.findViewById(R.id.textView50);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Codes").child(MainFragment.codigo);
@@ -135,6 +143,14 @@ public class CaptureFragment extends Fragment {
 
         camerapermission();
         galeriapermission();
+
+        preview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                preview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,preview.getMeasuredWidth()*3/4));
+                preview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
 
         btn_new.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +168,24 @@ public class CaptureFragment extends Fragment {
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), REQUEST_IMAGE_CAPTURE);
 
+            }
+        });
+
+        txv_legenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialDialog.Builder(getActivity())
+                        .title("Legenda")
+                        .titleColorRes(R.color.dark_gray)
+                        .titleGravity(GravityEnum.CENTER)
+                        .input("Escreva sua legenda...", legenda, true, new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                legenda = input.toString();
+                            }
+                        }).positiveText("OK")
+                        .positiveColorRes(android.R.color.holo_blue_dark)
+                        .show();
             }
         });
 
@@ -189,11 +223,12 @@ public class CaptureFragment extends Fragment {
                                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
                                 FileInfoUrl fileinfo = new FileInfoUrl();
                                 fileinfo.setImageUrl(downloadUrl.toString());
+                                fileinfo.setLegenda(legenda);
                                 databaseReference.child("fotos").push().setValue(fileinfo);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 new SweetAlertDialog(getActivity(),SweetAlertDialog.SUCCESS_TYPE)
                                         .setTitleText("Bela foto ;)")
-                                        .setContentText("Muito obriagdo por compartilhar este momento conosco!")
+                                        .setContentText("Muito obrigado por compartilhar este momento conosco!")
                                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                             @Override
                                             public void onClick(SweetAlertDialog sweetAlertDialog) {

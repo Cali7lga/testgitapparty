@@ -17,31 +17,31 @@
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Qual o código do evento?"
-        android:layout_marginTop="50dp"
-        android:textColor="@color/dark_gray"/>
+        android:layout_marginTop="40dp"
+        android:text="Qual o nome do evento?"
+        android:textColor="@color/dark_gray" />
 
     <EditText
         android:id="@+id/editText18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/textview_digitar"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Ex.: 000"
-        android:textColor="@color/dark_gray"
-        android:textColorHint="@color/gray_btn_bg_pressed_color"
+        android:ems="12"
         android:gravity="center"
-        android:layout_marginTop="15dp"/>
+        android:hint="Ex.: franeruby"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/gray_btn_bg_pressed_color" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_button"
         android:text="Entrar"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/dark_gray" />
 
 </LinearLayout>
