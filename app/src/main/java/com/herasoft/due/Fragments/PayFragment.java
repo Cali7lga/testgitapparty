@@ -1,20 +1,24 @@
 package com.herasoft.due.Fragments;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.herasoft.due.Activity.MainActivity;
@@ -39,8 +43,8 @@ public class PayFragment extends Fragment {
 
     Spinner spinner;
     EditText edt_nome, edt_numero, edt_mes, edt_ano, edt_cvc;
-    Button button;
-    ImageButton help;
+    ImageButton button;
+    TextView help;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,14 +100,31 @@ public class PayFragment extends Fragment {
         edt_ano = (EditText) view.findViewById(R.id.editText7);
         edt_cvc = (EditText) view.findViewById(R.id.editText8);
 
-        help = (ImageButton) view.findViewById(R.id.imageButton10);
-        button = (Button) view.findViewById(R.id.button6);
+        help = (TextView) view.findViewById(R.id.textView51);
+        button = (ImageButton) view.findViewById(R.id.imageButton4);
 
         spinner = (Spinner) view.findViewById(R.id.spinner);
 
-        String[] items = new String[]{"50.00", "100.00", "150.00", "200.00", "250.00", "300.00", "350.00", "400.00", "450.00", "500.00", "600.00", "700.00", "800.00", "900.00", "1000.00", "1500.00", "2000.00"};
+        button.setColorFilter(ContextCompat.getColor(getActivity(),R.color.dark_gray), PorterDuff.Mode.SRC_ATOP);
+
+        String[] items = new String[]{"Valor desejado", "50.00", "100.00", "150.00", "200.00", "250.00", "300.00", "350.00", "400.00", "450.00", "500.00", "600.00", "700.00", "800.00", "900.00", "1000.00", "1500.00", "2000.00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(),android.R.color.darker_gray));
+                }else{
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(),R.color.dark_gray));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         edt_numero.addTextChangedListener(new TextWatcher() {
             private static final char space = ' ';
@@ -176,71 +197,77 @@ public class PayFragment extends Fragment {
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(final SweetAlertDialog sweetAlertDialog) {
-
-                                try {
-
-                                    String cardNumber = edt_numero.getText().toString();
-                                    int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
-                                    int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
-                                    String cardCVC = edt_cvc.getText().toString();
-                                    final String valor = spinner.getSelectedItem().toString();
-                                    final String desc = ("Doação feita por "+edt_nome.getText().toString());
-
-                                    Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
-                                    if (!card.validateCard()) {
-                                        sweetAlertDialog.setTitleText("Erro")
-                                                .setContentText("Cartão inválido :(")
-                                                .setConfirmText("OK")
-                                                .showCancelButton(false)
-                                                .setCancelClickListener(null)
-                                                .setConfirmClickListener(null)
-                                                .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                    } else {
-
-                                        try {
-
-                                            Stripe stripe = new Stripe(getContext(), "pk_live_68BdK9ZwAWbirEQYYSTH7Wpg");
-                                            stripe.createToken(card, new TokenCallback() {
-                                                @Override
-                                                public void onError(Exception error) {
-                                                    System.out.println("Erro token callback: " + error.toString());
-                                                }
-
-                                                @Override
-                                                public void onSuccess(Token token) {
-
-                                                    System.out.println("Sucesso token callback");
-
-                                                    DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor, desc,LoginFragment.login_email);
-                                                    databaseTask.execute();
-
-                                                    sweetAlertDialog.setTitleText("Muito obrigado! S2")
-                                                            .setContentText("Você receberá a confirmação do seu presente por email!")
-                                                            .setConfirmText("OK")
-                                                            .showCancelButton(false)
-                                                            .setCancelClickListener(null)
-                                                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                                @Override
-                                                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                                                                    sweetAlertDialog.dismiss();
-                                                                    MainActivity mainActivity = (MainActivity) getActivity();
-                                                                    mainActivity.backfragment();
-
-                                                                }
-                                                            })
-                                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-
-                                                }
-                                            });
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-
-                                } catch(Exception e){
-                                    Toast.makeText(getActivity(),"ERRO! Preencha corretamente os campos acima.",Toast.LENGTH_SHORT).show();
+                                if(spinner.getSelectedItemPosition()==0){
+                                    Toast.makeText(getActivity(),"ERRO! Selecione o valor da sua doação acima.",Toast.LENGTH_SHORT).show();
                                     sweetAlertDialog.dismiss();
+                                }
+                                else {
+
+                                    try {
+
+                                        String cardNumber = edt_numero.getText().toString();
+                                        int cardExpMonth = Integer.parseInt(edt_mes.getText().toString());
+                                        int cardExpYear = Integer.parseInt(edt_ano.getText().toString());
+                                        String cardCVC = edt_cvc.getText().toString();
+                                        final String valor = spinner.getSelectedItem().toString();
+                                        final String desc = ("Doação feita por " + edt_nome.getText().toString());
+
+                                        Card card = new Card(cardNumber, cardExpMonth, cardExpYear, cardCVC);
+                                        if (!card.validateCard()) {
+                                            sweetAlertDialog.setTitleText("Erro")
+                                                    .setContentText("Cartão inválido :(")
+                                                    .setConfirmText("OK")
+                                                    .showCancelButton(false)
+                                                    .setCancelClickListener(null)
+                                                    .setConfirmClickListener(null)
+                                                    .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                        } else {
+
+                                            try {
+
+                                                Stripe stripe = new Stripe(getContext(), "pk_live_68BdK9ZwAWbirEQYYSTH7Wpg");
+                                                stripe.createToken(card, new TokenCallback() {
+                                                    @Override
+                                                    public void onError(Exception error) {
+                                                        System.out.println("Erro token callback: " + error.toString());
+                                                    }
+
+                                                    @Override
+                                                    public void onSuccess(Token token) {
+
+                                                        System.out.println("Sucesso token callback");
+
+                                                        DatabaseTask databaseTask = new DatabaseTask("SENDTOKEN", token, valor, desc, LoginFragment.login_email);
+                                                        databaseTask.execute();
+
+                                                        sweetAlertDialog.setTitleText("Muito obrigado! S2")
+                                                                .setContentText("Você receberá a confirmação do seu presente por email!")
+                                                                .setConfirmText("OK")
+                                                                .showCancelButton(false)
+                                                                .setCancelClickListener(null)
+                                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                                    @Override
+                                                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                                                                        sweetAlertDialog.dismiss();
+                                                                        MainActivity mainActivity = (MainActivity) getActivity();
+                                                                        mainActivity.backfragment();
+
+                                                                    }
+                                                                })
+                                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                                    }
+                                                });
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                    } catch (Exception e) {
+                                        Toast.makeText(getActivity(), "ERRO! Preencha corretamente os campos acima.", Toast.LENGTH_SHORT).show();
+                                        sweetAlertDialog.dismiss();
+                                    }
                                 }
                             }
                         })

@@ -3,163 +3,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.herasoft.due.Fragments.PayFragment"
-    android:background="@drawable/bg_degrade">
+    android:background="@drawable/bg_degrade"
+    android:padding="20dp"
+    tools:context="com.herasoft.due.Fragments.PayFragment">
 
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.herasoft.due.Others.TextViewAvenir
+        android:id="@+id/textView51"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/round" />
+        android:background="@drawable/circle_info_gray"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="\?"
+        android:textColor="@color/dark_gray"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageView17"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/commerce"
-            android:layout_marginTop="20dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:src="@drawable/commerce" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:id="@+id/imageView22"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:src="@drawable/nameicon" />
-
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Seu nome"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:id="@+id/imageView23"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:src="@drawable/card" />
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@drawable/textview_shape"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/user" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/editText4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
                     android:ems="10"
-                    android:hint="4242 4242 4242 4242"
-                    android:inputType="phone"
-                    android:maxLength="19" />
+                    android:hint="Nome"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/dark_gray"
+                    android:textColorHint="@android:color/darker_gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_shape"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/imageView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/card" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-
-                    <EditText
-                        android:id="@+id/editText6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Mês"
-                        android:inputType="number"
-                        android:maxLength="2" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/editText7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:id="@+id/editText5"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="Ano"
-                        android:inputType="number"
-                        android:maxLength="2" />
+                        android:hint="Cartão nº"
+                        android:inputType="phone"
+                        android:maxLength="19"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@android:color/darker_gray" />
 
-                    <EditText
-                        android:id="@+id/editText8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="CVC"
-                        android:inputType="number"
-                        android:maxLength="4" />
+                    <view
+                        class="android.support.v4.widget.SlidingPaneLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+
+
+                        <EditText
+                            android:id="@+id/editText6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Mês"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textColor="@color/dark_gray"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                        <EditText
+                            android:id="@+id/editText7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="Ano"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textColor="@color/dark_gray"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                        <EditText
+                            android:id="@+id/editText8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:hint="CVC"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:textColor="@color/dark_gray"
+                            android:textColorHint="@android:color/darker_gray" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
 
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-
-            <com.herasoft.due.Others.TextViewAvenir
-                android:id="@+id/textView30"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="R$"
-                android:textSize="21sp" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_shape"
+                android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
 
+                <com.herasoft.due.Others.TextViewAvenir
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="R$"
+                    android:textSize="21sp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="110dp"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
+            android:layout_weight="0.1"
             android:background="@drawable/round_button"
-            android:text="Confirmar"
-            android:textColor="@color/dark_gray" />
+            android:src="@drawable/bagempty" />
 
     </LinearLayout>
 

@@ -14,12 +14,12 @@
         android:layout_marginTop="30dp">
 
         <ImageButton
+            android:id="@+id/imageButton14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/momentos"
-            android:id="@+id/imageButton14"
             android:layout_gravity="center_horizontal"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:src="@drawable/camera" />
 
         <com.herasoft.due.Others.TextViewAvenir
             android:text="Momentos"
@@ -99,12 +99,12 @@
         android:layout_marginBottom="30dp">
 
         <ImageButton
+            android:id="@+id/imageButton20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/evento"
-            android:id="@+id/imageButton20"
             android:layout_gravity="center_horizontal"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:src="@drawable/date" />
 
         <com.herasoft.due.Others.TextViewAvenir
             android:text="Evento"
