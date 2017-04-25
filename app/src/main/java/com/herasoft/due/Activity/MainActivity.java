@@ -118,7 +118,7 @@ public class MainActivity extends FragmentActivity
     protected void onResume() {
         super.onResume();
         Fragment f = this.getSupportFragmentManager().findFragmentById(R.id.FragmentContainer);
-        if(f instanceof MainFragment) {
+        if(f instanceof MainFragment || f instanceof LoginFragment) {
 
         }
         else{

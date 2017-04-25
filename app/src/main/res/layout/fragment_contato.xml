@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:buttonTint="@android:color/white"
             android:checked="true"
-            android:text="Deseja usar o email de cadastro?"
+            android:text="Usar o email de cadastro?"
             android:textColor="@android:color/white" />
 
         <Button

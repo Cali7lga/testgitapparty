@@ -50,7 +50,7 @@ public class MainFragment extends Fragment{
 
     Button entrar, solicite, btn_codigo;
     EditText code;
-    TextView nome, demo;
+    TextView nome, demo, bv;
     LinearLayout menu;
 
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Codes");
@@ -106,6 +106,7 @@ public class MainFragment extends Fragment{
 
         menu = (LinearLayout) view.findViewById(R.id.linear_menu);
         nome = (TextView) view.findViewById(R.id.textView9);
+        bv = (TextView) view.findViewById(R.id.textView52);
         demo = (TextView) view.findViewById(R.id.textView33);
         solicite = (Button) view.findViewById(R.id.button);
         entrar = (Button) view.findViewById(R.id.button2);
@@ -113,9 +114,9 @@ public class MainFragment extends Fragment{
         final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
         final Typeface tf_light = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
 
-        String s = "Olá, " + LoginFragment.login_nome;
-        nome.setText(s);
+        nome.setText(LoginFragment.login_nome);
         nome.setTypeface(tf_light);
+        bv.setTypeface(tf_light);
 
         entrar.setTypeface(tf);
         entrar.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +127,7 @@ public class MainFragment extends Fragment{
                         .title("Evento Due")
                         .titleColorRes(R.color.dark_gray)
                         .titleGravity(GravityEnum.CENTER)
-                        .typeface(tf,tf_light)
+                        .typeface(tf,tf)
                         .customView(R.layout.dialog_codigo,true)
                         .positiveText("Fechar")
                         .positiveColorRes(android.R.color.holo_blue_dark)
@@ -144,7 +145,7 @@ public class MainFragment extends Fragment{
                             new MaterialDialog.Builder(getActivity())
                                     .title("Oops...")
                                     .titleColorRes(R.color.dark_gray)
-                                    .typeface(tf, tf_light)
+                                    .typeface(tf, tf)
                                     .content("Digite o código do evento que deseja acessar.")
                                     .contentColorRes(R.color.dark_gray)
                                     .positiveText("Ok")
@@ -168,7 +169,7 @@ public class MainFragment extends Fragment{
                                         new MaterialDialog.Builder(getActivity())
                                                 .title("Oops...")
                                                 .titleColorRes(R.color.dark_gray)
-                                                .typeface(tf, tf_light)
+                                                .typeface(tf, tf)
                                                 .content("Você digitou um código inexistente. Por favor, tente novamente.")
                                                 .contentColorRes(R.color.dark_gray)
                                                 .positiveText("Ok")
@@ -240,7 +241,7 @@ public class MainFragment extends Fragment{
                         .title("O que deseja fazer?")
                         .titleGravity(GravityEnum.CENTER)
                         .titleColorRes(R.color.dark_gray)
-                        .typeface(tf,tf_light)
+                        .typeface(tf,tf)
                         .items(R.array.menu)
                         .itemsColorRes(android.R.color.holo_blue_dark)
                         .itemsGravity(GravityEnum.CENTER)

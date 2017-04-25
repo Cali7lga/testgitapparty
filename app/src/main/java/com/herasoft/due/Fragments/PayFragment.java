@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,14 +111,26 @@ public class PayFragment extends Fragment {
         String[] items = new String[]{"Valor desejado", "50.00", "100.00", "150.00", "200.00", "250.00", "300.00", "350.00", "400.00", "450.00", "500.00", "600.00", "700.00", "800.00", "900.00", "1000.00", "1500.00", "2000.00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i==0){
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(),android.R.color.darker_gray));
-                }else{
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(),R.color.dark_gray));
-                }
+            public void onItemSelected(final AdapterView<?> adapterView, View view, final int i, long l) {
+
+                spinner.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (adapterView.getChildCount() > 0) {
+                            if (i == 0) {
+                                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), android.R.color.darker_gray));
+                            } else {
+                                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.dark_gray));
+                            }
+                        }
+
+                    }
+                });
+
             }
 
             @Override

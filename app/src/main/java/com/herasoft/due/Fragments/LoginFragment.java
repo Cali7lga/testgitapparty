@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -176,7 +174,7 @@ public class LoginFragment extends Fragment {
                                 new MaterialDialog.Builder(getActivity())
                                         .title("Email enviado")
                                         .titleColorRes(R.color.dark_gray)
-                                        .typeface(tf_m, tf_r)
+                                        .typeface(tf_m, tf_m)
                                         .content("Verifique o email que enviamos em sua caixa de entrada para redefinir a sua senha.")
                                         .contentColorRes(R.color.dark_gray)
                                         .positiveText("Ok")
@@ -189,7 +187,7 @@ public class LoginFragment extends Fragment {
                                         new MaterialDialog.Builder(getActivity())
                                                 .title("Oops...")
                                                 .titleColorRes(R.color.dark_gray)
-                                                .typeface(tf_m, tf_r)
+                                                .typeface(tf_m, tf_m)
                                                 .content(e.getLocalizedMessage())
                                                 .contentColorRes(R.color.dark_gray)
                                                 .positiveText("Ok")
@@ -204,7 +202,7 @@ public class LoginFragment extends Fragment {
                     new MaterialDialog.Builder(getActivity())
                             .title("Oops...")
                             .titleColorRes(R.color.dark_gray)
-                            .typeface(tf_m, tf_r)
+                            .typeface(tf_m, tf_m)
                             .content("Preencha o campo de email para que possamos lhe enviar o email de redefinição de senha.")
                             .contentColorRes(R.color.dark_gray)
                             .positiveText("Ok")
@@ -224,7 +222,7 @@ public class LoginFragment extends Fragment {
                         .title("Dúvidas Frequentes")
                         .titleColorRes(R.color.dark_gray)
                         .titleGravity(GravityEnum.CENTER)
-                        .typeface(tf_m,tf_r)
+                        .typeface(tf_m,tf_m)
                         .backgroundColorRes(R.color.bg_bege)
                         .adapter(adapter,null)
                         .show();
@@ -239,7 +237,7 @@ public class LoginFragment extends Fragment {
                         .title("Conta Due")
                         .titleColorRes(R.color.dark_gray)
                         .titleGravity(GravityEnum.CENTER)
-                        .typeface(tf_m,tf_r)
+                        .typeface(tf_m,tf_m)
                         .customView(R.layout.dialog_cadastrar,true)
                         .build();
 
@@ -269,7 +267,7 @@ public class LoginFragment extends Fragment {
                                     new MaterialDialog.Builder(getActivity())
                                             .title("Oops...")
                                             .titleColorRes(R.color.dark_gray)
-                                            .typeface(tf_m, tf_r)
+                                            .typeface(tf_m, tf_m)
                                             .content(e.getLocalizedMessage())
                                             .contentColorRes(R.color.dark_gray)
                                             .positiveText("Ok")
