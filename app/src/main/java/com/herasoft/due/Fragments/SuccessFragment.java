@@ -1,26 +1,36 @@
 package com.herasoft.due.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TabBarFragment.TabBarFragmentInteractionListener} interface
+ * {@link SuccessFragment.SuccessFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TabBarFragment#newInstance} factory method to
+ * Use the {@link SuccessFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TabBarFragment extends Fragment {
+public class SuccessFragment extends Fragment {
+
+    Button back;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,9 +41,9 @@ public class TabBarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TabBarFragmentInteractionListener mListener;
+    private SuccessFragmentInteractionListener mListener;
 
-    public TabBarFragment() {
+    public SuccessFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +53,11 @@ public class TabBarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TabBarFragment.
+     * @return A new instance of fragment SuccessFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TabBarFragment newInstance(String param1, String param2) {
-        TabBarFragment fragment = new TabBarFragment();
+    public static SuccessFragment newInstance(String param1, String param2) {
+        SuccessFragment fragment = new SuccessFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,17 +77,26 @@ public class TabBarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tab_bar, container, false);
+        // Inflate the layout for this fragment
 
-        FragmentTabHost tabHost = (FragmentTabHost) view.findViewById(android.R.id.tabhost);
-        tabHost.setup(getActivity(),getChildFragmentManager(),R.id.realtabcontent);
+        View view = inflater.inflate(R.layout.fragment_success, container, false);
 
-        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.infinite)),Tab1Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.people)),Tab2Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.business)),Tab3Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.christmas)),Tab4Fragment.class,null);
+//        mAuth = FirebaseAuth.getInstance();
 
-        tabHost.setCurrentTab(0);
+        back = (Button) view.findViewById(R.id.button10);
+        final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        back.setTypeface(tf);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.backfragment();
+            }
+        });
+
+        mRef.child(LoginFragment.login_user).child("hasDue").setValue(true);
+        mRef.child(LoginFragment.login_user).child("nameSet").setValue(false);
 
         return view;
     }
@@ -85,15 +104,15 @@ public class TabBarFragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTabBarFragmentInteraction(uri);
+            mListener.onSuccessFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof TabBarFragmentInteractionListener) {
-            mListener = (TabBarFragmentInteractionListener) context;
+        if (context instanceof SuccessFragmentInteractionListener) {
+            mListener = (SuccessFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -116,9 +135,8 @@ public class TabBarFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-
-    public interface TabBarFragmentInteractionListener {
+    public interface SuccessFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTabBarFragmentInteraction(Uri uri);
+        void onSuccessFragmentInteraction(Uri uri);
     }
 }

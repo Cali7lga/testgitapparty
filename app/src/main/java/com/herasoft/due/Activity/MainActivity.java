@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 
 import com.herasoft.due.Fragments.CaptureFragment;
 import com.herasoft.due.Fragments.CerimoniaFragment;
+import com.herasoft.due.Fragments.CheckoutFragment;
 import com.herasoft.due.Fragments.ContatoFragment;
 import com.herasoft.due.Fragments.EscreverFragment;
 import com.herasoft.due.Fragments.FornecedoresFragment;
@@ -25,8 +26,11 @@ import com.herasoft.due.Fragments.MapsFragment;
 import com.herasoft.due.Fragments.MensagensFragment;
 import com.herasoft.due.Fragments.PadrinhosFragment;
 import com.herasoft.due.Fragments.PayFragment;
+import com.herasoft.due.Fragments.PayoutFragment;
 import com.herasoft.due.Fragments.PhotosFragment;
+import com.herasoft.due.Fragments.PortalFragment;
 import com.herasoft.due.Fragments.StreetviewFragment;
+import com.herasoft.due.Fragments.SuccessFragment;
 import com.herasoft.due.Fragments.Tab1Fragment;
 import com.herasoft.due.Fragments.Tab2Fragment;
 import com.herasoft.due.Fragments.Tab3Fragment;
@@ -56,7 +60,11 @@ public class MainActivity extends FragmentActivity
         PayFragment.PayFragmentInteractionListener,
         HelpFragment.HelpFragmentInteractionListener,
         ContatoFragment.ContatoFragmentInteractionListener,
-        LoadWebFragment.LoadWebFragmentInteractionListener{
+        CheckoutFragment.CheckoutFragmentInteractionListener,
+        LoadWebFragment.LoadWebFragmentInteractionListener,
+        PayoutFragment.PayoutFragmentInteractionListener,
+        SuccessFragment.SuccessFragmentInteractionListener,
+        PortalFragment.PortalFragmentInteractionListener{
 
     public static MediaPlayer mediaPlayer;
     private int length = 0;
@@ -272,6 +280,34 @@ public class MainActivity extends FragmentActivity
 
     }
 
+    public void loadCheckout(){
+
+        CheckoutFragment checkoutFragment = new CheckoutFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, checkoutFragment).addToBackStack(null).commit();
+
+    }
+
+    public void loadPayout(){
+
+        PayoutFragment payoutFragment = new PayoutFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, payoutFragment).commit();
+
+    }
+
+    public void loadSuccess(){
+
+        SuccessFragment successFragment = new SuccessFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, successFragment).commit();
+
+    }
+
+    public void loadPortal(){
+
+        PortalFragment portalFragment = new PortalFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, portalFragment).addToBackStack(null).commit();
+
+    }
+
     public void backfragment(){
         getSupportFragmentManager().popBackStack();
     }
@@ -384,6 +420,26 @@ public class MainActivity extends FragmentActivity
 
     @Override
     public void onLoadWebFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onCheckoutFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPayoutFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onSuccessFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPortalFragmentInteraction(Uri uri) {
 
     }
 }

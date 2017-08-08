@@ -48,7 +48,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FotosFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = database.getReference().child("Codes").child(MainFragment.codigo);
@@ -112,6 +112,8 @@ public class FotosFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         adapter = new FirebaseRecyclerAdapter<FileInfoUrl, PhotoViewHolder>(

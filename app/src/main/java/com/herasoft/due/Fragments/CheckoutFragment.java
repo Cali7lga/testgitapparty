@@ -1,27 +1,31 @@
 package com.herasoft.due.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.herasoft.due.Activity.MainActivity;
 import com.herasoft.due.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TabBarFragment.TabBarFragmentInteractionListener} interface
+ * {@link CheckoutFragment.CheckoutFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TabBarFragment#newInstance} factory method to
+ * Use the {@link CheckoutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TabBarFragment extends Fragment {
+public class CheckoutFragment extends Fragment {
 
+    TextView title;
+    Button buy;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,9 +35,9 @@ public class TabBarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TabBarFragmentInteractionListener mListener;
+    private CheckoutFragmentInteractionListener mListener;
 
-    public TabBarFragment() {
+    public CheckoutFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +47,11 @@ public class TabBarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TabBarFragment.
+     * @return A new instance of fragment CheckoutFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TabBarFragment newInstance(String param1, String param2) {
-        TabBarFragment fragment = new TabBarFragment();
+    public static CheckoutFragment newInstance(String param1, String param2) {
+        CheckoutFragment fragment = new CheckoutFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,17 +71,25 @@ public class TabBarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tab_bar, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_checkout, container, false);
 
-        FragmentTabHost tabHost = (FragmentTabHost) view.findViewById(android.R.id.tabhost);
-        tabHost.setup(getActivity(),getChildFragmentManager(),R.id.realtabcontent);
+        buy = (Button) view.findViewById(R.id.button6);
+        title = (TextView) view.findViewById(R.id.textView55);
 
-        tabHost.addTab(tabHost.newTabSpec("Tab1").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.infinite)),Tab1Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab2").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.people)),Tab2Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab3").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.business)),Tab3Fragment.class,null);
-        tabHost.addTab(tabHost.newTabSpec("Tab4").setIndicator("", ContextCompat.getDrawable(getActivity(),R.drawable.christmas)),Tab4Fragment.class,null);
+        final Typeface tf_al = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
+        final Typeface tf_aul = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
 
-        tabHost.setCurrentTab(0);
+        buy.setTypeface(tf_al);
+        title.setTypeface(tf_aul);
+
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadPayout();
+            }
+        });
 
         return view;
     }
@@ -85,15 +97,15 @@ public class TabBarFragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onTabBarFragmentInteraction(uri);
+            mListener.onCheckoutFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof TabBarFragmentInteractionListener) {
-            mListener = (TabBarFragmentInteractionListener) context;
+        if (context instanceof CheckoutFragmentInteractionListener) {
+            mListener = (CheckoutFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -116,9 +128,8 @@ public class TabBarFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-
-    public interface TabBarFragmentInteractionListener {
+    public interface CheckoutFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onTabBarFragmentInteraction(Uri uri);
+        void onCheckoutFragmentInteraction(Uri uri);
     }
 }

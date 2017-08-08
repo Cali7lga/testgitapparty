@@ -48,7 +48,7 @@ public class MainFragment extends Fragment{
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
 
-    Button entrar, solicite, btn_codigo;
+    Button entrar, solicite, btn_codigo, portal;
     EditText code;
     TextView nome, demo, bv;
     LinearLayout menu;
@@ -110,6 +110,7 @@ public class MainFragment extends Fragment{
         demo = (TextView) view.findViewById(R.id.textView33);
         solicite = (Button) view.findViewById(R.id.button);
         entrar = (Button) view.findViewById(R.id.button2);
+        portal = (Button) view.findViewById(R.id.button11);
 
         final Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
         final Typeface tf_light = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
@@ -230,7 +231,16 @@ public class MainFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 MainActivity mainactivity = (MainActivity) getActivity();
-                mainactivity.loadContato();
+                mainactivity.loadCheckout();
+            }
+        });
+
+        portal.setTypeface(tf);
+        portal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainactivity = (MainActivity) getActivity();
+                mainactivity.loadPortal();
             }
         });
 

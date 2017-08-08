@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,8 @@ public class CaptureFragment extends Fragment {
 
     public static final int REQUEST_EXTERNAL_STORAGE = 0;
     public static final int REQUEST_IMAGE_CAPTURE = 1;
-    private int morphCounter = 1;
+    public int morphCounter=1;
+    public int dp56, dp150, dp10, mColor;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,6 +123,7 @@ public class CaptureFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.i("lala", "onCreate: "+morphCounter);
         }
     }
 
@@ -129,7 +132,6 @@ public class CaptureFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_capture, container, false);
-
         preview = (RelativeLayout) view.findViewById(R.id.preview);
         customimageView = (CustomImageView) view.findViewById(R.id.imageView20);
         btn_new = (Button) view.findViewById(R.id.button12);
@@ -141,6 +143,10 @@ public class CaptureFragment extends Fragment {
         btnMorph = (MorphingButton) view.findViewById(R.id.btnMorph);
         morphToLocked(btnMorph,0);
 
+        dp56 = (int) getResources().getDimension(R.dimen.mb_56);
+        dp150 = (int) getResources().getDimension(R.dimen.mb_150);
+        dp10 = (int) getResources().getDimension(R.dimen.mb_10);
+        mColor = ContextCompat.getColor(getContext(),R.color.laranjinha);
         camerapermission();
         galeriapermission();
 
@@ -269,6 +275,7 @@ public class CaptureFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
     }
 
     @Override
@@ -314,17 +321,21 @@ public class CaptureFragment extends Fragment {
                 e.printStackTrace();
             }
 
+
             customimageView.setBackground(null);
             customimageView.setImageBitmap(bitmap);
 
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    morphToSquare(btnMorph,500);
-                    morphCounter=0;
-                }
-            }, 1000);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                            morphToSquare(btnMorph, 500);
+                            morphCounter = 0;
+
+                    }
+                }, 1000);
+
         }
     }
 
@@ -405,8 +416,6 @@ public class CaptureFragment extends Fragment {
 
     private void morphToLocked(final MorphingButton btnMorph, int duration) {
 
-        int dp56 = (int) getResources().getDimension(R.dimen.mb_56);
-
         MorphingButton.Params circle = MorphingButton.Params.create()
                 .duration(duration)
                 .cornerRadius(dp56)
@@ -421,11 +430,11 @@ public class CaptureFragment extends Fragment {
     private void morphToSquare(final MorphingButton btnMorph, int duration) {
         MorphingButton.Params square = MorphingButton.Params.create()
                 .duration(duration)
-                .cornerRadius((int) getResources().getDimension(R.dimen.mb_10))
-                .width((int) getResources().getDimension(R.dimen.mb_150))
-                .height((int) getResources().getDimension(R.dimen.mb_56))
-                .color(ContextCompat.getColor(getContext(),R.color.laranjinha))
-                .colorPressed(ContextCompat.getColor(getContext(),R.color.laranjinha))
+                .cornerRadius(dp10)
+                .width(dp150)
+                .height(dp56)
+                .color(mColor)
+                .colorPressed(mColor)
                 .text("Compartilhar");
         btnMorph.morph(square);
     }

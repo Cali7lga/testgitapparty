@@ -27,17 +27,7 @@
                 android:id="@+id/button12"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/enviar_btn"
-                android:backgroundTint="@color/laranjinha" />
-
-            <view
-                android:id="@+id/view"
-                class="android.support.v4.widget.DrawerLayout"
-                android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@color/laranjinha" />
+                android:background="@drawable/enviar_btn" />
 
             <ImageButton
                 android:id="@+id/imageButton21"
@@ -47,31 +37,6 @@
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/galeria" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <com.herasoft.due.Others.TextViewAvenir
-                android:id="@+id/textView38"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Câmera"
-                android:textColor="@color/laranjinha" />
-
-            <com.herasoft.due.Others.TextViewAvenir
-                android:id="@+id/textView39"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
-                android:text="Galeria"
-                android:textColor="@color/laranjinha" />
 
         </LinearLayout>
 
@@ -92,6 +57,7 @@
                 android:id="@+id/textView37"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
@@ -103,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/round_corners"
-                android:backgroundTint="@color/graytransparent"
                 android:scaleType="centerCrop" />
 
         </RelativeLayout>

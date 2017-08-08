@@ -26,7 +26,7 @@
             android:gravity="center"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:text="Como essas transações são processadas? É seguro?"
+            android:text="Processamento de transações"
             android:textColor="@color/gray_btn_bg_pressed_color" />
 
         <view
@@ -47,7 +47,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="As transferências são realizadas por uma empresa chamada Stripe Co., atuante em diversos países e já está bem consolidada. Podem ficar despreocupados."
+            android:text="O serviço de processamento de pagamentos é fornecido por uma empresa chamada Stripe, Inc, atuante em diversos países e já bem posicionada no mercado."
             android:textColor="@color/dark_gray" />
 
         <view
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:text="Quais são as formas de pagamento?"
+            android:text="Formas de pagamento"
             android:textColor="@color/gray_btn_bg_pressed_color" />
 
         <view
@@ -85,7 +85,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="As transações podem ser efetuadas por meio de qualquer cartão de crédito ou débito. No momento não há possibilidade de parcelamento."
+            android:text="No momento, as transações somente podem ser efetuadas por meio de cartão de crédito e à vista."
             android:textColor="@color/dark_gray" />
 
         <view
@@ -102,7 +102,7 @@
             android:gravity="center"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:text="Os dados do meu cartão ficam armazenados?"
+            android:text="Armazenamento de dados"
             android:textColor="@color/gray_btn_bg_pressed_color" />
 
         <view
@@ -123,7 +123,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Não. Após efetuar uma transação, os dados do cartão são descartados."
+            android:text="Após efetuar qualquer transação em nosso app, os dados do seu cartão são descartados."
             android:textColor="@color/dark_gray" />
 
         <view
@@ -132,6 +132,37 @@
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
             android:background="@color/gray_btn_bg_pressed_color" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="Proteção de dados"
+            android:textColor="@color/gray_btn_bg_pressed_color" />
+
+        <view
+            class="android.support.v4.widget.DrawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray_btn_bg_pressed_color" />
+
+        <com.herasoft.due.Others.TextViewAvenir
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Nós utilizamos SSL (Secure Sockets Layer) e criptografia para proteger os seus dados."
+            android:textColor="@color/dark_gray" />
 
     </LinearLayout>
 

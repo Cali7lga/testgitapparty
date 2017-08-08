@@ -8,7 +8,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/laranjinha</item>
+        <item name="colorAccent">@android:color/holo_red_dark</item>
     </style>
 
     <style name="menu_labels_style">

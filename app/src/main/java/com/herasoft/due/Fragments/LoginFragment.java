@@ -65,7 +65,7 @@ public class LoginFragment extends Fragment {
     private final int RC_SIGN_IN = 1;
     String provider;
 
-    public static String login_email, login_nome;
+    public static String login_email, login_nome, login_user, login_versionName=null, login_firstName;
 
     CallbackManager callbackManager;
     GoogleApiClient mGoogleApiClient;
@@ -143,6 +143,8 @@ public class LoginFragment extends Fragment {
 
         final Typeface tf_m = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Avenir-Light.ttf");
         final Typeface tf_r = Typeface.createFromAsset(getActivity().getAssets(),"fonts/avenirnext-ultralight.ttf");
+        final Typeface bskv = Typeface.createFromAsset(getActivity().getAssets(),"fonts/baskvl.ttf");
+        final Typeface pltn = Typeface.createFromAsset(getActivity().getAssets(),"fonts/palatino-bold.otf");
 
         due.setTypeface(tf_r);
 
@@ -292,6 +294,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        gmail.setTypeface(bskv);
         gmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -319,6 +322,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        face.setTypeface(pltn);
         face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -361,6 +365,8 @@ public class LoginFragment extends Fragment {
                         }
                     }
 
+                    login_user = user.getUid();
+
                     if(provider.equals("password")) {
 
                         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -370,6 +376,10 @@ public class LoginFragment extends Fragment {
 
                                     login_nome = dataSnapshot.child(user.getUid()).child("name").getValue(String.class);
                                     login_email = dataSnapshot.child(user.getUid()).child("email").getValue(String.class);
+                                    if(dataSnapshot.child(user.getUid()).hasChild("eventName")){
+                                        login_versionName = dataSnapshot.child(user.getUid()).child("eventName").getValue(String.class);
+                                        login_firstName = dataSnapshot.child(user.getUid()).child("firstEvent").getValue(String.class);
+                                    }
 
                                 } else{
 
@@ -379,6 +389,7 @@ public class LoginFragment extends Fragment {
                                     login_email = c_email.getText().toString();
 
                                 }
+
 
                                 MainActivity mainactivity = (MainActivity) getActivity();
                                 mainactivity.loadMain();
@@ -390,12 +401,44 @@ public class LoginFragment extends Fragment {
 
                             }
                         });
+
                     } else{
 
-                        login_nome = user.getDisplayName();
-                        login_email = user.getEmail();
-                        MainActivity mainactivity = (MainActivity) getActivity();
-                        mainactivity.loadMain();
+                        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                if (dataSnapshot.hasChild(user.getUid())) {
+
+                                    login_nome = dataSnapshot.child(user.getUid()).child("name").getValue(String.class);
+                                    login_email = dataSnapshot.child(user.getUid()).child("email").getValue(String.class);
+                                    if(dataSnapshot.child(user.getUid()).hasChild("eventName")){
+                                        login_versionName = dataSnapshot.child(user.getUid()).child("eventName").getValue(String.class);
+                                        login_firstName = dataSnapshot.child(user.getUid()).child("firstEvent").getValue(String.class);
+                                    }
+
+                                } else{
+
+                                    mRef.child(user.getUid()).child("name").setValue(user.getDisplayName());
+                                    mRef.child(user.getUid()).child("email").setValue(user.getEmail());
+//                                    mRef.child(user.getUid()).child("photo").setValue(user.getPhotoUrl());
+                                    login_nome = user.getDisplayName();
+                                    login_email = user.getEmail();
+
+                                }
+
+//                                login_nome = user.getDisplayName();
+//                                login_email = user.getEmail();
+                                MainActivity mainactivity = (MainActivity) getActivity();
+                                mainactivity.loadMain();
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
 
                     }
 
